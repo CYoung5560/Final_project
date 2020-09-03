@@ -1,6 +1,6 @@
 import React from "react";
-import "./App.css";
-import "./carousel.css";
+import "./css/App.css";
+import "./css/carousel.css";
 
 // ModalGButton can take in argument values to populate the Modal
 

@@ -1,6 +1,6 @@
 import React from "react";
-import "./App.css";
-import "./carousel.css";
+import "./css/App.css";
+import "./css/carousel.css";
 
 // npm install react-router-dom
 import {BrowserRouter,Switch,Route, Link,useParams,} from "react-router-dom";
@@ -52,10 +52,6 @@ function SignupPage() {
   return <Signup />;
 }
 
-function TicketPage() {
-  return <h1> Ticket Page </h1>;
-}
-
 function ContactPage() {
   return <Contact />;
 }
@@ -65,7 +61,9 @@ function FindUsPage() {
 }
 
 function TicketPage(){
-  return <h1> <Ticket/>  </h1>
+  return <Ticket/>;
+}
+
 function HowItWorksPage() {
   return <How />;
 }
