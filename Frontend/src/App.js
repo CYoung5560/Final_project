@@ -1,6 +1,6 @@
 import React from "react";
 import "./css/App.css";
-import NavBar from './Navbar';
+import NavBar from './NavBar';
 import Footer from './Footer';
 
 function App() {
