@@ -1,19 +1,19 @@
 
 body {
  
-  background-color: #d5d67d;
+  background-color: #7bc5a0;
 }
 
 .btn-qacinema {
-  color: #042f38;
-  background-color: #82abad;
-  border-color: #870f18;
+  color: #f7c769;
+  background-color: #c35335;
+  border-color: #79b39e;
 }
 
 .btn-qacinema:hover {
-  color: #9bc8cb;
-  background-color: #0b778c;
-  border-color: #ce0400;
+  color: #c35335;
+  background-color: #79b39e;
+  border-color: #f7c769;
 }
 
 .btn-qacinema:focus, .btn-secondary.focus {

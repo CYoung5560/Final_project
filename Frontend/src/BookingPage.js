@@ -4,7 +4,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
 import "./css/App.css";
-import "./css/signin.css";
+
 
 const stripePromise = loadStripe('pk_test_51HMY0fEd3ZxUQOxh20BNoEy4CSrSXrgHasSIJrln7bq9eJxea1xhfzdIJfipIZPK82EAcYZBGoHAba0ViHEL75vn00copwcpzI');
 

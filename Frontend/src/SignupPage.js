@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 
 import "./css/App.css";
-import "./css/signup.css";
+
 
 export default class Signup extends React.Component {
   constructor(props) {
