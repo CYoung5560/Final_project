@@ -73,9 +73,12 @@ export default class Login extends React.Component {
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
+        <Form method="post" action="mailto:nilay1989@me.com">
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+          <input type="submit" value="Send Email" />
+        </Form>
       </Form>
     );
   }
