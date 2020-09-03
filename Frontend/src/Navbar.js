@@ -15,6 +15,7 @@ import Home from "./HomePage";
 import FindUs from "./FindUsPage";
 import How from "./HowItWorksPage";
 import Ticket from './TicketPage';
+import Admin from './AdminPage';
 
 // import getToken from './utils/token';
 
@@ -72,6 +73,10 @@ function HowItWorksPage() {
 
 function BookingPage() {
   return <Booking />;
+}
+
+function AdminPage() {
+  return <Admin />;
 }
 
 const logoStyle = {
@@ -202,6 +207,7 @@ export default class Navbar extends React.Component {
           <Route exact path="/tickets/" component={TicketPage} />
           <Route exact path="/booking/" component={BookingPage} />
           <Route path="/individual/:movieName" children={<Child />} />
+          <Route path="/admin" component={AdminPage} />
         </Switch>
       </BrowserRouter>
     );
