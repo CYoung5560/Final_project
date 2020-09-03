@@ -1,19 +1,37 @@
 import React from "react";
+import CheckoutForm from './CheckoutForm';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+
 import "./css/App.css";
 import "./css/signin.css";
 
+const stripePromise = loadStripe('pk_test_51HMY0fEd3ZxUQOxh20BNoEy4CSrSXrgHasSIJrln7bq9eJxea1xhfzdIJfipIZPK82EAcYZBGoHAba0ViHEL75vn00copwcpzI');
+
+// Pass movie title (as 'movieTitle') into BookingPage props from Ticket page
 export default class BookingPage extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div>
         <div class="container">
+          <div className="row">
+            <Elements stripe={stripePromise} elements={CheckoutForm}>
+              {/* Pass movieTitle as a prop */}
+              <CheckoutForm movieTitle={this.props.movieTitle} />
+            </Elements>
+          </div>
           <div class="row">
             <div class="col-md-4 order-md-2 mb-4">
-              <h4 class="d-flex justify-content-between align-items-center mb-3">
+              {/* <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span class="text-muted">Your cart</span>
                 <span class="badge badge-secondary badge-pill">3</span>
-              </h4>
-              <ul class="list-group mb-3">
+              </h4> */}
+              {/* <ul class="list-group mb-3">
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                   <div>
                     <h6 class="my-0">Product name</h6>
@@ -46,9 +64,9 @@ export default class BookingPage extends React.Component {
                   <span>Total (USD)</span>
                   <strong>$20</strong>
                 </li>
-              </ul>
+              </ul> */}
 
-              <form class="card p-2">
+              {/* <form class="card p-2">
                 <div class="input-group">
                   <input
                     type="text"
@@ -61,12 +79,12 @@ export default class BookingPage extends React.Component {
                     </button>
                   </div>
                 </div>
-              </form>
+              </form> */}
             </div>
             <div class="col-md-8 order-md-1">
-              <h4 class="mb-3">Billing address</h4>
+              {/* <h4 class="mb-3">Billing address</h4> */}
               <form class="needs-validation" novalidate>
-                <div class="row">
+                {/* <div class="row">
                   <div class="col-md-6 mb-3">
                     <label for="firstName">First name</label>
                     <input
@@ -95,9 +113,9 @@ export default class BookingPage extends React.Component {
                       Valid last name is required.
                     </div>
                   </div>
-                </div>
+                </div> */}
 
-                <div class="mb-3">
+                {/* <div class="mb-3">
                   <label for="username">Username</label>
                   <div class="input-group">
                     <div class="input-group-prepend">
@@ -110,14 +128,14 @@ export default class BookingPage extends React.Component {
                       placeholder="Username"
                       required
                     />
-                    {/* <div class="invalid-feedback" style="width: 100%;">
+                    <div class="invalid-feedback" style="width: 100%;">
                       Your username is required.
-                    </div> */}
+                    </div>
                   </div>
-                </div>
+                </div> */}
 
                 <div class="mb-3">
-                  <label for="email">
+                  {/* <label for="email">
                     Email <span class="text-muted">(Optional)</span>
                   </label>
                   <input
@@ -128,11 +146,11 @@ export default class BookingPage extends React.Component {
                   />
                   <div class="invalid-feedback">
                     Please enter a valid email address for shipping updates.
-                  </div>
+                  </div> */}
                 </div>
 
                 <div class="mb-3">
-                  <label for="address">Address</label>
+                  {/* <label for="address">Address</label>
                   <input
                     type="text"
                     class="form-control"
@@ -142,11 +160,11 @@ export default class BookingPage extends React.Component {
                   />
                   <div class="invalid-feedback">
                     Please enter your shipping address.
-                  </div>
+                  </div> */}
                 </div>
 
                 <div class="mb-3">
-                  <label for="address2">
+                  {/* <label for="address2">
                     Address 2 <span class="text-muted">(Optional)</span>
                   </label>
                   <input
@@ -154,11 +172,11 @@ export default class BookingPage extends React.Component {
                     class="form-control"
                     id="address2"
                     placeholder="Apartment or suite"
-                  />
+                  /> */}
                 </div>
 
                 <div class="row">
-                  <div class="col-md-5 mb-3">
+                  {/* <div class="col-md-5 mb-3">
                     <label for="country">Country</label>
                     <select
                       class="custom-select d-block w-100"
@@ -171,8 +189,8 @@ export default class BookingPage extends React.Component {
                     <div class="invalid-feedback">
                       Please select a valid country.
                     </div>
-                  </div>
-                  <div class="col-md-4 mb-3">
+                  </div> */}
+                  {/* <div class="col-md-4 mb-3">
                     <label for="state">State</label>
                     <select
                       class="custom-select d-block w-100"
@@ -196,10 +214,10 @@ export default class BookingPage extends React.Component {
                       required
                     />
                     <div class="invalid-feedback">Zip code required.</div>
-                  </div>
+                  </div> */}
                 </div>
-                <hr class="mb-4" />
-                <div class="custom-control custom-checkbox">
+                {/* <hr class="mb-4" /> */}
+                {/* <div class="custom-control custom-checkbox">
                   <input
                     type="checkbox"
                     class="custom-control-input"
@@ -218,13 +236,13 @@ export default class BookingPage extends React.Component {
                   <label class="custom-control-label" for="save-info">
                     Save this information for next time
                   </label>
-                </div>
-                <hr class="mb-4" />
+                </div> */}
+                {/* <hr class="mb-4" />
 
-                <h4 class="mb-3">Payment</h4>
+                <h4 class="mb-3">Payment</h4> */}
 
                 <div class="d-block my-3">
-                  <div class="custom-control custom-radio">
+                  {/* <div class="custom-control custom-radio">
                     <input
                       id="credit"
                       name="paymentMethod"
@@ -236,8 +254,8 @@ export default class BookingPage extends React.Component {
                     <label class="custom-control-label" for="credit">
                       Credit card
                     </label>
-                  </div>
-                  <div class="custom-control custom-radio">
+                  </div> */}
+                  {/* <div class="custom-control custom-radio">
                     <input
                       id="debit"
                       name="paymentMethod"
@@ -260,10 +278,10 @@ export default class BookingPage extends React.Component {
                     <label class="custom-control-label" for="paypal">
                       PayPal
                     </label>
-                  </div>
+                  </div> */}
                 </div>
                 <div class="row">
-                  <div class="col-md-6 mb-3">
+                  {/* <div class="col-md-6 mb-3">
                     <label for="cc-name">Name on card</label>
                     <input
                       type="text"
@@ -276,8 +294,8 @@ export default class BookingPage extends React.Component {
                       Full name as displayed on card
                     </small>
                     <div class="invalid-feedback">Name on card is required</div>
-                  </div>
-                  <div class="col-md-6 mb-3">
+                  </div> */}
+                  {/* <div class="col-md-6 mb-3">
                     <label for="cc-number">Credit card number</label>
                     <input
                       type="text"
@@ -289,10 +307,10 @@ export default class BookingPage extends React.Component {
                     <div class="invalid-feedback">
                       Credit card number is required
                     </div>
-                  </div>
+                  </div> */}
                 </div>
                 <div class="row">
-                  <div class="col-md-3 mb-3">
+                  {/* <div class="col-md-3 mb-3">
                     <label for="cc-expiration">Expiration</label>
                     <input
                       type="text"
@@ -313,12 +331,12 @@ export default class BookingPage extends React.Component {
                       required
                     />
                     <div class="invalid-feedback">Security code required</div>
-                  </div>
+                  </div> */}
                 </div>
                 <hr class="mb-4" />
-                <button class="btn btn-primary btn-lg btn-block" type="submit">
+                {/* <button class="btn btn-primary btn-lg btn-block" type="submit">
                   Continue to checkout
-                </button>
+                </button> */}
               </form>
             </div>
           </div>
