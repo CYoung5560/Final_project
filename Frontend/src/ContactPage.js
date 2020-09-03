@@ -1,8 +1,7 @@
 import React from "react";
 import "./css/App.css";
 import "./css/signin.css";
-import Table from "react-bootstrap/Table";
-import { Button, Col, Row, Form } from "react-bootstrap";
+import { Button, Col, Row, Form, Table } from "react-bootstrap";
 import axios from "axios";
 
 export default class ContactUs extends React.Component {
