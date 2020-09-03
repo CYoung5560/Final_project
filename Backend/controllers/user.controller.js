@@ -38,7 +38,9 @@ exports.signup = async (request, response, next) => {
     try {
         const { username, password } = request.body;
         const newUser = await UserService.signup(username, password);
-        return response.status(200).json({ status: 200, data: newUser, message: "user.controller -> " });
+        newUser.hash = "";
+        newUser.salt = "";
+        return response.status(200).json({ status: 200, data: newUser, message: "user.controller -> Successfully created user" });
     } catch (error) {
         return response.status(400).json({ status: 400, message: error.message });
     }

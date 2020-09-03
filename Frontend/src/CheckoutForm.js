@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { ElementsConsumer, CardElement } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
-import './CheckoutCardStyles.css';
+import './css/CheckoutCardStyles.css';
 
 /*
 - import CheckoutForm into file using the form
@@ -39,6 +39,7 @@ class CheckoutCardForm extends React.Component {
 
     constructor(props) {
         super(props);
+        console.log(props.movieTitle);
     }
 
     getToken = () => {
@@ -58,6 +59,8 @@ class CheckoutCardForm extends React.Component {
             // disable form submission until loaded
             return;
         }
+
+        // Check if movie, passed from props, exists first
 
         const concession = document.getElementById("concession").value;
 
@@ -93,7 +96,7 @@ class CheckoutCardForm extends React.Component {
                     } else {
                         // Payment processed
                         if (result.paymentIntent.status === 'succeeded') {
-                            // Show success message
+                            // Show success message to user
                             console.log("success");
                             // Create a ticket !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                             fetch('http://localhost:8000/ticket', {
@@ -105,7 +108,7 @@ class CheckoutCardForm extends React.Component {
                                     'Authorization': 'Bearer ' + token
                                 },
                                 body: JSON.stringify({
-                                    movieTitle: 'Jackass 2',
+                                    movieTitle: this.props.movieTitle,
                                     concession: concession,
                                     transId: result.paymentIntent.payment_method
                                 })
@@ -130,24 +133,24 @@ class CheckoutCardForm extends React.Component {
                 </label>
                 <label className='w-100'>
                     Concession
-                    <select id='concession'>
+                    <select className='custom-select d-block w-100' id='concession'>
                         <option value='Child'>Child</option>
                         <option value='Adult'>Adult</option>
                         <option value='Senior'>Senior</option>
                         <option value='Student'>Student</option>
                     </select>
                 </label>
-                <button disabled={!this.props.stripe} >Confirm order</button>
+                <button className='btn btn-primary btn-lg btn-block' disabled={!this.props.stripe} >Confirm order</button>
             </form>
         )
     }
 }
 
-export default function CheckoutForm() {
+export default function CheckoutForm(props) {
     return (
         <ElementsConsumer>
             {({ stripe, elements }) => {
-                return <CheckoutCardForm stripe={stripe} elements={elements} />
+                return <CheckoutCardForm stripe={stripe} elements={elements} movieTitle={props.movieTitle} />
             }}
         </ElementsConsumer>
     );
