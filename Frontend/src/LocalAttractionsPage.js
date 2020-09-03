@@ -1,8 +1,7 @@
 import React from "react";
 import "./css/App.css";
-import "./css/signin.css";
 
-export default class ContactUs extends React.Component {
+export default class LocalAttractions extends React.Component {
   render() {
     return (
       <div>
@@ -12,8 +11,8 @@ export default class ContactUs extends React.Component {
           <div class="row featurette">
             <div class="col-md-7">
               <h4 class="featurette-heading">
-                Our address...
-                <span class="text-muted">Find us on the quay!</span>
+                The Quays...
+                <span class="text-muted">What's on and where!</span>
               </h4>
               <p class="lead">
                 Anchorage 1 <br/>

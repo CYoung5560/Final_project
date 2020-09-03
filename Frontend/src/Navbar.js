@@ -15,18 +15,9 @@ import Home from "./HomePage";
 import FindUs from "./FindUsPage";
 import How from "./HowItWorksPage";
 import Ticket from './TicketPage';
+import Attractions from './LocalAttractionsPage';
 
 // import getToken from './utils/token';
-
-// For Stripe
-// import CheckoutForm from './CheckoutForm';
-// import { Elements } from '@stripe/react-stripe-js';
-// import { loadStripe } from '@stripe/stripe-js';
-// const stripePromise = loadStripe('pk_test_51HMY0fEd3ZxUQOxh20BNoEy4CSrSXrgHasSIJrln7bq9eJxea1xhfzdIJfipIZPK82EAcYZBGoHAba0ViHEL75vn00copwcpzI');
-// Below inside render/return
-// <Elements stripe={stripePromise} elements={CheckoutForm}>
-//         <CheckoutForm />
-// </Elements>
 
 function HomePage() {
   return <Home />;
@@ -68,6 +59,10 @@ function TicketPage(){
 
 function HowItWorksPage() {
   return <How />;
+}
+
+function LocalAttractionsPage() {
+  return <Attractions />;
 }
 
 function BookingPage() {
@@ -143,6 +138,9 @@ export default class Navbar extends React.Component {
                     <a class="dropdown-item" href="/how">
                       How It Works
                     </a>
+                    <a class="dropdown-item" href="/localattractions">
+                      Local Attractions
+                    </a>
                   </div>
                 </div>
               </li>
@@ -199,6 +197,7 @@ export default class Navbar extends React.Component {
           <Route exact path="/contact/" component={ContactPage} />
           <Route exact path="/findus/" component={FindUsPage} />
           <Route exact path="/how/" component={HowItWorksPage} />
+          <Route exact path="/localattractions/" component={LocalAttractionsPage} />
           <Route exact path="/tickets/" component={TicketPage} />
           <Route exact path="/booking/" component={BookingPage} />
           <Route path="/individual/:movieName" children={<Child />} />
