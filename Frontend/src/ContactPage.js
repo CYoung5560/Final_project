@@ -6,16 +6,16 @@ import { Button, Col, Row, Form } from "react-bootstrap";
 import axios from "axios";
 
 export default class ContactUs extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      email: "",
-      message: "",
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     name: "",
+  //     email: "",
+  //     message: "",
+  //   };
+  //   this.handleChange = this.handleChange.bind(this);
+  //   this.handleSubmit = this.handleSubmit.bind(this);
+  // }
 
   // handleSubmit(event) {
   //   const messageHtml =  renderEmail(
@@ -90,7 +90,7 @@ export default class ContactUs extends React.Component {
           </tbody>
         </Table>
 
-        <form
+        {/* <form
           id="contact-form"
           onSubmit={this.handleSubmit.bind(this)}
           method="POST"
@@ -123,22 +123,23 @@ export default class ContactUs extends React.Component {
             Submit
           </button>
        
-        </form>
+        </form> */}
       </div>
     );
   }
 
-  onNameChange(event) {
-    this.setState({ name: event.target.value });
-  }
+//   onNameChange(event) {
+//     this.setState({ name: event.target.value });
+//   }
 
-  onEmailChange(event) {
-    this.setState({ email: event.target.value });
-  }
+//   onEmailChange(event) {
+//     this.setState({ email: event.target.value });
+//   }
 
-  onMessageChange(event) {
-    this.setState({ message: event.target.value });
-  }
+//   onMessageChange(event) {
+//     this.setState({ message: event.target.value });
+//   }
 
-  handleSubmit() {}
+//   handleSubmit() {}
+
 }
