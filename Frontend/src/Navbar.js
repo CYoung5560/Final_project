@@ -148,7 +148,7 @@ export default class Navbar extends React.Component {
               </li>
               <li class="nav-item">
                 <Link to="/gallery">
-                  <span class="navbar-brand mb-0 h1">Gallery</span>
+                  <span class="navbar-brand mb-0 h1">Now Showing</span>
                 </Link>
               </li>
               <li class="nav-item">
