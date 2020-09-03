@@ -1,6 +1,6 @@
 import React from "react";
 import "./css/App.css";
-import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap'
+import { Navbar,Nav,NavDropdown,Form,FormControl,Button, Container } from 'react-bootstrap'
 
 // npm install react-router-dom
 import {
@@ -86,7 +86,8 @@ export default class NavBar extends React.Component {
     return (
       
       <BrowserRouter>
-        <Navbar expand="lg" variant="light" bg="light">
+   
+        <Navbar expand="lg" variant="light" className="nv_qacinema">
         <Navbar.Brand href="#home"><a class="navbar-brand" href="/">
             <img
               src={require("./images/finalLogo_500px.png")}
@@ -120,6 +121,7 @@ export default class NavBar extends React.Component {
                 </Form>
             </Navbar.Collapse>
         </Navbar>
+        
 
         <Switch>
           <Route exact path="/" component={HomePage} />
