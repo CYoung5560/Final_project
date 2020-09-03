@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const movieSchema = new mongoose.Schema({
 
-    //gridfs image storage 
+    image: {type: mongoose.Types.ObjectId, ref: 'image'},
     title: {type: String, required: true},
     year: {type: Number, required: true},
     description: {type: String},
@@ -13,8 +13,8 @@ const movieSchema = new mongoose.Schema({
 });
 
 // A movie model (object) can have functions.
-// These are compiled onto the model prototype (ignore unless your brave ;)) and
-// exposed with each instantiated object (can be called like so: 'movieObj.info()').
+// These are compiled onto the model prototype and exposed with each 
+// instantiated object (can be called like so: 'movieObj.info()').
 // Useful for logging db info.
 movieSchema.methods.info = () => {
     console.log(`TITLE -> ${this.title}`);
