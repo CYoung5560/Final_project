@@ -16,7 +16,7 @@ import FindUs from "./FindUsPage";
 import How from "./HowItWorksPage";
 import Ticket from './TicketPage';
 
-// import getToken from './utils/token';
+import getToken from './utils/token'; // This gets the token stored in cookies if login is successful
 
 // For Stripe
 // import CheckoutForm from './CheckoutForm';
