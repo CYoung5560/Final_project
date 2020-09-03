@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 
 import "./css/App.css";
+import { Container } from "react-bootstrap";
 
 
 export default class Signup extends React.Component {
@@ -50,6 +51,7 @@ export default class Signup extends React.Component {
   render() {
     return (
       <div>
+        <Container className="cntr_main_qacinema">
         <br></br>
         <br></br>
         <form class="form-signup" onSubmit={this.handleSubmit}>
@@ -142,6 +144,7 @@ export default class Signup extends React.Component {
             </form>
           </div>
         </form>
+        </Container>
       </div>
 
     );

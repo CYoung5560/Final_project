@@ -4,6 +4,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
 import "./css/App.css";
+import { Container } from "react-bootstrap";
 
 
 const stripePromise = loadStripe('pk_test_51HMY0fEd3ZxUQOxh20BNoEy4CSrSXrgHasSIJrln7bq9eJxea1xhfzdIJfipIZPK82EAcYZBGoHAba0ViHEL75vn00copwcpzI');
@@ -18,6 +19,7 @@ export default class BookingPage extends React.Component {
   render() {
     return (
       <div>
+        <Container className="cntr_main_qacinema">
         <div class="container">
           <div className="row">
             <Elements stripe={stripePromise} elements={CheckoutForm}>
@@ -341,6 +343,7 @@ export default class BookingPage extends React.Component {
             </div>
           </div>
         </div>
+        </Container>
       </div>
     );
   }

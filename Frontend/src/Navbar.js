@@ -116,6 +116,8 @@ export default class NavBar extends React.Component {
               </Nav>
               {/* Search bar */}
               <Form inline>
+                <Button variant="outline-success" size="sm" className="btn-qacinema">Login</Button>
+                <Button variant="outline-success" size="sm" className="btn-qacinema">Logout</Button>
                 <FormControl type="text" size="sm" placeholder="Search" className="mr-sm-2" />
                   <Button variant="outline-success" size="sm" className="btn-qacinema">Search</Button>
                 </Form>

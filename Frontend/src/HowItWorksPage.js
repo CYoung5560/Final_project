@@ -1,10 +1,11 @@
 import React from "react";
 import "./css/App.css";
-
+import { Container } from "react-bootstrap";
 export default class HowItWorks extends React.Component {
   render() {
     return (
       <div>
+        <Container className="cntr_main_qacinema">
         <section class="jumbotron text-center">
           <div class="container">
             <h1>Booking</h1>
@@ -182,6 +183,7 @@ export default class HowItWorks extends React.Component {
             </div>
           </div>
         </div>
+        </Container>
       </div>
     );
   }
