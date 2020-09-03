@@ -16,6 +16,8 @@ import FindUs from "./FindUsPage";
 import How from "./HowItWorksPage";
 import Ticket from './TicketPage';
 
+// import getToken from './utils/token';
+
 // For Stripe
 // import CheckoutForm from './CheckoutForm';
 // import { Elements } from '@stripe/react-stripe-js';
