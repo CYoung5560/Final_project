@@ -13,10 +13,15 @@ import {
   FormControl,
   FormGroup,
 } from "react-bootstrap";
+import CheckoutForm from './CheckoutForm';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 import NumericInput from "react-numeric-input";
 
 import dateFnsFormat from "date-fns/format";
 import dateFnsParse from "date-fns/parse";
+
+const stripePromise = loadStripe('pk_test_51HMY0fEd3ZxUQOxh20BNoEy4CSrSXrgHasSIJrln7bq9eJxea1xhfzdIJfipIZPK82EAcYZBGoHAba0ViHEL75vn00copwcpzI');
 
 function parseDate(str, format, locale) {
   const parsed = dateFnsParse(str, format, new Date(), { locale });
@@ -32,6 +37,19 @@ function formatDate(date, format, locale) {
 const FORMAT = "dd/MM/yyyy";
 
 export default class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      movieTitle: ""
+    };
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  }
+
   render() {
     return (
       <Form>
@@ -42,14 +60,16 @@ export default class Login extends React.Component {
               as="select"
               title="Choose..."
               defaultValue="Choose..."
+              name="movieTitle"
+              onChange={this.handleChange}
             >
               {/* <option>Choose...</option> */}
-              <option>Gremlins</option>
-              <option>Hellraiser</option>
-              <option>Goonies</option>
-              <option>Spririted Away</option>
-              <option>Sea Fever</option>
-              <option>Howl's Moving Castle</option>
+              <option value="Gremlins">Gremlins</option>
+              <option value="Hellraiser">Hellraiser</option>
+              <option value="Goonies">Goonies</option>
+              <option value="Spririted Away">Spririted Away</option>
+              <option value="Sea Fever">Sea Fever</option>
+              <option value="Howl's Moving Castle">Howl's Moving Castle</option>
             </Form.Control>
           </Form.Group>
 
@@ -73,10 +93,10 @@ export default class Login extends React.Component {
             <Form.Check type="radio" label="14.00" />
             <Form.Check type="radio" label="15.00" />
           </Form.Group>
-          
+
           <Form.Group>
-          <Form.Label column="lg"></Form.Label>
-         
+            <Form.Label column="lg"></Form.Label>
+
             <Form.Check type="radio" label="16.00" />
             <Form.Check type="radio" label="17.00" />
             <Form.Check type="radio" label="18.00" />
@@ -86,7 +106,7 @@ export default class Login extends React.Component {
           </Form.Group>
         </Form.Row>
 
-        <Form.Row>
+        {/* <Form.Row>
           <Form.Group>
             <Form.Label column="lg">Adult</Form.Label>
             <NumericInput size={10} min={0} max={100} value={0} />
@@ -106,7 +126,7 @@ export default class Login extends React.Component {
             <Form.Label column="lg">Senior</Form.Label>
             <NumericInput size={10} min={0} max={100} value={0} />
           </Form.Group>
-        </Form.Row>
+        </Form.Row> */}
 
         <Form.Group id="formGridCheckbox">
           <Form.Check
@@ -115,9 +135,14 @@ export default class Login extends React.Component {
           />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Elements stripe={stripePromise} elements={CheckoutForm}>
+          {/* Pass movieTitle as a prop */}
+          <CheckoutForm movieTitle={this.props.movieTitle} />
+        </Elements>
+
+        {/* <Button variant="primary" type="submit">
           Submit
-        </Button>
+        </Button> */}
       </Form>
     );
   }

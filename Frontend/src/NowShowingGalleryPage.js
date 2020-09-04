@@ -36,7 +36,7 @@ export default class NowShowingGallery extends React.Component {
                     <p class="card-text">Blast from the Past: Gremlins</p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
-                        <a href="/signup" role="button" class="btn btn-sm btn-outline-secondary">Buy Tickets</a>
+                        <a href="/tickets" role="button" class="btn btn-sm btn-outline-secondary">Buy Tickets</a>
                         <a href="https://www.imdb.com/title/tt0087363/" target="_blank" role="button" class="btn btn-sm btn-outline-secondary">IMDB</a>
                         <ModalGButton/>
                       </div>
@@ -59,7 +59,7 @@ export default class NowShowingGallery extends React.Component {
                     <p class="card-text">Late night horror: Sea Fever</p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
-                      <a href="/signup" role="button" class="btn btn-sm btn-outline-secondary">Buy Tickets</a>
+                      <a href="/tickets" role="button" class="btn btn-sm btn-outline-secondary">Buy Tickets</a>
                       <a href="https://www.imdb.com/title/tt0087363/" target="_blank" role="button" class="btn btn-sm btn-outline-secondary">IMDB</a>
                       <ModalGButton/>
                       </div>
@@ -82,7 +82,7 @@ export default class NowShowingGallery extends React.Component {
                     <p class="card-text">Matinee: Howl's Moving Castle</p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
-                      <a href="/signup" role="button" class="btn btn-sm btn-outline-secondary">Buy Tickets</a>
+                      <a href="/tickets" role="button" class="btn btn-sm btn-outline-secondary">Buy Tickets</a>
                       <a href="https://www.imdb.com/title/tt0087363/" target="_blank" role="button" class="btn btn-sm btn-outline-secondary">IMDB</a>
                       <ModalGButton/>
                       </div>
@@ -123,7 +123,7 @@ export default class NowShowingGallery extends React.Component {
                     <p class="card-text">Blast from the past: Goonies</p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
-                      <a href="/signup" role="button" class="btn btn-sm btn-outline-secondary">Buy Tickets</a>
+                      <a href="/tickets" role="button" class="btn btn-sm btn-outline-secondary">Buy Tickets</a>
                       <a href="https://www.imdb.com/title/tt0087363/" target="_blank" role="button" class="btn btn-sm btn-outline-secondary">IMDB</a>
                       <ModalGButton/>
                       </div>
@@ -146,7 +146,7 @@ export default class NowShowingGallery extends React.Component {
                     <p class="card-text">Late night Horror: Hellraiser</p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
-                      <a href="/signup" role="button" class="btn btn-sm btn-outline-secondary">Buy Tickets</a>
+                      <a href="/tickets" role="button" class="btn btn-sm btn-outline-secondary">Buy Tickets</a>
                       <a href="https://www.imdb.com/title/tt0087363/" target="_blank" role="button" class="btn btn-sm btn-outline-secondary">IMDB</a>
                       <ModalGButton/>
                       </div>
@@ -169,7 +169,7 @@ export default class NowShowingGallery extends React.Component {
                     <p class="card-text">Matinee: Spririted Away</p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
-                      <a href="/signup" role="button" class="btn btn-sm btn-outline-secondary">Buy Tickets</a>
+                      <a href="/tickets" role="button" class="btn btn-sm btn-outline-secondary">Buy Tickets</a>
                       <a href="https://www.imdb.com/title/tt0087363/" target="_blank" role="button" class="btn btn-sm btn-outline-secondary">IMDB</a>
                       <ModalGButton/>
                       </div>

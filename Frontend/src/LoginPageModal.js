@@ -110,6 +110,7 @@ export default class Login extends React.Component {
           class="btn btn-sm btn-qacinema"
           data-toggle="modal"
           data-target="#exampleModalLong"
+          // data-dismiss="modal" <-- Doesn't dismiss modal after clicking Login
         >
           <strong>Login</strong>
         </button>

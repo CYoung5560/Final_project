@@ -1,4 +1,3 @@
-const Contact = require("../models/contact.model");
 const nodemailer = require("nodemailer");
 
 exports.create = async (email) => {
