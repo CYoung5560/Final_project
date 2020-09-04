@@ -7,17 +7,21 @@ const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt;
 const cors = require("cors");
 
+//contact form imports
+const nodemailer = require('nodemailer');
+//const path = require('path'); ?? 
+
 const app = express();
 const port = process.env.PORT || 8000;
 
 const User = require("./models/user.model");
-
 const userRoutes = require("./routes/user.route");
 const movieRoutes = require("./routes/movie.route");
 const ticketRoutes = require("./routes/ticket.route");
 const paymentRoutes = require("./routes/payment.route");
 const concessionRoutes = require("./routes/concession.route");
 const imageRoutes = require("./routes/image.route");
+const contactRoutes = require("./routes/contact.route");
 
 // Use in-built Express json parser
 app.use(express.json());
@@ -35,6 +39,9 @@ app.use(
 );
 
 app.use(passport.initialize());
+
+//app.use('../Frontend/src/', express.static()); //folder path to front end contact page 
+
 
 passport.use(new LocalStrategy(User.authenticate()));
 passport.use(
@@ -58,13 +65,14 @@ passport.use(
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// Handles routes starting with '/movie'
+// Handles routes 
 app.use("/ticket", ticketRoutes);
 app.use("/movie", movieRoutes);
 app.use("/concession", concessionRoutes);
 app.use(userRoutes);
 app.use(paymentRoutes);
 app.use("/img", imageRoutes);
+app.use("/contact", contactRoutes);
 
 // Configure db
 const db = "mongodb://localhost:27017/movie-site";
