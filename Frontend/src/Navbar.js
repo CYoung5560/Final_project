@@ -13,7 +13,7 @@ import {
 
 import Gallery from "./NowShowingGalleryPage";
 import NewReleases from "./NewReleasesGalleryPage";
-import Login from "./LoginPage";
+//import Login from "./LoginPage";
 import Signup from "./SignupPage";
 import Contact from "./ContactPage";
 import Booking from "./BookingPage";
@@ -24,6 +24,7 @@ import Ticket from "./TicketPage";
 import Attractions from "./LocalAttractionsPage";
 import About from './AboutPage';
 import Ratings from './FilmRatingsPage';
+import LoginModal from './LoginPageModal';
 
 
 // import getToken from './utils/token';
@@ -46,9 +47,9 @@ function NewReleasesPage() {
 // This is the component the router will return
 // The return name matches with the import name
 // The function name matches the route component name
-function LoginPage() {
-  return <Login />;
-}
+// function LoginPage() {
+//   return <Login />;
+// }
 
 function SignupPage() {
   return <Signup />;
@@ -119,14 +120,17 @@ export default class NavBar extends React.Component {
                   <NavDropdown.Item href="/localattractions">Local Attractions</NavDropdown.Item>
                   <NavDropdown.Item href="/filmratings">Film Ratings</NavDropdown.Item>            
               </NavDropdown>
+              {/* Dropdown */}
               </Nav>
               {/* Search bar */}
               <Form inline>
-                <Button variant="outline-success" size="sm" className="btn-qacinema"><strong>Login</strong></Button>
+                <LoginModal/>
+                {/* <Button variant="outline-success" size="sm" className="btn-qacinema"><strong>Login</strong></Button> */}
                 <Button variant="outline-success" size="sm" className="btn-qacinema"><strong>Logout</strong></Button>
                 <FormControl type="text" size="sm" placeholder="Search" className="mr-sm-2" />
                   <Button variant="outline-success" size="sm" className="btn-qacinema"><strong>Search</strong></Button>
                 </Form>
+                {/* Search bar */}
             </Navbar.Collapse>
         </Navbar>
         
@@ -136,7 +140,7 @@ export default class NavBar extends React.Component {
           <Route exact path="/about/" component={AboutusPage} />
           <Route exact path="/gallery/" component={GalleryPage} />
           <Route exact path="/newreleases/" component={NewReleasesPage} />
-          <Route exact path="/login/" component={LoginPage} />
+          {/* <Route exact path="/login/" component={LoginPage} /> */}
           <Route exact path="/signup/" component={SignupPage} />
           <Route exact path="/contact/" component={ContactPage} />
           <Route exact path="/findus/" component={FindUsPage} />

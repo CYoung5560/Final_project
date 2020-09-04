@@ -21,13 +21,15 @@ export default class ModalGButton extends React.Component {
         >
           <div class="modal-dialog" role="document">
             <div class="modal-content">
+              {/* Modal content */}
               <div class="modal-header">
+                
                 <h5 class="modal-title" id="exampleModalLongTitle">
                   **Film Title**
                 </h5>
                 <button
                   type="button"
-                  class="close"
+                  class="close btn btn-sm btn-outline-secondary"
                   data-dismiss="modal"
                   aria-label="Close"
                 >
@@ -47,12 +49,13 @@ export default class ModalGButton extends React.Component {
                   Save changes
                 </button>
               </div>
+               {/* Modal content */}
             </div>
           </div>
         </div>
         <button
           type="button"
-          class="btn btn-sm btn-outline-secondary"
+          class="btn btn-sm btn-qacinema"
           data-toggle="modal"
           data-target="#exampleModalLong"
         >
