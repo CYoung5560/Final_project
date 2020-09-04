@@ -23,10 +23,10 @@ import How from "./HowItWorksPage";
 import Ticket from "./TicketPage";
 import Attractions from "./LocalAttractionsPage";
 import About from './AboutPage';
+import Admin from './AdminPage';
 import Ratings from './FilmRatingsPage';
 import LoginModal from './LoginPageModal';
 import DiscussionBoard from './DiscussionBoard';
-
 
 // import getToken from './utils/token';
 
@@ -79,9 +79,15 @@ function LocalAttractionsPage() {
 function BookingPage() {
   return <Booking />;
 }
+
+function AdminPage() {
+  return <Admin />;
+}
+
 function RatingsPage() {
   return <Ratings />;
 }
+
 const logoStyle = {
   height: "150px",
   width: "150px",
@@ -151,6 +157,7 @@ export default class NavBar extends React.Component {
           <Route exact path="/booking/" component={BookingPage} />
           <Route exact path="/filmratings/" component={RatingsPage} />
           <Route path="/individual/:movieName" children={<Child />} />
+          <Route path="/admin" component={AdminPage} />
         </Switch>
       </BrowserRouter>
     );

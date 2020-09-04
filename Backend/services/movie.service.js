@@ -42,8 +42,13 @@ exports.deleteMovie = async (id) => {
 
 exports.updateMovie = async (id, movie) => {
     try {
-        const movie = await Movie.findByIdAndUpdate(id, { "title": movie.title, "year": movie.year, "description": movie.description, 
-        "actors": movie.actors, "director": movie.director, "imdb": movie.imdb});
+        movie._id = id;
+
+        let updatedMovie = await Movie.findByIdAndUpdate(id, { $set: { "title": movie.title, "year": movie.year, "description": movie.description, 
+        "actors": movie.actors, "director": movie.director, "imdb": movie.imdb } }, { new: true });
+
+        console.log(updatedMovie);
+        return updatedMovie;
     } catch(error) {
         console.log(error);
         throw Error('movie.service.js -> Error updating movie');
