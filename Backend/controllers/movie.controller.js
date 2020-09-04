@@ -36,7 +36,7 @@ exports.createMovie = async (request, response, next) => {
 
 exports.deleteMovie = async (request, response, next) => {
     try{
-        const movie = await MovieService.deleteMovie(request.body)
+        const movie = await MovieService.deleteMovie(request.params.id);
         return response.status(200).json({status: 200, data: movie, message: "movie.controller -> Successfully deleted entry"})
     } catch(error) {
         return response.status(400).json({status:400, message: error.message});

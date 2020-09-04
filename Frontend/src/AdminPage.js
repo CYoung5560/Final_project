@@ -2,11 +2,73 @@ import React from "react";
 import "./css/App.css";
 //import axios from 'axios';
 
+import { getToken } from './utils/token';
+
 export default class AdminPage extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            gdTicketId: "",
+            cuTicketMovie: "",
+            cuTicketConcession: "",
+            cuTransId: "",
+            gdMovieId: "",
+            gMovieTitle: "",
+            cuMovieId: "",
+            cuMovieTitle: "",
+            cuMovieDescription: "",
+            cuMovieActors: "",
+            cuMovieDirectors: "",
+            cuMovieImdb: "",
+            cConcessionName: "",
+            cConcessionPrice: ""
+        };
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    };
+
+    getMovieById = async (event) => {
+        event.preventDefault();
+
+        const token = getToken();
+        const movieId = this.state.gdMovieId;
+
+        fetch(`http://localhost:8000/movie/${movieId}`, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then((response) => response.json())
+            .then((result) => console.log(result))
+            .catch((error) => console.log(error));
+    }
+
+    deleteMovieById = async (event) => {
+        event.preventDefault();
+
+        const token = getToken();
+        const movieId = this.state.gdMovieId;
+
+        fetch(`http://localhost:8000/movie/${movieId}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then((response) => response.json())
+            .then((result) => console.log(result))
+            .catch((error) => console.log(error));
+    }
 
     render() {
         return (
-
             <div className="container">
                 <h1 className="mb-5 mt-3">Admin Console</h1>
                 <div className="row my-5 p-3 bg-light">
@@ -15,7 +77,7 @@ export default class AdminPage extends React.Component {
                     <form className="col-12">
                         <div className="form-group">
                             <label for="ticketId">ID</label>
-                            <input type="text" className="form-control" id="ticketId" />
+                            <input type="text" className="form-control" id="ticketId" name="gdTicketId" onChange={this.handleChange} />
                         </div>
                         <button type="submit" className="btn btn-primary w-100">GET</button>
                         <button type="submit" className="btn btn-danger w-100">DELETE</button>
@@ -24,13 +86,13 @@ export default class AdminPage extends React.Component {
                     <h2 className="col-12 mt-5">CREATE/UPDATE Ticket</h2>
                     <form className="col-12">
                         <div className="form-group">
-                            <label for="movieTitle">Movie Title</label>
-                            <input type="text" className="form-control" id="movieTitle" />
+                            <label for="movieTitleTicket">Movie Title</label>
+                            <input type="text" className="form-control" id="movieTitleTicket" name="cuTicketMovie" onChange={this.handleChange} />
                         </div>
                         <div className="form-group">
                             <label className='w-100'>
                                 Concession
-                                <select className='custom-select d-block w-100 form-control' id='concession'>
+                                <select className='custom-select d-block w-100 form-control' id='ticketConcession' name="cuTicketConcession" onChange={this.handleChange}>
                                     <option value='Child'>Child</option>
                                     <option value='Adult'>Adult</option>
                                     <option value='Senior'>Senior</option>
@@ -40,7 +102,7 @@ export default class AdminPage extends React.Component {
                         </div>
                         <div className="form-group">
                             <label for="transId">Transaction ID</label>
-                            <input type="text" className="form-control" id="transId" />
+                            <input type="text" className="form-control" id="transId" name="cuTransId" onChange={this.handleChange} />
                         </div>
                         <button type="submit" className="btn btn-primary w-100">CREATE</button>
                         <button type="submit" className="btn btn-warning w-100">UPDATE</button>
@@ -54,18 +116,18 @@ export default class AdminPage extends React.Component {
                     <h2 className="col-12">GET/DELETE Movie (ID)</h2>
                     <form className="col-12">
                         <div className="form-group">
-                            <label for="movieId">ID</label>
-                            <input type="text" className="form-control" id="movieId" />
+                            <label for="gdMovieId">ID</label>
+                            <input type="text" className="form-control" id="gdMovieId" name="gdMovieId" onChange={this.handleChange} />
                         </div>
-                        <button type="submit" className="btn btn-primary w-100">GET</button>
-                        <button type="submit" className="btn btn-danger w-100">DELETE</button>
+                        <button type="submit" className="btn btn-primary w-100" onClick={this.getMovieById}>GET</button>
+                        <button type="submit" className="btn btn-danger w-100" onClick={this.deleteMovieById}>DELETE</button>
                     </form>
 
                     <h2 className="col-12 mt-5">GET Movie (Title)</h2>
                     <form className="col-12">
                         <div className="form-group">
-                            <label for="movieTitle">Movie Title</label>
-                            <input type="text" className="form-control" id="movieTitle" />
+                            <label for="gMovieTitle">Movie Title</label>
+                            <input type="text" className="form-control" id="gMovieTitle" name="gMovieTitle" onChange={this.handleChange} />
                         </div>
                         <button type="submit" className="btn btn-primary w-100">GET</button>
                     </form>
@@ -73,30 +135,51 @@ export default class AdminPage extends React.Component {
                     <h2 className="col-12 mt-5">CREATE/UPDATE Movie</h2>
                     <form className="col-12">
                         <div className="form-group">
-                            <label for="movieTitle">Movie Title</label>
-                            <input type="text" className="form-control" id="movieTitle" />
+                            <label for="cuMovieId">Movie ID (Update only)</label>
+                            <input type="text" className="form-control" id="cuMovieId" name="cuMovieId" onChange={this.handleChange} />
                         </div>
                         <div className="form-group">
-                            <label className='w-100'>
-                                Concession
-                                <select className='custom-select d-block w-100 form-control' id='concession'>
-                                    <option value='Child'>Child</option>
-                                    <option value='Adult'>Adult</option>
-                                    <option value='Senior'>Senior</option>
-                                    <option value='Student'>Student</option>
-                                </select>
-                            </label>
+                            <label for="cuMovieTitle">Movie Title</label>
+                            <input type="text" className="form-control" id="cuMovieTitle" name="cuMovieTitle" onChange={this.handleChange} />
                         </div>
                         <div className="form-group">
-                            <label for="transId">Transaction ID</label>
-                            <input type="text" className="form-control" id="transId" />
+                            <label for="cuMovieDescription">Movie Description</label>
+                            <textarea type="text" className="form-control" id="cuMovieDescription" rows="5" name="cuMovieDescription" onChange={this.handleChange} />
+                        </div>
+                        <div className="form-group">
+                            <label for="cuMovieActors">Movie Actors</label>
+                            <input type="text" className="form-control" id="cuMovieActors" name="cuMovieActors" onChange={this.handleChange} />
+                        </div>
+                        <div className="form-group">
+                            <label for="cuMovieDirectors">Movie Directors</label>
+                            <input type="text" className="form-control" id="cuMovieDirectors" name="cuMovieDirectors" onChange={this.handleChange} />
+                        </div>
+                        <div className="form-group">
+                            <label for="cuMovieImdb">Movie IMDB (URL)</label>
+                            <input type="text" className="form-control" id="cuMovieImdb" name="cuMovieImdb" onChange={this.handleChange} />
                         </div>
                         <button type="submit" className="btn btn-primary w-100">CREATE</button>
-                        <button type="submit" className="btn btn-danger w-100">UPDATE</button>
+                        <button type="submit" className="btn btn-warning w-100">UPDATE</button>
                     </form>
                 </div>
 
                 {/* Concession route */}
+                <div className="row my-5 p-3 bg-light">
+                    <h2 className="col-12 mt-5">CREATE Concession</h2>
+                    <form className="col-12">
+                        <div className="form-group">
+                            <label for="cConcessionName">Concession Name</label>
+                            <input type="text" className="form-control" id="cConcessionName" placeholder="Adult"
+                                name="cConcessionName" onChange={this.handleChange} />
+                        </div>
+                        <div className="form-group">
+                            <label for="cConcessionPrice">Concession Price</label>
+                            <input type="number" className="form-control" id="cConcessionPrice" placeholder="£"
+                                name="cConcessionPrice" onChange={this.handleChange} />
+                        </div>
+                        <button type="submit" className="btn btn-primary w-100">CREATE</button>
+                    </form>
+                </div>
             </div>
         )
     }
