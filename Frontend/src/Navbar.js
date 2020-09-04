@@ -23,7 +23,7 @@ import How from "./HowItWorksPage";
 import Ticket from "./TicketPage";
 import Attractions from "./LocalAttractionsPage";
 import About from './AboutPage';
-import Classifications from './FilmClassificationsPage';
+import Ratings from './FilmRatingsPage';
 
 
 // import getToken from './utils/token';
@@ -77,8 +77,8 @@ function LocalAttractionsPage() {
 function BookingPage() {
   return <Booking />;
 }
-function ClassPage() {
-  return <Classifications />;
+function RatingsPage() {
+  return <Ratings />;
 }
 const logoStyle = {
   height: "150px",
@@ -117,7 +117,7 @@ export default class NavBar extends React.Component {
                   <NavDropdown.Item href="/findus">Find Us</NavDropdown.Item>
                   <NavDropdown.Item href="/how">How It Works</NavDropdown.Item>
                   <NavDropdown.Item href="/localattractions">Local Attractions</NavDropdown.Item>
-                  <NavDropdown.Item href="/filmclassifications">Film Classifications</NavDropdown.Item>            
+                  <NavDropdown.Item href="/filmratings">Film Ratings</NavDropdown.Item>            
               </NavDropdown>
               </Nav>
               {/* Search bar */}
@@ -144,7 +144,7 @@ export default class NavBar extends React.Component {
           <Route exact path="/localattractions/"component={LocalAttractionsPage}/>
           <Route exact path="/tickets/" component={TicketPage} />
           <Route exact path="/booking/" component={BookingPage} />
-          <Route exact path="/filmclassifications/" component={ClassPage} />
+          <Route exact path="/filmratings/" component={RatingsPage} />
           <Route path="/individual/:movieName" children={<Child />} />
         </Switch>
       </BrowserRouter>
