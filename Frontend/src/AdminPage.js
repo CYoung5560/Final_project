@@ -10,8 +10,9 @@ export default class AdminPage extends React.Component {
         super(props);
         this.state = {
             gdTicketId: "",
+            cuTicketId: "",
             cuTicketMovie: "",
-            cuTicketConcession: "",
+            cuTicketConcession: "Adult",
             cuTransId: "",
             gdMovieId: "",
             gMovieTitle: "",
@@ -160,6 +161,94 @@ export default class AdminPage extends React.Component {
             .catch((error) => console.log(error));
     }
 
+    getTicketById = async (event) => {
+        event.preventDefault();
+
+        const token = getToken();
+        const ticketId = this.state.gdTicketId;
+
+        fetch(`http://localhost:8000/ticket`, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                id: ticketId
+            })
+        })
+            .then((response) => response.json())
+            .then((result) => console.log(result))
+            .catch((error) => console.log(error));
+    }
+
+    postTicket = async (event) => {
+        event.preventDefault();
+
+        const token = getToken();
+        const ticket = {
+            movieTitle: this.state.cuTicketMovie,
+            concession: this.state.cuTicketConcession,
+            transId: this.state.cuTransId
+        };
+
+        fetch(`http://localhost:8000/ticket`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(ticket)
+        })
+            .then((response) => response.json())
+            .then((result) => console.log(result))
+            .catch((error) => console.log(error));
+    }
+
+    updateTicket = async (event) => {
+        event.preventDefault();
+
+        const token = getToken();
+        const ticket = {
+            id: this.state.cuTicketId,
+            movieTitle: this.state.cuTicketMovie,
+            concession: this.state.cuTicketConcession,
+            transId: this.state.cuTransId
+        };
+
+        fetch(`http://localhost:8000/ticket`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(ticket)
+        })
+            .then((response) => response.json())
+            .then((result) => console.log(result))
+            .catch((error) => console.log(error));
+    }
+
+    deleteTicketById = async (event) => {
+        event.preventDefault();
+
+        const token = getToken();
+        const ticketId = this.state.gdTicketId;
+
+        fetch(`http://localhost:8000/ticket`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                id: ticketId
+            })
+        })
+            .then((response) => response.json())
+            .then((result) => console.log(result))
+            .catch((error) => console.log(error));
+    }
+
     render() {
         return (
             <div className="container">
@@ -172,12 +261,16 @@ export default class AdminPage extends React.Component {
                             <label for="ticketId">ID</label>
                             <input type="text" className="form-control" id="ticketId" name="gdTicketId" onChange={this.handleChange} />
                         </div>
-                        <button type="submit" className="btn btn-primary w-100">GET</button>
-                        <button type="submit" className="btn btn-danger w-100">DELETE</button>
+                        <button type="submit" className="btn btn-primary w-100" onClick={this.getTicketById}>GET</button>
+                        <button type="submit" className="btn btn-danger w-100" onClick={this.deleteTicketById}>DELETE</button>
                     </form>
 
                     <h2 className="col-12 mt-5">CREATE/UPDATE Ticket</h2>
                     <form className="col-12">
+                        <div className="form-group">
+                            <label for="cuTicketId">ID</label>
+                            <input type="text" className="form-control" id="cuTicketId" name="cuTicketId" onChange={this.handleChange} />
+                        </div>
                         <div className="form-group">
                             <label for="movieTitleTicket">Movie Title</label>
                             <input type="text" className="form-control" id="movieTitleTicket" name="cuTicketMovie" onChange={this.handleChange} />
@@ -197,8 +290,8 @@ export default class AdminPage extends React.Component {
                             <label for="transId">Transaction ID</label>
                             <input type="text" className="form-control" id="transId" name="cuTransId" onChange={this.handleChange} />
                         </div>
-                        <button type="submit" className="btn btn-primary w-100">CREATE</button>
-                        <button type="submit" className="btn btn-warning w-100">UPDATE</button>
+                        <button type="submit" className="btn btn-primary w-100" onClick={this.postTicket}>CREATE</button>
+                        <button type="submit" className="btn btn-warning w-100" onClick={this.updateTicket}>UPDATE</button>
                     </form>
                 </div>
 

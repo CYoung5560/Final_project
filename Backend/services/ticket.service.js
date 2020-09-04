@@ -67,8 +67,8 @@ exports.updateTicket = async (ticket) => {
             ticket.concession = document._id;
         }).catch(error => {throw Error(error.message)});
 
-        const updatedTicket = await Ticket.findByIdAndUpdate(ticket.id, ticket);
-        
+        const updatedTicket = await Ticket.findByIdAndUpdate(ticket.id, ticket, { new: true });
+        console.log(updatedTicket)
         const readableTicket = {};
         readableTicket._id = updatedTicket._id;
         readableTicket.transId = updatedTicket.transId;
