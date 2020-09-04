@@ -5,38 +5,28 @@ import { Button, Col, Row, Form, Table } from "react-bootstrap";
 import axios from "axios";
 
 export default class DiscussionBoard extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     username: "",
-  //     comment: "",
-  //   };
-  //   this.handleChange = this.handleChange.bind(this);
-  //   this.handleSubmit = this.handleSubmit.bind(this);
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      comment: ""
+    };
+    this.addComment = this.addComment.bind(this);
+    //this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-  // handleSubmit(event) {
-  //   const comment =  renderEmail(
-  //     
-  //   );
-    
-  //   axios({
-  //     method: "POST",
-  //     url: "http://localhost:3002/discussionboard",
-  //     data: {
-  //     	username: this.state.username,
-  //     	comment: this.state.comment
-  //           }
-  //   }).then((response) => {
-  //     if (response.data.status === "success") {
-  //       alert("Comment Sent.");
-  //       this.resetForm();
-  //     } else if (response.data.status === "fail") {
-  //       alert("Comment failed to send.");
-  //     }
-  //   });
-  // }
+  handleChange = (event)=>{
+    this.setState({ [event.target.name]: event.target.value });
+}
 
+    addComment(){
+    this.setState({
+        comments:this.state.comments.concat({
+                username:this.state.username,
+                comment:this.state.comment
+            })	
+    })
+}
   // resetForm() {
   //   this.setState({ discussionboard:'' });
   // }
@@ -61,7 +51,7 @@ export default class DiscussionBoard extends React.Component {
 
         <form
           id="contact-form"
-        //   onSubmit={this.handleSubmit.bind(this)}
+    
             onSubmit=""
           method="POST"
         >
@@ -86,7 +76,7 @@ export default class DiscussionBoard extends React.Component {
           </div>
           <div className="form-group row">
             <div class="col-sm-1">
-                <button type="submit" className="btn btn-sm btn-qacinema">
+                <button type="submit" className="btn btn-sm btn-qacinema" onClick={this.addComment}>
                     Submit
                 </button>
             </div>
@@ -95,16 +85,5 @@ export default class DiscussionBoard extends React.Component {
       </div>
     );
   }
-
-//   onNameChange(event) {
-//     this.setState({ username: event.target.value });
-//   }
-
-
-//   onCommentChange(event) {
-//     this.setState({ comment: event.target.value });
-//   }
-
-//   handleSubmit() {}
 
 }
