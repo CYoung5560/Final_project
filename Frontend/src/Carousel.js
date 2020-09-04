@@ -2,8 +2,6 @@ import React from "react";
 import "./css/App.css";
 import "./css/carousel.css";
 
-// ModalGButton can take in argument values to populate the Modal
-
 export default class Carousel extends React.Component {
   constructor() {
     super();
