@@ -1,38 +1,47 @@
 import React from "react";
 import "./css/App.css";
-import Table from "react-bootstrap/Table";
-import { Button, Col, Row, Form } from "react-bootstrap";
+import { Button, Col, Row, Form, Table } from "react-bootstrap";
+
 import axios from "axios";
 
 export default class ContactUs extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      email: "",
-      message: "",
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     name: "",
+  //     email: "",
+  //     message: "",
+  //   };
+  //   this.handleChange = this.handleChange.bind(this);
+  //   this.handleSubmit = this.handleSubmit.bind(this);
+  // }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    axios({
-      method: "POST",
-      url: "http://localhost:3002/send",
-      data: this.state,
-    }).then((response) => {
-      if (response.data.status === "success") {
-        alert("Message Sent.");
-        this.resetForm();
-      } else if (response.data.status === "fail") {
-        alert("Message failed to send.");
-      }
-    });
-  }
+  // handleSubmit(event) {
+  //   const messageHtml =  renderEmail(
+  //     <MyEmail name={this.state.name}> {this.state.feedback}</MyEmail>
+  //   );
+    
+  //   axios({
+  //     method: "POST",
+  //     url: "http://localhost:3002/send",
+  //     data: {
+  //     	name: this.state.name,
+  //     	email: this.state.email,
+  //     	messageHtml: messageHtml
+  //           }
+  //   }).then((response) => {
+  //     if (response.data.status === "success") {
+  //       alert("Message Sent.");
+  //       this.resetForm();
+  //     } else if (response.data.status === "fail") {
+  //       alert("Message failed to send.");
+  //     }
+  //   });
+  // }
 
-  resetForm() {
-    this.setState({ name: "", email: "", message: "" });
-  }
+  // resetForm() {
+  //   this.setState({ feedback:'' });
+  // }
 
   render() {
     return (
@@ -80,14 +89,14 @@ export default class ContactUs extends React.Component {
           </tbody>
         </Table>
 
-        <form
+        {/* <form
           id="contact-form"
           onSubmit={this.handleSubmit.bind(this)}
           method="POST"
         >
           <div className="form-group">
             <label htmlFor="name">Name</label>
-            <input type="text" className="form-control" />
+            <input type="text" className="form-control" placeholder="Name"/>
           </div>
           <div className="form-group">
             <label htmlFor="exampleInputEmail1">Email address</label>
@@ -95,31 +104,41 @@ export default class ContactUs extends React.Component {
               type="email"
               className="form-control"
               aria-describedby="emailHelp"
+              placeholder="Email Address"
             />
           </div>
           <div className="form-group">
             <label htmlFor="message">Message</label>
-            <textarea className="form-control" rows="5"></textarea>
+            <textarea
+              rows="5"
+              id="test-mailing"
+              name="test-mailing"
+              onChange={this.handleChange}
+              placeholder="Your message here"
+              required value={this.state.feedback}
+            />
           </div>
           <button type="submit" className="btn btn-primary">
             Submit
           </button>
-        </form>
+       
+        </form> */}
       </div>
     );
   }
 
-  onNameChange(event) {
-    this.setState({ name: event.target.value });
-  }
+//   onNameChange(event) {
+//     this.setState({ name: event.target.value });
+//   }
 
-  onEmailChange(event) {
-    this.setState({ email: event.target.value });
-  }
+//   onEmailChange(event) {
+//     this.setState({ email: event.target.value });
+//   }
 
-  onMessageChange(event) {
-    this.setState({ message: event.target.value });
-  }
+//   onMessageChange(event) {
+//     this.setState({ message: event.target.value });
+//   }
 
-  handleSubmit(event) {}
+//   handleSubmit() {}
+
 }
