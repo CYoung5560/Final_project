@@ -1,39 +1,41 @@
 import React from "react";
 import "./css/App.css";
-import "./css/carousel.css";
+import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Container } from 'react-bootstrap'
 
 // npm install react-router-dom
-import {BrowserRouter,Switch,Route, Link,useParams,} from "react-router-dom";
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Link,
+  useParams,
+} from "react-router-dom";
 
 import Gallery from "./NowShowingGalleryPage";
 import NewReleases from "./NewReleasesGalleryPage";
-import Login from "./LoginPage";
+//import Login from "./LoginPage";
 import Signup from "./SignupPage";
 import Contact from "./ContactPage";
 import Booking from "./BookingPage";
 import Home from "./HomePage";
 import FindUs from "./FindUsPage";
 import How from "./HowItWorksPage";
-import Ticket from './TicketPage';
+import Ticket from "./TicketPage";
+import Attractions from "./LocalAttractionsPage";
+import About from './AboutPage';
+import Admin from './AdminPage';
+import Ratings from './FilmRatingsPage';
+import LoginModal from './LoginPageModal';
+import DiscussionBoard from './DiscussionBoard';
 
 // import getToken from './utils/token';
-
-// For Stripe
-// import CheckoutForm from './CheckoutForm';
-// import { Elements } from '@stripe/react-stripe-js';
-// import { loadStripe } from '@stripe/stripe-js';
-// const stripePromise = loadStripe('pk_test_51HMY0fEd3ZxUQOxh20BNoEy4CSrSXrgHasSIJrln7bq9eJxea1xhfzdIJfipIZPK82EAcYZBGoHAba0ViHEL75vn00copwcpzI');
-// Below inside render/return
-// <Elements stripe={stripePromise} elements={CheckoutForm}>
-//         <CheckoutForm />
-// </Elements>
 
 function HomePage() {
   return <Home />;
 }
 
 function AboutusPage() {
-  return <h1> About Page </h1>;
+  return < About />;
 }
 
 function GalleryPage() {
@@ -46,9 +48,9 @@ function NewReleasesPage() {
 // This is the component the router will return
 // The return name matches with the import name
 // The function name matches the route component name
-function LoginPage() {
-  return <Login />;
-}
+// function LoginPage() {
+//   return <Login />;
+// }
 
 function SignupPage() {
   return <Signup />;
@@ -62,16 +64,28 @@ function FindUsPage() {
   return <FindUs />;
 }
 
-function TicketPage(){
-  return <Ticket/>;
+function TicketPage() {
+  return <Ticket />;
 }
 
 function HowItWorksPage() {
   return <How />;
 }
 
+function LocalAttractionsPage() {
+  return <Attractions />;
+}
+
 function BookingPage() {
   return <Booking />;
+}
+
+function AdminPage() {
+  return <Admin />;
+}
+
+function RatingsPage() {
+  return <Ratings />;
 }
 
 const logoStyle = {
@@ -80,135 +94,95 @@ const logoStyle = {
 };
 
 // Nav bar component
-export default class Navbar extends React.Component {
+export default class NavBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchValue: ""
+    };
+  }
+
+  search = "";
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    }, () => {
+      this.search = `/individual/${this.state.searchValue}`;
+      console.log(this.search);
+    });
+  }
+
   render() {
     return (
+
       <BrowserRouter>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="/">
+
+        <Navbar expand="lg" variant="light" className="nv_qacinema">
+          <Navbar.Brand href="#home"><a class="navbar-brand" href="/">
             <img
               src={require("./images/finalLogo_500px.png")}
               alt="QA logo 500px"
               style={logoStyle}
             />
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <Link to="/">
-                  <span class="navbar-brand mb-0 h1">Home</span>
-                </Link>
-              </li>
+          </a></Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto">
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/gallery">Now Showing</Nav.Link>
+              <Nav.Link href="/tickets">Tickets</Nav.Link>
+              {/* <Nav.Link href="/login">Login</Nav.Link>*/}
+              {/* <Nav.Link href="/signup">Signup</Nav.Link> */}
+              {/* <Nav.Link href="/booking">Booking</Nav.Link> */}
               {/* Dropdown */}
-              <li class="nav-item">
-                <div class="dropdown">
-                  <button
-                    class="btn btn-secondary dropdown-toggle"
-                    type="button"
-                    id="dropdownMenuButton"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    About
-                  </button>
-                  <div
-                    class="dropdown-menu"
-                    aria-labelledby="dropdownMenuButton"
-                  >
-                    <a class="dropdown-item" href="/about">
-                      About Us
-                    </a>
-                    <a class="dropdown-item" href="/contact">
-                      Contact Us
-                    </a>
-                    <a class="dropdown-item" href="/newreleases">
-                      New Releases
-                    </a>
-                    <a class="dropdown-item" href="/findus">
-                      Find Us
-                    </a>
-                    <a class="dropdown-item" href="/how">
-                      How It Works
-                    </a>
-                  </div>
-                </div>
-              </li>
-              <li class="nav-item">
-                <Link to="/gallery">
-                  <span class="navbar-brand mb-0 h1">Gallery</span>
-                </Link>
-              </li>
-              <li class="nav-item">
-                <Link to="/login">
-                  <span class="navbar-brand mb-0 h1">Login</span>
-                </Link>
-              </li>
-              <li class="nav-item">
-                <Link to="/signup">
-                  <span class="navbar-brand mb-0 h1">Signup</span>
-                </Link>
-              </li>
-              <li class="nav-item">
-                <Link to="/tickets">
-                  <span class="navbar-brand mb-0 h1">Tickets</span>
-                </Link>
-              </li>
-              <li class="nav-item">
-                <Link to="/booking">
-                  <span class="navbar-brand mb-0 h1">Booking</span>
-                </Link>
-              </li>
-            </ul>
+              <NavDropdown title="About" id="basic-nav-dropdown">
+                <NavDropdown.Item href="/about">About Us</NavDropdown.Item>
+                <NavDropdown.Item href="/contact">Contact Us</NavDropdown.Item>
+                <NavDropdown.Item href="/newreleases">New Releases</NavDropdown.Item>
+                <NavDropdown.Item href="/findus">Find Us</NavDropdown.Item>
+                <NavDropdown.Item href="/how">How It Works</NavDropdown.Item>
+                <NavDropdown.Item href="/localattractions">Local Attractions</NavDropdown.Item>
+                <NavDropdown.Item href="/filmratings">Film Ratings</NavDropdown.Item>
+              </NavDropdown>
+              {/* Dropdown */}
+            </Nav>
             {/* Search bar */}
-            <form class="form-inline my-2 my-lg-0">
-              <input
-                class="form-control mr-sm-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              ></input>
-              <button
-                class="btn btn-outline-success my-2 my-sm-0"
-                type="submit"
-              >
-                Search
-              </button>
-            </form>
-          </div>
-        </nav>
+            <Form inline>
+              <LoginModal />
+              {/* <Button variant="outline-success" size="sm" className="btn-qacinema"><strong>Login</strong></Button> */}
+              <Button variant="outline-success" size="sm" className="btn-qacinema"><strong>Logout</strong></Button>
+              <FormControl type="text" size="sm" placeholder="Search" className="mr-sm-2" name="searchValue" onChange={this.handleChange} />
+              <Button variant="outline-success" size="sm" className="btn-qacinema" href={this.search}><strong>Search</strong></Button>
+            </Form>
+            {/* Search bar */}
+          </Navbar.Collapse>
+        </Navbar>
+
+
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/about/" component={AboutusPage} />
           <Route exact path="/gallery/" component={GalleryPage} />
           <Route exact path="/newreleases/" component={NewReleasesPage} />
-          <Route exact path="/login/" component={LoginPage} />
+          {/* <Route exact path="/login/" component={LoginPage} /> */}
           <Route exact path="/signup/" component={SignupPage} />
           <Route exact path="/contact/" component={ContactPage} />
           <Route exact path="/findus/" component={FindUsPage} />
           <Route exact path="/how/" component={HowItWorksPage} />
+          <Route exact path="/localattractions/" component={LocalAttractionsPage} />
           <Route exact path="/tickets/" component={TicketPage} />
           <Route exact path="/booking/" component={BookingPage} />
+          <Route exact path="/filmratings/" component={RatingsPage} />
           <Route path="/individual/:movieName" children={<Child />} />
+          <Route path="/admin" component={AdminPage} />
         </Switch>
       </BrowserRouter>
     );
   }
 }
 
-function Child() {
+function Child(props) {
   let { movieName } = useParams();
   return (
     <div>
@@ -219,7 +193,7 @@ function Child() {
           <h2>{movieName}!</h2>
         </div>
       </section>
-      <div class="container  backgroundColour marketing">
+      <div class="container backgroundColour marketing">
         <hr class="featurette-divider"></hr>
         <div class="row featurette">
           <div class="col-md-7">
@@ -248,6 +222,7 @@ function Child() {
       <section class="jumbotron text-center">
         <div class="container">
           <h2> Discussion Board</h2>
+          <DiscussionBoard />
         </div>
       </section>
     </div>
