@@ -60,22 +60,32 @@ export default class Login extends React.Component {
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label column="lg">Time</Form.Label>
 
-            <InputGroup>
-              <InputGroup.Prepend>
-                <InputGroup.Radio aria-label="Radio button for following text input" />
-              </InputGroup.Prepend>
-              <FormControl aria-label="Text input with radio button" />
-            </InputGroup>
+            <Form.Check type="radio" label="10.00am" />
+            <Form.Check type="radio" label="10.00am" />
+            <Form.Check type="radio" label="10.00am" />
+            <Form.Check type="radio" label="10.00am" />
+            <Form.Check type="radio" label="10.00am" />
+            <Form.Check type="radio" label="10.00am" />
+            
           </Form.Group>
         </Form.Row>
 
+        <Form.Row>
+          <Form.Group>
+            
+          </Form.Group>
+        </Form.Row>
+        
         <Form.Group id="formGridCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
+          <Form.Check type="checkbox" label="I have confirmed my movie choice" />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
+        <Form method="post" action="mailto:nilay1989@me.com">
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+          <input type="submit" value="Send Email" />
+        </Form>
       </Form>
     );
   }

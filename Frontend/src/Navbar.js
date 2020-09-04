@@ -15,6 +15,7 @@ import Home from "./HomePage";
 import FindUs from "./FindUsPage";
 import How from "./HowItWorksPage";
 import Ticket from './TicketPage';
+import About from './AboutPage';
 
 // import getToken from './utils/token';
 
@@ -33,7 +34,7 @@ function HomePage() {
 }
 
 function AboutusPage() {
-  return <h1> About Page </h1>;
+  return < About />;
 }
 
 function GalleryPage() {
