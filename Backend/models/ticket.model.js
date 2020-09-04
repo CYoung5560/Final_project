@@ -20,5 +20,5 @@ ticketSchema.methods.info = () => {
 
 ticketSchema.plugin(uniqueValidator);
 
-const tickets = mongoose.model('times', ticketSchema); 
+const tickets = mongoose.model('tickets', ticketSchema); 
 module.exports = tickets;

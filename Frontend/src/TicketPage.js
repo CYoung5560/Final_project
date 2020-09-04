@@ -16,6 +16,7 @@ import {
 import CheckoutForm from './CheckoutForm';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import NumericInput from "react-numeric-input";
 
 import dateFnsFormat from "date-fns/format";
 import dateFnsParse from "date-fns/parse";
@@ -83,7 +84,7 @@ export default class Login extends React.Component {
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridState">
-            <Form.Label column="lg">Time</Form.Label> 
+            <Form.Label column="lg">Time</Form.Label>
 
             <Form.Check type="radio" label="10.00" />
             <Form.Check type="radio" label="11.00" />
@@ -110,14 +111,26 @@ export default class Login extends React.Component {
             <Form.Label column="lg">Adult</Form.Label>
             <NumericInput size={10} min={0} max={100} value={0} />
           </Form.Group>
+<<<<<<< HEAD
+=======
+
+>>>>>>> Pre-Dev
           <Form.Group>
             <Form.Label column="lg">Child</Form.Label>
             <NumericInput size={10} min={0} max={100} value={0} />
           </Form.Group>
+<<<<<<< HEAD
+=======
+
+>>>>>>> Pre-Dev
           <Form.Group>
             <Form.Label column="lg">Student</Form.Label>
             <NumericInput size={10} min={0} max={100} value={0} />
           </Form.Group>
+<<<<<<< HEAD
+=======
+
+>>>>>>> Pre-Dev
           <Form.Group>
             <Form.Label column="lg">Senior</Form.Label>
             <NumericInput size={10} min={0} max={100} value={0} />

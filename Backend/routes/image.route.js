@@ -27,7 +27,7 @@ router.use((request, response, next) => {
 router.get('/:id', passport.authenticate('jwt', { session: false }), checkIsInRole(ROLES.Customer),  
     ImageController.getImageById);
 
-router.post('/', passport.authenticate('jwt', { session: false }), upload.single('image'), checkIsInRole(ROLES.Customer), 
+router.post('/', passport.authenticate('jwt', { session: false }), upload.single('image'), checkIsInRole(ROLES.Admin), 
     ImageController.createImage);
 
 module.exports = router;

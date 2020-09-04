@@ -28,16 +28,16 @@ router.use((request, response, next) => {
 // The routes will need to be modified to reflect using the request body at some point.
 // Pass control (via callback) to MovieController. 
 //READ
-router.get('/:id', passport.authenticate('jwt', { session: false }), checkIsInRole(ROLES.Customer), MovieController.getMovieById);
-router.get('/title/:title', passport.authenticate('jwt', { session: false }), checkIsInRole(ROLES.Customer), MovieController.getMovieByTitle);
+router.get('/:id', passport.authenticate('jwt', { session: false }), checkIsInRole(ROLES.Customer, ROLES.Admin), MovieController.getMovieById);
+router.get('/title/:title', passport.authenticate('jwt', { session: false }), checkIsInRole(ROLES.Customer, ROLES.Admin), MovieController.getMovieByTitle);
 
 //CREATE
 router.post('', passport.authenticate('jwt', { session: false }), checkIsInRole(ROLES.Admin), MovieController.createMovie);
 
 //UPDATE
-router.put('/id', passport.authenticate('jwt', { session: false }), checkIsInRole(ROLES.Admin), MovieController.updateMovie);
+router.put('/:id', passport.authenticate('jwt', { session: false }), checkIsInRole(ROLES.Admin), MovieController.updateMovie);
 
 //DELETE
-router.delete('', passport.authenticate('jwt', { session: false }), checkIsInRole(ROLES.Admin), MovieController.deleteMovie);
+router.delete('/:id', passport.authenticate('jwt', { session: false }), checkIsInRole(ROLES.Admin), MovieController.deleteMovie);
 
 module.exports = router;
