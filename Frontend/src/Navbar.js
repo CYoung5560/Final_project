@@ -23,6 +23,7 @@ import How from "./HowItWorksPage";
 import Ticket from "./TicketPage";
 import Attractions from "./LocalAttractionsPage";
 import About from './AboutPage';
+import Classifications from './FilmClassificationsPage';
 
 
 // import getToken from './utils/token';
@@ -76,7 +77,9 @@ function LocalAttractionsPage() {
 function BookingPage() {
   return <Booking />;
 }
-
+function ClassPage() {
+  return <Classifications />;
+}
 const logoStyle = {
   height: "150px",
   width: "150px",
@@ -113,15 +116,16 @@ export default class NavBar extends React.Component {
                   <NavDropdown.Item href="/newreleases">New Releases</NavDropdown.Item>
                   <NavDropdown.Item href="/findus">Find Us</NavDropdown.Item>
                   <NavDropdown.Item href="/how">How It Works</NavDropdown.Item>
-                  <NavDropdown.Item href="/localattractions">Local Attractions</NavDropdown.Item>            
+                  <NavDropdown.Item href="/localattractions">Local Attractions</NavDropdown.Item>
+                  <NavDropdown.Item href="/filmclassifications">Film Classifications</NavDropdown.Item>            
               </NavDropdown>
               </Nav>
               {/* Search bar */}
               <Form inline>
-                <Button variant="outline-success" size="sm" className="btn-qacinema">Login</Button>
-                <Button variant="outline-success" size="sm" className="btn-qacinema">Logout</Button>
+                <Button variant="outline-success" size="sm" className="btn-qacinema"><strong>Login</strong></Button>
+                <Button variant="outline-success" size="sm" className="btn-qacinema"><strong>Logout</strong></Button>
                 <FormControl type="text" size="sm" placeholder="Search" className="mr-sm-2" />
-                  <Button variant="outline-success" size="sm" className="btn-qacinema">Search</Button>
+                  <Button variant="outline-success" size="sm" className="btn-qacinema"><strong>Search</strong></Button>
                 </Form>
             </Navbar.Collapse>
         </Navbar>
@@ -140,6 +144,7 @@ export default class NavBar extends React.Component {
           <Route exact path="/localattractions/"component={LocalAttractionsPage}/>
           <Route exact path="/tickets/" component={TicketPage} />
           <Route exact path="/booking/" component={BookingPage} />
+          <Route exact path="/filmclassifications/" component={ClassPage} />
           <Route path="/individual/:movieName" children={<Child />} />
         </Switch>
       </BrowserRouter>
