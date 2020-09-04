@@ -8,20 +8,21 @@ const discussionSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    user: { 
-        type: String,
-        required: true
-    },
-    post: {
+    posts: [{ 
+        user: { 
+            type: String,
+            required: true
+        },
+        content: {
         type: String, 
         required: true, //prevents empty messages 
-    }
+        },
+    }]
 });
 
 discussionSchema.methods.info = () => {
 
     console.log(`MOVIEID -> ${this.movieID}`);
-    console.log(`USER -> ${this.user}`);
     console.log(`POST -> ${this.post}`)
 };
 

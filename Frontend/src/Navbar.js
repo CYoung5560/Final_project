@@ -16,7 +16,7 @@ import NewReleases from "./NewReleasesGalleryPage";
 //import Login from "./LoginPage";
 import Signup from "./SignupPage";
 import Contact from "./ContactPage";
-import Booking from "./BookingPage";
+import Booking from "./redundantCode/BookingPage";
 import Home from "./HomePage";
 import FindUs from "./FindUsPage";
 import How from "./HowItWorksPage";
@@ -188,7 +188,8 @@ function Child(props) {
     <div>
       <br />
       <br />
-      <section class="jumbotron text-center">
+      <section class="jumbotron text-center"> {/* This bit is the only section that is being affected by the 'onChange issue
+      I think we can removed it and just pass the SearchValue to the back end so react can generate all this */}
         <div class="container">
           <h2>{movieName}!</h2>
         </div>

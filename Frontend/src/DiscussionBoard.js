@@ -77,7 +77,7 @@ export default class DiscussionBoard extends React.Component {
           <div className="form-group row">
             <div class="col-sm-1">
                 <button type="submit" className="btn btn-sm btn-qacinema" onClick={this.addComment}>
-                    Submit
+                    Post
                 </button>
             </div>
           </div>
