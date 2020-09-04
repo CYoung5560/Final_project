@@ -142,7 +142,22 @@ export default class AdminPage extends React.Component {
         event.preventDefault();
 
         const token = getToken();
-        const movieId = this.state.gdMovieId;
+        const concession = {
+            concession: this.state.cConcessionName,
+            price: this.state.cConcessionPrice
+        }
+
+        fetch(`http://localhost:8000/concession`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(concession)
+        })
+            .then((response) => response.json())
+            .then((result) => console.log(result))
+            .catch((error) => console.log(error));
     }
 
     render() {
@@ -259,7 +274,7 @@ export default class AdminPage extends React.Component {
                             <input type="number" className="form-control" id="cConcessionPrice" placeholder="£"
                                 name="cConcessionPrice" onChange={this.handleChange} />
                         </div>
-                        <button type="submit" className="btn btn-primary w-100">CREATE</button>
+                        <button type="submit" className="btn btn-primary w-100" onClick={this.postConcession}>CREATE</button>
                     </form>
                 </div>
             </div>
