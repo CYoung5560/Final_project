@@ -2,13 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./css/App.css";
 import ModalGButton from "./ModalGButton.js";
+import { Container } from "react-bootstrap";
 
 export default class NewReleasesGallery extends React.Component {
   render() {
     return (
       <div>
+        <Container className="cntr_main_qacinema">
         <br></br>
         <br></br>
+        
         {/* Jumbotron Header screen 1*/}
         <section class="jumbotron text-center">
           <div class="container">
@@ -118,6 +121,7 @@ export default class NewReleasesGallery extends React.Component {
         {/* End of gallery cards for screen 1 */}
         <br></br>
         <br></br>
+        </Container>
       </div>
     );
   }

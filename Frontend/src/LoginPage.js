@@ -1,6 +1,6 @@
 import React from "react";
 import "./css/App.css";
-import "./css/signin.css";
+import { Container } from "react-bootstrap";
 import axios from 'axios';
 import cookieParser from 'cookie-parser';
 
@@ -41,6 +41,7 @@ export default class Login extends React.Component {
   render() {
     return (
       <div>
+        <Container className="cntr_main_qacinema">
             <form class="form-signin" onSubmit={this.handleSubmit}>
               <h1 class="h3 mb-3 font-weight-normal">
                 Welcome! Please sign in
@@ -85,6 +86,7 @@ export default class Login extends React.Component {
                 Sign in
               </button>
             </form>
+            </Container>
       </div>
     );
   }
