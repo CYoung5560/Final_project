@@ -11,7 +11,9 @@ import {
   Form,
   InputGroup,
   FormControl,
+  FormGroup,
 } from "react-bootstrap";
+import NumericInput from "react-numeric-input";
 
 import dateFnsFormat from "date-fns/format";
 import dateFnsParse from "date-fns/parse";
@@ -36,8 +38,12 @@ export default class Login extends React.Component {
         <Form.Row>
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label column="lg">Movie</Form.Label>
-            <Form.Control as="select" defaultValue="Choose...">
-              <option>Choose...</option>
+            <Form.Control
+              as="select"
+              title="Choose..."
+              defaultValue="Choose..."
+            >
+              {/* <option>Choose...</option> */}
               <option>Gremlins</option>
               <option>Hellraiser</option>
               <option>Goonies</option>
@@ -60,32 +66,58 @@ export default class Login extends React.Component {
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label column="lg">Time</Form.Label>
 
-            <Form.Check type="radio" label="10.00am" />
-            <Form.Check type="radio" label="10.00am" />
-            <Form.Check type="radio" label="10.00am" />
-            <Form.Check type="radio" label="10.00am" />
-            <Form.Check type="radio" label="10.00am" />
-            <Form.Check type="radio" label="10.00am" />
-            
+            <Form.Check type="radio" label="10.00" />
+            <Form.Check type="radio" label="11.00" />
+            <Form.Check type="radio" label="12.00" />
+            <Form.Check type="radio" label="13.00" />
+            <Form.Check type="radio" label="14.00" />
+            <Form.Check type="radio" label="15.00" />
+          </Form.Group>
+          
+          <Form.Group>
+          <Form.Label column="lg"></Form.Label>
+         
+            <Form.Check type="radio" label="16.00" />
+            <Form.Check type="radio" label="17.00" />
+            <Form.Check type="radio" label="18.00" />
+            <Form.Check type="radio" label="19.00" />
+            <Form.Check type="radio" label="20.00" />
+            <Form.Check type="radio" label="21.00" />
           </Form.Group>
         </Form.Row>
 
         <Form.Row>
           <Form.Group>
-            
+            <Form.Label column="lg">Adult</Form.Label>
+            <NumericInput size={10} min={0} max={100} value={0} />
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Label column="lg">Child</Form.Label>
+            <NumericInput size={10} min={0} max={100} value={0} />
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Label column="lg">Student</Form.Label>
+            <NumericInput size={10} min={0} max={100} value={0} />
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Label column="lg">Senior</Form.Label>
+            <NumericInput size={10} min={0} max={100} value={0} />
           </Form.Group>
         </Form.Row>
-        
+
         <Form.Group id="formGridCheckbox">
-          <Form.Check type="checkbox" label="I have confirmed my movie choice" />
+          <Form.Check
+            type="checkbox"
+            label="I have confirmed my movie choice"
+          />
         </Form.Group>
 
-        <Form method="post" action="mailto:nilay1989@me.com">
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-          <input type="submit" value="Send Email" />
-        </Form>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
       </Form>
     );
   }
