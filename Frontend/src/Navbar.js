@@ -25,6 +25,7 @@ import Attractions from "./LocalAttractionsPage";
 import About from './AboutPage';
 import Ratings from './FilmRatingsPage';
 import LoginModal from './LoginPageModal';
+import DiscussionBoard from './DiscussionBoard';
 
 
 // import getToken from './utils/token';
@@ -196,6 +197,7 @@ function Child() {
       <section class="jumbotron text-center">
         <div class="container">
           <h2> Discussion Board</h2>
+          <DiscussionBoard/>
         </div>
       </section>
     </div>

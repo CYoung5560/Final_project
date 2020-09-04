@@ -40,12 +40,12 @@ export default class ModalGButton extends React.Component {
               <div class="modal-footer">
                 <button
                   type="button"
-                  class="btn btn-sm btn-outline-secondary"
+                  class="btn btn-sm btn-qacinema"
                   data-dismiss="modal"
                 >
                   Close
                 </button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">
+                <button type="button" class="btn btn-sm btn-qacinema">
                   Save changes
                 </button>
               </div>
