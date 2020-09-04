@@ -45,7 +45,7 @@ exports.deleteMovie = async (request, response, next) => {
 
 exports.updateMovie = async (request, response, next) => {
     try{
-        const movie = await MovieService.deleteMovie(request.body)
+        const movie = await MovieService.updateMovie(request.params.id, request.body);
         return response.status(200).json({status: 200, data: movie, message: "movie.controller -> Successfully updated entry"})
     } catch(error) {
         return response.status(400).json({status: 400, message: error.message});

@@ -18,6 +18,7 @@ export default class AdminPage extends React.Component {
             cuMovieId: "",
             cuMovieTitle: "",
             cuMovieDescription: "",
+            cuMovieYear: "",
             cuMovieActors: "",
             cuMovieDirectors: "",
             cuMovieImdb: "",
@@ -49,6 +50,76 @@ export default class AdminPage extends React.Component {
             .catch((error) => console.log(error));
     }
 
+    getMovieByTitle = async (event) => {
+        event.preventDefault();
+
+        const token = getToken();
+        const movieTitle = this.state.gMovieTitle;
+
+        fetch(`http://localhost:8000/movie/title/${movieTitle}`, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then((response) => response.json())
+            .then((result) => console.log(result))
+            .catch((error) => console.log(error));
+    }
+
+    postMovie = async (event) => {
+        event.preventDefault();
+
+        const token = getToken();
+        const movie = {
+            title: this.state.cuMovieTitle,
+            year: this.state.cuMovieYear,
+            description: this.state.cuMovieDescription,
+            actors: this.state.cuMovieActors,
+            director: this.state.cuMovieDirectors,
+            imdb: this.state.cuMovieImdb
+        };
+
+        fetch(`http://localhost:8000/movie`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(movie)
+        })
+            .then((response) => response.json())
+            .then((result) => console.log(result))
+            .catch((error) => console.log(error));
+    }
+
+    updateMovie = async (event) => {
+        event.preventDefault();
+
+        const token = getToken();
+        const movieId = this.state.cuMovieId;
+        const movie = {
+            title: this.state.cuMovieTitle,
+            year: this.state.cuMovieYear,
+            description: this.state.cuMovieDescription,
+            actors: this.state.cuMovieActors,
+            director: this.state.cuMovieDirectors,
+            imdb: this.state.cuMovieImdb
+        };
+
+        fetch(`http://localhost:8000/movie/${movieId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(movie)
+        })
+            .then((response) => response.json())
+            .then((result) => console.log(result))
+            .catch((error) => console.log(error));
+    }
+
     deleteMovieById = async (event) => {
         event.preventDefault();
 
@@ -65,6 +136,13 @@ export default class AdminPage extends React.Component {
             .then((response) => response.json())
             .then((result) => console.log(result))
             .catch((error) => console.log(error));
+    }
+
+    postConcession = async (event) => {
+        event.preventDefault();
+
+        const token = getToken();
+        const movieId = this.state.gdMovieId;
     }
 
     render() {
@@ -129,7 +207,7 @@ export default class AdminPage extends React.Component {
                             <label for="gMovieTitle">Movie Title</label>
                             <input type="text" className="form-control" id="gMovieTitle" name="gMovieTitle" onChange={this.handleChange} />
                         </div>
-                        <button type="submit" className="btn btn-primary w-100">GET</button>
+                        <button type="submit" className="btn btn-primary w-100" onClick={this.getMovieByTitle}>GET</button>
                     </form>
 
                     <h2 className="col-12 mt-5">CREATE/UPDATE Movie</h2>
@@ -147,6 +225,10 @@ export default class AdminPage extends React.Component {
                             <textarea type="text" className="form-control" id="cuMovieDescription" rows="5" name="cuMovieDescription" onChange={this.handleChange} />
                         </div>
                         <div className="form-group">
+                            <label for="cuMovieYear">Movie Year</label>
+                            <input type="number" className="form-control" id="cuMovieYear" name="cuMovieYear" onChange={this.handleChange} />
+                        </div>
+                        <div className="form-group">
                             <label for="cuMovieActors">Movie Actors</label>
                             <input type="text" className="form-control" id="cuMovieActors" name="cuMovieActors" onChange={this.handleChange} />
                         </div>
@@ -158,8 +240,8 @@ export default class AdminPage extends React.Component {
                             <label for="cuMovieImdb">Movie IMDB (URL)</label>
                             <input type="text" className="form-control" id="cuMovieImdb" name="cuMovieImdb" onChange={this.handleChange} />
                         </div>
-                        <button type="submit" className="btn btn-primary w-100">CREATE</button>
-                        <button type="submit" className="btn btn-warning w-100">UPDATE</button>
+                        <button type="submit" className="btn btn-primary w-100" onClick={this.postMovie}>CREATE</button>
+                        <button type="submit" className="btn btn-warning w-100" onClick={this.updateMovie}>UPDATE</button>
                     </form>
                 </div>
 
