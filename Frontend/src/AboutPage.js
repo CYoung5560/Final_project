@@ -30,7 +30,7 @@ export default class About extends React.Component {
             <tr>
               <td>Nilay Sanghrajka</td>
               <td>Scrum Master/Developer</td>
-              <td></td>
+              <td>n.sanghrajka@qa.com</td>
               <td></td>
             </tr>
             <tr>
@@ -41,7 +41,7 @@ export default class About extends React.Component {
             </tr>
             <tr>
               <td>Conner Young</td>
-              <td>Product Young/Developer</td>
+              <td>Product Owner/Developer</td>
               <td></td>
               <td></td>
             </tr>
