@@ -14,16 +14,18 @@ export default class Login extends React.Component {
       password: "",
       show: false,
       title: "",
-      body: ""
+      body: "",
+      data: []
     };
   }
 
   handleShow = () => {
-
+    
    this.setState({
       show: true,
       title: 'Brilliant!',
-      body: 'Thank you for signing in!'
+      body: 'Thank you for signing in!',
+      
     });
   };
 
@@ -83,7 +85,7 @@ export default class Login extends React.Component {
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               {/* Modal content */}
-              <Container className="cntr_main_qacinema">
+             
               
               <form class="form-signin" onSubmit={this.handleSubmit}>
                 <h1 class="h3 mb-3 font-weight-normal">
@@ -134,6 +136,7 @@ export default class Login extends React.Component {
                     show={this.state.show}
                     title={this.state.title}
                     body={this.state.body}
+                    data={this.state.data}
                     onClick={this.handleClose}
                     onHide={this.handleClose} />
                  {/* signin (submit) button */}
@@ -148,7 +151,7 @@ export default class Login extends React.Component {
                 </button>
               </form>
               {/* Modal content */}
-              </Container>
+          
             </div>
           </div>
         </div>

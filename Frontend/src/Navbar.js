@@ -25,8 +25,7 @@ import Attractions from "./LocalAttractionsPage";
 import About from './AboutPage';
 import Admin from './AdminPage';
 import Ratings from './FilmRatingsPage';
-// import LoginModal from './LoginPageModal';
-import LoginModal from './LoginPageModalTest';
+import LoginModal from './LoginPageModal';
 import DiscussionBoard from './DiscussionBoard';
 
 // import getToken from './utils/token';
@@ -189,17 +188,12 @@ function Child(props) {
     <div>
       <br />
       <br />
-      <section class="jumbotron text-center">
-        <div class="container">
-          <h2>{movieName}!</h2>
-        </div>
-      </section>
       <div class="container backgroundColour marketing">
         <hr class="featurette-divider"></hr>
         <div class="row featurette">
           <div class="col-md-7">
             <h2 class="featurette-heading">
-              Gremlins
+              {movieName}
               <span class="text-muted">
                 So good you'll watch it 50 times or more.
               </span>
