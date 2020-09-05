@@ -25,7 +25,8 @@ import Attractions from "./LocalAttractionsPage";
 import About from './AboutPage';
 import Admin from './AdminPage';
 import Ratings from './FilmRatingsPage';
-import LoginModal from './LoginPageModal';
+// import LoginModal from './LoginPageModal';
+import LoginModal from './LoginPageModalTest';
 import DiscussionBoard from './DiscussionBoard';
 
 // import getToken from './utils/token';

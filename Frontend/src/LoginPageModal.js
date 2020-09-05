@@ -1,8 +1,10 @@
 import React from "react";
 import "./css/App.css";
 import { Container } from "react-bootstrap";
+import { Modal }  from 'react-bootstrap/Modal';
 import axios from "axios";
 import cookieParser from "cookie-parser";
+import ModalComponent from './ModalComponent';
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -10,8 +12,28 @@ export default class Login extends React.Component {
     this.state = {
       username: "",
       password: "",
+      show: false,
+      title: "",
+      body: ""
     };
   }
+
+  handleShow = () => {
+
+   this.setState({
+      show: true,
+      title: 'Brilliant!',
+      body: 'Thank you for signing in!'
+    });
+  };
+
+  handleClose = () => {
+    
+    this.setState({
+      show: false
+    });
+  };
+
 
   handleUsernameChange = (event) => {
     this.setState({ username: event.target.value });
@@ -33,10 +55,17 @@ export default class Login extends React.Component {
       .then((response) => {
         console.log(response.data.token);
         document.cookie = `token=${response.data.token}`;
+        
       })
       .catch((error) => {
         console.log(error);
+            this.setState({
+               show: true,
+               title: 'Oh snap!',
+               body: 'Please enter a valid username and password'
+             });
       });
+      
   };
 
   render() {
@@ -55,10 +84,12 @@ export default class Login extends React.Component {
             <div class="modal-content">
               {/* Modal content */}
               <Container className="cntr_main_qacinema">
+              
               <form class="form-signin" onSubmit={this.handleSubmit}>
                 <h1 class="h3 mb-3 font-weight-normal">
                   Welcome! Please sign in
                 </h1>
+               
                 <label for="username" class="sr-only">
                   Username
                 </label>
@@ -91,12 +122,29 @@ export default class Login extends React.Component {
           </label>
         </div> */}
                 <br></br>
+                {/* signin (submit) button */}
                 <button
                   class="btn btn-sm btn-qacinema"
                   type="submit"
-                  onclick="/"
+                  onClick={this.handleShow}
                 >
                   <strong>Sign in</strong>
+                </button>
+                <ModalComponent
+                    show={this.state.show}
+                    title={this.state.title}
+                    body={this.state.body}
+                    onClick={this.handleClose}
+                    onHide={this.handleClose} />
+                 {/* signin (submit) button */}
+                <br/>
+                <br/>
+                <button
+                  type="button"
+                  class="btn btn-sm btn-qacinema"
+                  data-dismiss="modal"
+                >
+                  Close
                 </button>
               </form>
               {/* Modal content */}
@@ -104,6 +152,7 @@ export default class Login extends React.Component {
             </div>
           </div>
         </div>
+
         {/* Login button */}
         <button
           type="button"
