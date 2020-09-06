@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './map.css';
+import '../css/App.css';
 
 const mapStyles = {
   map: {
@@ -109,7 +111,7 @@ export class CurrentLocation extends React.Component {
         const style = Object.assign({}, mapStyles.map);
        return (
          <div>
-           <div style={style} ref="map">
+           <div className="google-map" ref="map">
              Loading map...
            </div>
            {this.renderChildren()}

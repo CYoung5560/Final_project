@@ -2,12 +2,7 @@ import React, { Component } from 'react';
 import { Map, GoogleApiWrapper } from 'google-maps-react';
 import { InfoWindow, Marker } from 'google-maps-react';
 
-import CurrentLocation from './Map';
-
-const mapStyles = {
-  width: '100%',
-  height: '100%'
-};
+import CurrentLocation from './CurrentLocation';
 
 export class MapContainer extends Component {
  
@@ -53,6 +48,7 @@ export class MapContainer extends Component {
         );
       }
 }
+
 
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyBzJp0I75xJnD0gaubNemIiN3pXD_8nsVM'

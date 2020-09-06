@@ -1,6 +1,7 @@
 import React from "react";
 import "./css/App.css";
 import { Container } from "react-bootstrap";
+import MapContainer from "./googlemaps/MapContainer";
 
 export default class ContactUs extends React.Component {
   render() {
@@ -65,7 +66,7 @@ export default class ContactUs extends React.Component {
           <hr class="featurette-divider" />
 
           <div class="row featurette">
-            <div class="col-md-7">
+            <div class="col-md-5">
               <h4 class="featurette-heading">
                 
                 Sat Nav Savvy...
@@ -78,8 +79,10 @@ export default class ContactUs extends React.Component {
                 Sat Nav Postcode:M50 3YJ
               </p>
             </div>
-            <div class="col-md-5">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2374.683115237455!2d-2.288300184730258!3d53.474123180005975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bae15b3ea3473%3A0xa77a796c50c58beb!2sAnchorage!5e0!3m2!1sen!2suk!4v1599045129204!5m2!1sen!2suk" width="500" height="450" frameborder="0" style={{border:0}} allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            <div class="col-md-7">
+              
+              <MapContainer/>
+            {/* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2374.683115237455!2d-2.288300184730258!3d53.474123180005975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bae15b3ea3473%3A0xa77a796c50c58beb!2sAnchorage!5e0!3m2!1sen!2suk!4v1599045129204!5m2!1sen!2suk" width="300" height="250" frameborder="0" style={{border:0}} allowfullscreen="" aria-hidden="false" tabindex="0"></iframe> */}
             </div>
           </div>
 
