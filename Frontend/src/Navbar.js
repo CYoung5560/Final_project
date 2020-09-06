@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./css/App.css";
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Container } from 'react-bootstrap'
 
@@ -26,6 +26,7 @@ import About from './AboutPage';
 import Admin from './AdminPage';
 import Ratings from './FilmRatingsPage';
 import LoginModal from './LoginPageModal';
+import MovieComponent from './MovieComponent'
 import DiscussionBoard from './DiscussionBoard';
 
 // import getToken from './utils/token';
@@ -183,24 +184,33 @@ export default class NavBar extends React.Component {
 }
 
 function Child(props) {
+   // Movie database items
+   const myObject = [
+    {
+      movieTitle: 'Victor Rippin',
+      movieRating: '15'
+    }
+  ];
+  const [data, setData] = useState(myObject);
+
   let { movieName } = useParams();
+
   return (
     <div>
-      <br />
-      <br />
-      <div class="container backgroundColour marketing">
+       <Container className="cntr_main_qacinema">
         <hr class="featurette-divider"></hr>
         <div class="row featurette">
-          <div class="col-md-7">
-            <h2 class="featurette-heading">
-              {movieName}
-              <span class="text-muted">
-                So good you'll watch it 50 times or more.
-              </span>
-            </h2>
-            <p class="lead">Some interesting things about gremlins...</p>
+        <div class="col-md-2"></div>
+          <div class="col-md-4">
+            <h4 class="featurette-heading">
+                {movieName}...
+            </h4>
+             <p class="lead">
+              <MovieComponent data={data}/>
+            </p>
           </div>
-          <div class="col-md-5">
+
+          <div class="col-md-4">
             <img
               alt="Gremlins"
               src={require("./images/gremlins_500px.jpg")}
@@ -209,9 +219,11 @@ function Child(props) {
               class="img-responsive"
             ></img>
           </div>
+          <div class="col-md-2"></div>
         </div>
         <hr class="featurette-divider"></hr>
-      </div>
+        </Container>
+  
       <br />
       <br />
       <section class="jumbotron text-center">
@@ -220,6 +232,7 @@ function Child(props) {
           <DiscussionBoard />
         </div>
       </section>
+    
     </div>
   );
 }
