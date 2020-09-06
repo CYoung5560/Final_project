@@ -8,16 +8,7 @@ const discussionSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    posts: [{ 
-        user: { 
-            type: String,
-            required: true
-        },
-        content: {
-        type: String, 
-        required: true, //prevents empty messages 
-        },
-    }]
+    posts: [{ type: mongoose.Types.ObjectId, ref: 'post'}]
 });
 
 discussionSchema.methods.info = () => {

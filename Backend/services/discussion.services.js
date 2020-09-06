@@ -26,21 +26,21 @@ exports.deleteDiscussion = async (id) => {
             await discussion.findByIdAndDelete(id); 
         } catch(error) {
             console.log(error);
-            throw Error('discussion.service.js -> Error deleting movie');
+            throw Error('discussion.service.js -> Error deleting discussion');
         }
 };
 
-exports.updateMovie = async (id, movie) => {
+exports.updateDiscussion = async (id, discussion) => {
     try {
-        movie._id = id;
+        discussion._id = id;
 
-        let updatedMovie = await Movie.findByIdAndUpdate(id, { $set: { "title": movie.title, "year": movie.year, "description": movie.description, 
-        "actors": movie.actors, "director": movie.director, "imdb": movie.imdb } }, { new: true });
+        let updatedDiscussion = await discussion.findByIdAndUpdate(id, { $set: { "movieID": discussion.movieID, 
+        "post" : discussion.post } }, { new: true });
 
-        console.log(updatedMovie);
-        return updatedMovie;
+        console.log(updatedDiscussion);
+        return updatedDiscussion;
     } catch(error) {
         console.log(error);
-        throw Error('movie.service.js -> Error updating movie');
+        throw Error('discussion.service.js -> Error updating discussion');
     }
 }
