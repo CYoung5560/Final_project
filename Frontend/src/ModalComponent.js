@@ -19,14 +19,18 @@ export default class ModalComponent extends React.Component {
                     <Modal.Body>
                         {this.props.body}
 
-                        <table>
+                        
                         {this.props.data.map(item => (
-                            <tr> 
-                                <td>Movie: {item.movieTitle}</td>
-                                <td>Rating: {item.movieRating}</td>
-                            </tr>   
+                            <table>
+                                <tr> 
+                                    <td>Movie: {item.movieTitle}</td>
+                                </tr> 
+                                <tr> 
+                                    <td>Rating: {item.movieRating}</td>
+                                </tr>   
+                            </table>
                         ))}
-                        </table>
+                        
                     </Modal.Body>
                     <Modal.Footer>
                         <Button className="btn btn-sm btn-qacinema" onClick={this.props.onHide} >Close</Button>

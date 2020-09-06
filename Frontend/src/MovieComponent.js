@@ -9,7 +9,6 @@ export default class MovieComponent extends React.Component {
     return (
         <div>
         
-           
             {this.props.data.map(item => (
                  <table>
                 <tr> 
@@ -17,13 +16,12 @@ export default class MovieComponent extends React.Component {
                     
                 </tr>   
                 <tr> 
-                
+
                     <td>Rating: {item.movieRating}</td>
                 </tr> 
                 </table>
             ))}
-           
-                 
+              
         </div>
 
         );
