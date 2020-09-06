@@ -73,6 +73,7 @@ app.use(userRoutes);
 app.use(paymentRoutes);
 app.use("/img", imageRoutes);
 app.use("/contact", contactRoutes);
+//app.use("/discussion", discussionRoutes); 
 
 // Configure db
 const db = "mongodb://localhost:27017/movie-site";
