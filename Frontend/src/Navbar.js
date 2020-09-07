@@ -156,20 +156,20 @@ export default class NavBar extends React.Component {
 
 
         <Switch>
-          <Route exact path="./" component={HomePage} />
-          <Route exact path="./about/" component={AboutusPage} />
-          <Route exact path="./gallery/" component={GalleryPage} />
-          <Route exact path="./newreleases/" component={NewReleasesPage} />
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/about/" component={AboutusPage} />
+          <Route exact path="/gallery/" component={GalleryPage} />
+          <Route exact path="/newreleases/" component={NewReleasesPage} />
           {/* <Route exact path="/login/" component={LoginPage} /> */}
-          <Route exact path="./signup/" component={SignupPage} />
-          <Route exact path="./contact/" component={ContactPage} />
-          <Route exact path="./findus/" component={FindUsPage} />
-          <Route exact path="./how/" component={HowItWorksPage} />
-          <Route exact path="./localattractions/" component={LocalAttractionsPage} />
-          <Route exact path="./tickets/" component={TicketPage} />
-          <Route exact path="./filmratings/" component={RatingsPage} />
-          <Route path="./individual/:movieName" children={<Child />} />
-          <Route path="./admin" component={AdminPage} />
+          <Route exact path="/signup/" component={SignupPage} />
+          <Route exact path="/contact/" component={ContactPage} />
+          <Route exact path="/findus/" component={FindUsPage} />
+          <Route exact path="/how/" component={HowItWorksPage} />
+          <Route exact path="/localattractions/" component={LocalAttractionsPage} />
+          <Route exact path="/tickets/" component={TicketPage} />
+          <Route exact path="/filmratings/" component={RatingsPage} />
+          <Route path="/individual/:movieName" children={<Child />} />
+          <Route path="/admin" component={AdminPage} />
         </Switch>
       </BrowserRouter>
     );
