@@ -16,7 +16,6 @@ import NewReleases from "./NewReleasesGalleryPage";
 //import Login from "./LoginPage";
 import Signup from "./SignupPage";
 import Contact from "./ContactPage";
-import Booking from "./redundantCode/BookingPage";
 import Home from "./HomePage";
 import FindUs from "./FindUsPage";
 import How from "./HowItWorksPage";
@@ -77,10 +76,6 @@ function LocalAttractionsPage() {
   return <Attractions />;
 }
 
-function BookingPage() {
-  return <Booking />;
-}
-
 function AdminPage() {
   return <Admin />;
 }
@@ -135,7 +130,6 @@ export default class NavBar extends React.Component {
               <Nav.Link href="./tickets">Tickets</Nav.Link>
               {/* <Nav.Link href="/login">Login</Nav.Link>*/}
               {/* <Nav.Link href="/signup">Signup</Nav.Link> */}
-              {/* <Nav.Link href="/booking">Booking</Nav.Link> */}
               {/* Dropdown */}
               <NavDropdown title="About" id="basic-nav-dropdown">
                 <NavDropdown.Item href="./about">About Us</NavDropdown.Item>

@@ -1,7 +1,7 @@
 import React from "react";
 import {Link } from "react-router-dom";
 import "./css/App.css";
-import ModalGButton from '../ModalGButton.js';
+import ModalGButton from './ModalGButton.js';
 import { Container } from "react-bootstrap";
 
 export default class NowShowingGallery extends React.Component {
