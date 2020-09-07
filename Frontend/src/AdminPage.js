@@ -34,6 +34,8 @@ export default class AdminPage extends React.Component {
         });
     };
 
+    // These fetch statements can be reduced to one with a nullable body parameter and return a promise
+    // which can be chained with .then() and .catch(), i.e. fetchMyData(url, method, body)
     getMovieById = async (event) => {
         event.preventDefault();
 
