@@ -9,7 +9,9 @@ const cors = require("cors");
 
 //contact form imports
 const nodemailer = require('nodemailer');
-//const path = require('path'); ?? 
+//const path = require('path'); ??
+
+const config = require('config');
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -75,7 +77,7 @@ app.use("/img", imageRoutes);
 app.use("/contact", contactRoutes);
 
 // Configure db
-const db = "mongodb://localhost:27017/movie-site";
+const db = config.DBurl;
 
 // Connect to Mongo with mongoose
 mongoose
@@ -89,9 +91,14 @@ mongoose
     serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds
     family: 4, // Use IPv4, skip trying IPv6
   })
-  .then(() => console.log(`Connected to db on port 27017`))
+  .then(() => {
+    console.log(`Connected to db on port 27017`);
+    console.log(`Using db: ${config.DBurl}`);
+  })
       .catch((error) => console.log(error));
 
 app.listen(port, () => {
   console.log(`Server running on port: ${port}`);
 });
+
+module.exports = app;
