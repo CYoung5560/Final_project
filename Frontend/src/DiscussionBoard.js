@@ -62,7 +62,7 @@ export default class DiscussionBoard extends React.Component {
         </Table>
 
         <form
-          id="contact-form"
+          id="post-form"
     
            // onSubmit=""
           //method="POST"

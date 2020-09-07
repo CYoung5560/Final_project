@@ -16,7 +16,6 @@ import NewReleases from "./NewReleasesGalleryPage";
 //import Login from "./LoginPage";
 import Signup from "./SignupPage";
 import Contact from "./ContactPage";
-import Booking from "./redundantCode/BookingPage";
 import Home from "./HomePage";
 import FindUs from "./FindUsPage";
 import How from "./HowItWorksPage";
@@ -75,10 +74,6 @@ function HowItWorksPage() {
 
 function LocalAttractionsPage() {
   return <Attractions />;
-}
-
-function BookingPage() {
-  return <Booking />;
 }
 
 function AdminPage() {
