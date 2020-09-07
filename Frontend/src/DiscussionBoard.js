@@ -43,13 +43,14 @@ export default class DiscussionBoard extends React.Component {
         });
     }
 
+  /* render elements from DB "post:user" and "post:content" */
   render() {
     return (
       <div>
         <Table striped bordered hover size="sm">
           <thead>
             <tr>
-              <th>Username</th>
+              <th>Username</th> 
               <th>Comment</th>
             </tr>
           </thead>
