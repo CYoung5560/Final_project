@@ -1,4 +1,4 @@
-process.env.NODE_ENV = 'test';
+// process.env.NODE_ENV = 'test';
 
 const mongoose = require('mongoose');
 const chai = require('chai');
@@ -23,7 +23,7 @@ describe('Movies', () => {
 });
 
 describe('/GET movie by id', () => {
-    it('it should GET the specified movie', (done) => {
+    it('it should GET the specified movie', async (done) => {
         const movie = { 
             "title": "Jackass: The Movie",
             "year": "2002",
@@ -31,15 +31,20 @@ describe('/GET movie by id', () => {
             "actors": "Bam Margera, Johny Knoxville, Chris Pontius, Steve-O, Weeman, etc...",
             "director": "Jeff Tremaine",
             "imdb": "imdb.com" };
-        const token = loginWithDefaultUser();
+        const token = await loginWithDefaultUser();
+        // console.log(token)
         chai.request(server)
             .post('/movie')
             .set('Content-Type', 'application/json')
             .set('Authorization', `Bearer ${token}`)
             .send(movie)
             // .get('/movie/')
-            .end((error, response) => {
+            .end((error, response) => {7
+                if (error) done(error);
+                // response.should.have.status(200);
+                // assertions here
                 // console.log(response);
+
                 done();
             });
     });

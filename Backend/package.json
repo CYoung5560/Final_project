@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "SET NODE_ENV=dev&&node server.js",
-    "test": "mocha test/**/*.js -10000"
+    "test": "SET NODE_ENV=test&&mocha test/**/*.js -10000 --exit",
+    "coverage": "nyc --reporter=html --report=text npm test"
   },
   "repository": {
     "type": "git",
@@ -41,6 +42,7 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^8.1.3"
+    "mocha": "^8.1.3",
+    "nyc": "^15.1.0"
   }
 }
