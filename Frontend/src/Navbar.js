@@ -132,13 +132,13 @@ export default class NavBar extends React.Component {
               {/* <Nav.Link href="/signup">Signup</Nav.Link> */}
               {/* Dropdown */}
               <NavDropdown title="About" id="basic-nav-dropdown">
-                <NavDropdown.Item href="./about">About Us</NavDropdown.Item>
-                <NavDropdown.Item href="./contact">Contact Us</NavDropdown.Item>
-                <NavDropdown.Item href="./newreleases">New Releases</NavDropdown.Item>
-                <NavDropdown.Item href="./findus">Find Us</NavDropdown.Item>
-                <NavDropdown.Item href="./how">How It Works</NavDropdown.Item>
-                <NavDropdown.Item href="./localattractions">Local Attractions</NavDropdown.Item>
-                <NavDropdown.Item href="./filmratings">Film Ratings</NavDropdown.Item>
+                <NavDropdown.Item href="/about">About Us</NavDropdown.Item>
+                <NavDropdown.Item href="/contact">Contact Us</NavDropdown.Item>
+                <NavDropdown.Item href="/newreleases">New Releases</NavDropdown.Item>
+                <NavDropdown.Item href="/findus">Find Us</NavDropdown.Item>
+                <NavDropdown.Item href="/how">How It Works</NavDropdown.Item>
+                <NavDropdown.Item href="/localattractions">Local Attractions</NavDropdown.Item>
+                <NavDropdown.Item href="/filmratings">Film Ratings</NavDropdown.Item>
               </NavDropdown>
               {/* Dropdown */}
             </Nav>
