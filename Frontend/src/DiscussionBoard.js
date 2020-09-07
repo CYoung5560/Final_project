@@ -1,35 +1,47 @@
 import React from "react";
 import "./css/App.css";
-import { Button, Col, Row, Form, Table } from "react-bootstrap";
+import { Button, Col, Row, Form, Table} from "react-bootstrap";
+
 
 import axios from "axios";
 
 export default class DiscussionBoard extends React.Component {
   constructor(props) {
     super(props);
+        
     this.state = {
-      username: "",
-      comment: ""
+        tablerows:[{username:"",comment:""}]
     };
-    this.addComment = this.addComment.bind(this);
+    this.addRow = this.addRow.bind(this);
+    this.addRecord = this.addRecord.bind(this);
     //this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange = (event)=>{
     this.setState({ [event.target.name]: event.target.value });
-}
+    }
 
-    addComment(){
+    addRecord(){
     this.setState({
-        comments:this.state.comments.concat({
+        records:this.state.records.concat({
                 username:this.state.username,
-                comment:this.state.comment
+               // comment:this.state.comment
             })	
-    })
-}
-  // resetForm() {
-  //   this.setState({ discussionboard:'' });
-  // }
+        })
+    }
+
+    addRow () {
+        var newdata = {username:"revdrking", comment:"Great film"}     
+        this.setState({ tablerows: this.state.tablerows.concat(newdata) });    
+    }
+    rows(){
+        return this.state.tablerows.map(function(row,i){
+              return   (<tr key={i}>
+                       <td>{row.username}</td>
+                       <td>{row.comment}</td> 
+                       </tr>);
+        });
+    }
 
   render() {
     return (
@@ -52,8 +64,8 @@ export default class DiscussionBoard extends React.Component {
         <form
           id="contact-form"
     
-            onSubmit=""
-          method="POST"
+           // onSubmit=""
+          //method="POST"
         >
           <div className="form-group row">
             <div class="col-sm-4">
@@ -76,7 +88,7 @@ export default class DiscussionBoard extends React.Component {
           </div>
           <div className="form-group row">
             <div class="col-sm-1">
-                <button type="submit" className="btn btn-sm btn-qacinema" onClick={this.addComment}>
+                <button type="submit" className="btn btn-sm btn-qacinema" onClick={this.addRecord}>
                     Submit
                 </button>
             </div>

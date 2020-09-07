@@ -1,67 +1,62 @@
 import React from "react";
 import "./css/App.css";
+import { Button } from "react-bootstrap";
+import ModalComponent from './ModalComponent';
 
-// ModalGButton can take in argument values to populate the Modal
 
 export default class ModalGButton extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.state = {    
+      show: false,
+      title: "",
+      body: "",
+      data: []
+    };
   }
+
+  
+  handleShow = () => {
+    // Movie database items
+    const myObject = [
+      {
+        movieTitle: 'Victor Rippin',
+        movieRating: '15'
+      }
+    ];
+
+
+    this.setState({
+       show: true,
+       title: 'Movie Info',
+       body: 'Snapshot information',
+       data: myObject
+     });
+   };
+ 
+   handleClose = () => {
+     
+     this.setState({
+       show: false
+     });
+   };
+
 
   render() {
     return (
       <div>
-        <div
-          class="modal fade"
-          id="exampleModalLong"
-          tabindex="-1"
-          role="dialog"
-          aria-labelledby="exampleModalLongTitle"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              {/* Modal content */}
-              <div class="modal-header">
-                
-                <h5 class="modal-title" id="exampleModalLongTitle">
-                  **Film Title**
-                </h5>
-                <button
-                  type="button"
-                  class="close btn btn-sm btn-outline-secondary"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">More film info ... </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-sm btn-qacinema"
-                  data-dismiss="modal"
-                >
-                  Close
-                </button>
-                <button type="button" class="btn btn-sm btn-qacinema">
-                  Save changes
-                </button>
-              </div>
-               {/* Modal content */}
-            </div>
-          </div>
-        </div>
-        <button
-          type="button"
-          class="btn btn-sm btn-qacinema"
-          data-toggle="modal"
-          data-target="#exampleModalLong"
-        >
-          More Info
-        </button>
-      </div>
+      <Button className="btn btn-sm btn-qacinema" onClick={this.handleShow} >
+        More Info
+      </Button>
+      
+      <ModalComponent
+        show={this.state.show}
+        title={this.state.title}
+        body={this.state.body}
+        data={this.state.data}
+        onClick={this.handleClose}
+        onHide={this.handleClose} />
+    </div>
     );
   }
 }
