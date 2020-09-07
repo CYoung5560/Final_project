@@ -1,7 +1,7 @@
 const express = require('express');
 const passport = require('passport');
 
-const discussionController = require('../controllers/dicussion.controller');
+const discussionController = require('../controllers/discussion.controller');
 const ROLES = require('../utils/roles').ROLES;
 const checkIsInRole = require('../utils/auth').checkIsInRole;
 

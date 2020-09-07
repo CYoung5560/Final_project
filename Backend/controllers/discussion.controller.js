@@ -1,6 +1,6 @@
-const discussionService = require('../services/discussion.service');
+const discussionService = require('../services/discussion.services');
 
-exports.getDiscussioneById = async (request, response, next) => {
+exports.getDiscussionById = async (request, response, next) => {
 
     // Validation of request params
     try {

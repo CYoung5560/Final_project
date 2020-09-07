@@ -1,6 +1,6 @@
 const postService = require('../services/post.service');
 
-exports.getposteById = async (request, response, next) => {
+exports.getpostById = async (request, response, next) => {
 
     // Validation of request params
     try {
