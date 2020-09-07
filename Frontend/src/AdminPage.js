@@ -2,7 +2,7 @@ import React from "react";
 import "./css/App.css";
 //import axios from 'axios';
 
-import { getToken } from './utils/token';
+import { getToken } from '../utils/token';
 
 export default class AdminPage extends React.Component {
 

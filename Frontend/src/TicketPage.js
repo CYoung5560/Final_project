@@ -111,17 +111,26 @@ export default class Login extends React.Component {
             <Form.Label column="lg">Adult</Form.Label>
             <NumericInput size={10} min={0} max={100} value={0} />
           </Form.Group>
+<<<<<<< HEAD
+=======
 
+>>>>>>> Pre-Dev
           <Form.Group>
             <Form.Label column="lg">Child</Form.Label>
             <NumericInput size={10} min={0} max={100} value={0} />
           </Form.Group>
+<<<<<<< HEAD
+=======
 
+>>>>>>> Pre-Dev
           <Form.Group>
             <Form.Label column="lg">Student</Form.Label>
             <NumericInput size={10} min={0} max={100} value={0} />
           </Form.Group>
+<<<<<<< HEAD
+=======
 
+>>>>>>> Pre-Dev
           <Form.Group>
             <Form.Label column="lg">Senior</Form.Label>
             <NumericInput size={10} min={0} max={100} value={0} />

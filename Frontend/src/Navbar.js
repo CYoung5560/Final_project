@@ -16,7 +16,7 @@ import NewReleases from "./NewReleasesGalleryPage";
 //import Login from "./LoginPage";
 import Signup from "./SignupPage";
 import Contact from "./ContactPage";
-import Booking from "./BookingPage";
+import Booking from "./redundantCode/BookingPage";
 import Home from "./HomePage";
 import FindUs from "./FindUsPage";
 import How from "./HowItWorksPage";
@@ -130,21 +130,21 @@ export default class NavBar extends React.Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/gallery">Now Showing</Nav.Link>
-              <Nav.Link href="/tickets">Tickets</Nav.Link>
+              <Nav.Link href="./">Home</Nav.Link>
+              <Nav.Link href="./gallery">Now Showing</Nav.Link>
+              <Nav.Link href="./tickets">Tickets</Nav.Link>
               {/* <Nav.Link href="/login">Login</Nav.Link>*/}
               {/* <Nav.Link href="/signup">Signup</Nav.Link> */}
               {/* <Nav.Link href="/booking">Booking</Nav.Link> */}
               {/* Dropdown */}
               <NavDropdown title="About" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/about">About Us</NavDropdown.Item>
-                <NavDropdown.Item href="/contact">Contact Us</NavDropdown.Item>
-                <NavDropdown.Item href="/newreleases">New Releases</NavDropdown.Item>
-                <NavDropdown.Item href="/findus">Find Us</NavDropdown.Item>
-                <NavDropdown.Item href="/how">How It Works</NavDropdown.Item>
-                <NavDropdown.Item href="/localattractions">Local Attractions</NavDropdown.Item>
-                <NavDropdown.Item href="/filmratings">Film Ratings</NavDropdown.Item>
+                <NavDropdown.Item href="./about">About Us</NavDropdown.Item>
+                <NavDropdown.Item href="./contact">Contact Us</NavDropdown.Item>
+                <NavDropdown.Item href="./newreleases">New Releases</NavDropdown.Item>
+                <NavDropdown.Item href="./findus">Find Us</NavDropdown.Item>
+                <NavDropdown.Item href="./how">How It Works</NavDropdown.Item>
+                <NavDropdown.Item href="./localattractions">Local Attractions</NavDropdown.Item>
+                <NavDropdown.Item href="./filmratings">Film Ratings</NavDropdown.Item>
               </NavDropdown>
               {/* Dropdown */}
             </Nav>
@@ -162,21 +162,20 @@ export default class NavBar extends React.Component {
 
 
         <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/about/" component={AboutusPage} />
-          <Route exact path="/gallery/" component={GalleryPage} />
-          <Route exact path="/newreleases/" component={NewReleasesPage} />
+          <Route exact path="./" component={HomePage} />
+          <Route exact path="./about/" component={AboutusPage} />
+          <Route exact path="./gallery/" component={GalleryPage} />
+          <Route exact path="./newreleases/" component={NewReleasesPage} />
           {/* <Route exact path="/login/" component={LoginPage} /> */}
-          <Route exact path="/signup/" component={SignupPage} />
-          <Route exact path="/contact/" component={ContactPage} />
-          <Route exact path="/findus/" component={FindUsPage} />
-          <Route exact path="/how/" component={HowItWorksPage} />
-          <Route exact path="/localattractions/" component={LocalAttractionsPage} />
-          <Route exact path="/tickets/" component={TicketPage} />
-          <Route exact path="/booking/" component={BookingPage} />
-          <Route exact path="/filmratings/" component={RatingsPage} />
-          <Route path="/individual/:movieName" children={<Child />} />
-          <Route path="/admin" component={AdminPage} />
+          <Route exact path="./signup/" component={SignupPage} />
+          <Route exact path="./contact/" component={ContactPage} />
+          <Route exact path="./findus/" component={FindUsPage} />
+          <Route exact path="./how/" component={HowItWorksPage} />
+          <Route exact path="./localattractions/" component={LocalAttractionsPage} />
+          <Route exact path="./tickets/" component={TicketPage} />
+          <Route exact path="./filmratings/" component={RatingsPage} />
+          <Route path="./individual/:movieName" children={<Child />} />
+          <Route path="./admin" component={AdminPage} />
         </Switch>
       </BrowserRouter>
     );
