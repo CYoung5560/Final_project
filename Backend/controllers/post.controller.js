@@ -15,7 +15,7 @@ exports.getpostById = async (request, response, next) => {
 exports.createpost = async (request, response, next) => {
 
     try {
-        const post = await postService.createPost(request.body);
+        const post = await postService.createPost({ "user": request.user.username, "content": request.body.comment });
         return response.status(200).json({ status: 200, data: post, message: "post.controller -> Successfully created post in db" });
     } catch(error) {
         return response.status(400).json({ status: 400, message: error.message });

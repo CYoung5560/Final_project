@@ -16,6 +16,7 @@ router.use((request, response, next) => {
 //READ
 router.get('/:id', passport.authenticate('jwt', { session: false }), checkIsInRole(ROLES.Customer, ROLES.Admin), discussionController.getDiscussionById);
 
+router.get('/all/:movieID', discussionController.getAllComments);
 
 //CREATE
 router.post('', passport.authenticate('jwt', { session: false }), checkIsInRole(ROLES.Customer, ROLES.Admin), discussionController.createDiscussion);
