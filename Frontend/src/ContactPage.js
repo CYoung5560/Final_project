@@ -2,7 +2,7 @@ import React from "react";
 import "./css/App.css";
 import { Table, Container } from "react-bootstrap";
 
-//import axios from "axios";
+import axios from "axios";
 
 export default class ContactUs extends React.Component {
    constructor(props) {

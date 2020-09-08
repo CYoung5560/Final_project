@@ -1,7 +1,5 @@
 import React from "react";
 import "./css/App.css";
-import { Modal, Button, Container } from "react-bootstrap";
-
 export default class MovieComponent extends React.Component {
 
     constructor(props) {
