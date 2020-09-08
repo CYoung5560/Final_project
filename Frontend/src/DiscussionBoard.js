@@ -83,6 +83,7 @@ export default class DiscussionBoard extends React.Component {
       .catch((error) => console.log(error));
   }
 
+  /* render elements from DB "post:user" and "post:content" */
   render() {
     const comments = this.state.comments.map((comment) => 
       <div className="card w-100">
@@ -124,7 +125,7 @@ export default class DiscussionBoard extends React.Component {
         {/* <Table striped bordered hover size="sm">
           <thead>
             <tr>
-              <th>Username</th>
+              <th>Username</th> 
               <th>Comment</th>
             </tr>
           </thead>
@@ -137,10 +138,10 @@ export default class DiscussionBoard extends React.Component {
         </Table>
 
         <form
-          id="contact-form"
-
-        // onSubmit=""
-        //method="POST"
+          id="post-form"
+    
+           // onSubmit=""
+          //method="POST"
         >
           <div className="form-group row">
             <div class="col-sm-4">

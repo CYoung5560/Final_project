@@ -8,6 +8,10 @@ export default class AdminPage extends React.Component {
 
     constructor(props) {
         super(props);
+        //g denotes get variables
+        //c denotes create variables
+        //d denotes delete variables
+        //u denotes update variables
         this.state = {
             gdTicketId: "",
             cuTicketId: "",
@@ -23,8 +27,15 @@ export default class AdminPage extends React.Component {
             cuMovieActors: "",
             cuMovieDirectors: "",
             cuMovieImdb: "",
-            cConcessionName: "",
-            cConcessionPrice: ""
+            cuConcessionID: "",
+            cuConcessionName: "",
+            cuConcessionPrice: "",
+            gdConcessionID: "",
+            cuDiscussionID: "",
+            gdDiscussionID: "",
+            cuDiscussionMovieID: "", 
+            //discussion posts left out to create an empty 'thread' 
+            gdImageID: "", 
         };
     }
 
@@ -36,6 +47,8 @@ export default class AdminPage extends React.Component {
 
     // These fetch statements can be reduced to one with a nullable body parameter and return a promise
     // which can be chained with .then() and .catch(), i.e. fetchMyData(url, method, body)
+
+    //movie CRUD functions
     getMovieById = async (event) => {
         event.preventDefault();
 
@@ -141,13 +154,150 @@ export default class AdminPage extends React.Component {
             .catch((error) => console.log(error));
     }
 
+    // post, put, get, delete discussion CRUD functions
+
+    getDiscussionById = async (event) => {
+        event.preventDefault();
+
+        const token = getToken();
+        const discussionID = this.state.gdDiscussionID;
+
+        fetch(`http://localhost:8000/discussion/${discussionID}`, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then((response) => response.json())
+            .then((result) => console.log(result))
+            .catch((error) => console.log(error));
+    }
+
+    postDiscussion = async (event) => {
+        event.preventDefault();
+
+        const token = getToken();
+        const discussion = {
+            movieID: this.state.cuDiscussionMovieID,
+        }
+
+        fetch(`http://localhost:8000/Discussion`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(discussion)
+        })
+            .then((response) => response.json())
+            .then((result) => console.log(result))
+            .catch((error) => console.log(error));
+    }
+
+    putDiscussion = async (event) => {
+        event.preventDefault();
+    
+        const token = getToken();
+        const discussionID = this.state.cuDiscussionID
+        const discussion = {
+            movieID: this.state.cuDiscussionMovieID,
+            //post id
+        }
+
+        fetch(`http://localhost:8000/discussion/${discussionID}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(discussion)
+        })
+            .then((response) => response.json())
+            .then((result) => console.log(result))
+            .catch((error) => console.log(error));
+    }
+
+    deleteDiscussionById = async (event) => {
+        event.preventDefault();
+
+        const token = getToken();
+        const discussionID = this.state.gddiscussionID;
+
+        fetch(`http://localhost:8000/discussion/${discussionID}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then((response) => response.json())
+            .then((result) => console.log(result))
+            .catch((error) => console.log(error));
+    }
+
+    // image crud functions 
+    // <img src="data:image/png;base64, <base64 string here>">
+    getImageById = async (event) => {
+        event.preventDefault();
+
+        const token = getToken();
+        const imageID = this.state.gdImageID;
+
+        fetch(`http://localhost:8000/image/${imageID}`, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then((response) => response.json())
+            .then((result) => console.log(result))
+            .catch((error) => console.log(error));
+    }   
+    
+    deleteImageById = async (event) => {
+        event.preventDefault();
+
+        const token = getToken();
+        const imageID = this.state.gdImageID;
+
+        fetch(`http://localhost:8000/image/${imageID}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then((response) => response.json())
+            .then((result) => console.log(result))
+            .catch((error) => console.log(error));
+    }
+
+    // concession crud functions
+
+    getConcessionById = async (event) => {
+        event.preventDefault();
+
+        const token = getToken();
+        const concessionID = this.state.gdConcessionID;
+
+        fetch(`http://localhost:8000/concession/${concessionID}`, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then((response) => response.json())
+            .then((result) => console.log(result))
+            .catch((error) => console.log(error));
+    }
+
     postConcession = async (event) => {
         event.preventDefault();
 
         const token = getToken();
         const concession = {
-            concession: this.state.cConcessionName,
-            price: this.state.cConcessionPrice
+            concession: this.state.cuConcessionName,
+            price: this.state.cuConcessionPrice
         }
 
         fetch(`http://localhost:8000/concession`, {
@@ -162,6 +312,49 @@ export default class AdminPage extends React.Component {
             .then((result) => console.log(result))
             .catch((error) => console.log(error));
     }
+
+    putConcession = async (event) => {
+        event.preventDefault();
+    
+        const token = getToken();
+        const concessionID = this.state.cuConcessionID
+        const concession = {
+            concession: this.state.cuConcessionName,
+            price: this.state.cuConcessionPrice
+        }
+
+        fetch(`http://localhost:8000/concession/${concessionID}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(concession)
+        })
+            .then((response) => response.json())
+            .then((result) => console.log(result))
+            .catch((error) => console.log(error));
+    }
+
+    deleteConcessionById = async (event) => {
+        event.preventDefault();
+
+        const token = getToken();
+        const concessionID = this.state.gdConcessionID;
+
+        fetch(`http://localhost:8000/concession/${concessionID}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then((response) => response.json())
+            .then((result) => console.log(result))
+            .catch((error) => console.log(error));
+    }
+
+    // ticket CRUD functions
 
     getTicketById = async (event) => {
         event.preventDefault();
@@ -357,19 +550,73 @@ export default class AdminPage extends React.Component {
 
                 {/* Concession route */}
                 <div className="row my-5 p-3 bg-light">
-                    <h2 className="col-12 mt-5">CREATE Concession</h2>
+                    <h2 className="col-12 mt-5">CREATE/UPDATE Concession</h2>
                     <form className="col-12">
                         <div className="form-group">
-                            <label for="cConcessionName">Concession Name</label>
-                            <input type="text" className="form-control" id="cConcessionName" placeholder="Adult"
-                                name="cConcessionName" onChange={this.handleChange} />
+                            <label for="cuConcessionID">Concession ID (Update only)</label>
+                            <input type="text" className="form-control" id="cuConcessionID" name="cuConcessionID" onChange={this.handleChange} />
+                        </div>
+                        <div className="form-group">
+                            <label for="cuConcessionName">Concession Name</label>
+                            <input type="text" className="form-control" id="cuConcessionName" placeholder="Adult"
+                                name="cuConcessionName" onChange={this.handleChange} />
                         </div>
                         <div className="form-group">
                             <label for="cConcessionPrice">Concession Price</label>
-                            <input type="number" className="form-control" id="cConcessionPrice" placeholder="£"
-                                name="cConcessionPrice" onChange={this.handleChange} />
+                            <input type="number" className="form-control" id="cuConcessionPrice" placeholder="£"
+                                name="cuConcessionPrice" onChange={this.handleChange} />
                         </div>
                         <button type="submit" className="btn btn-primary w-100" onClick={this.postConcession}>CREATE</button>
+                        <button type="submit" className="btn btn-primary w-100" onClick={this.putConcession}>UPDATE</button>
+                    </form>
+                    <h2 className="col-12">GET/DELETE Concession (ID)</h2>
+                    <form className="col-12">
+                        <div className="form-group">
+                            <label for="gdConcessionId">ID</label>
+                            <input type="text" className="form-control" id="gdConcessionId" name="gdConcessionId" onChange={this.handleChange} />
+                        </div>
+                        <button type="submit" className="btn btn-primary w-100" onClick={this.getConcessionById}>GET</button>
+                        <button type="submit" className="btn btn-danger w-100" onClick={this.deleteConcessionById}>DELETE</button>
+                    </form>
+                </div>
+
+                {/* Image routes */}
+
+                <h2 className="col-12">GET/DELETE Image (ID)</h2>
+                    <form className="col-12">
+                        <div className="form-group">
+                            <label for="gdImageId">ID</label>
+                            <input type="text" className="form-control" id="gdImageId" name="gdImageId" onChange={this.handleChange} />
+                        </div>
+                        <button type="submit" className="btn btn-primary w-100" onClick={this.getImageById}>GET</button>
+                        <button type="submit" className="btn btn-danger w-100" onClick={this.deleteImageById}>DELETE</button>
+                    </form>
+                
+
+                {/* Discussion routes */}
+                <div className="row my-5 p-3 bg-light">
+                    <h2 className="col-12 mt-5">CREATE/UPDATE Discussion</h2>
+                    <form className="col-12">
+                        <div className="form-group">
+                            <label for="cuDiscussionID">Discussion ID (Update only)</label>
+                            <input type="text" className="form-control" id="cuDiscussionID" name="cuDiscussionID" onChange={this.handleChange} />
+                        </div>
+                        <div className="form-group">
+                            <label for="cuDiscussionMovieID">Discussion movieID</label>
+                            <input type="text" className="form-control" id="cuDiscussionMovieID" placeholder="Adult"
+                                name="cuDiscussionMovieID" onChange={this.handleChange} />
+                        </div>
+                        <button type="submit" className="btn btn-primary w-100" onClick={this.postDiscussion}>CREATE</button>
+                        <button type="submit" className="btn btn-primary w-100" onClick={this.putDiscussion}>UPDATE</button>
+                    </form>
+                    <h2 className="col-12">GET/DELETE Discussion (ID)</h2>
+                    <form className="col-12">
+                        <div className="form-group">
+                            <label for="gdDiscussionId">ID</label>
+                            <input type="text" className="form-control" id="gdDiscussionId" name="gdDiscussionId" onChange={this.handleChange} />
+                        </div>
+                        <button type="submit" className="btn btn-primary w-100" onClick={this.getDiscussionById}>GET</button>
+                        <button type="submit" className="btn btn-danger w-100" onClick={this.deleteDiscussionById}>DELETE</button>
                     </form>
                 </div>
             </div>

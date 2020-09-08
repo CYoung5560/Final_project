@@ -1,6 +1,5 @@
 const postService = require('../services/post.service');
-
-exports.getpostById = async (request, response, next) => {
+exports.getPostById = async (request, response, next) => {
 
     // Validation of request params
     try {
@@ -12,7 +11,7 @@ exports.getpostById = async (request, response, next) => {
     }
 };
 
-exports.createpost = async (request, response, next) => {
+exports.createPost = async (request, response, next) => {
 
     try {
         const post = await postService.createPost({ "user": request.user.username, "content": request.body.comment });
@@ -22,7 +21,7 @@ exports.createpost = async (request, response, next) => {
     }
 };
 
-exports.deletepost = async (request, response, next) => {
+exports.deletePost = async (request, response, next) => {
     try{
         const post = await postService.deletePost(request.params.id);
         return response.status(200).json({status: 200, data: post, message: "post.controller -> Successfully deleted post"})

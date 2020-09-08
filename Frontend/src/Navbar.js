@@ -29,9 +29,9 @@ import Ratings from './FilmRatingsPage';
 import LoginModal from './LoginPageModal';
 import MovieComponent from './MovieComponent'
 import DiscussionBoard from './DiscussionBoard';
-
 import { getToken } from './utils/token';
 import MovieView from "./MovieView";
+
 
 const logoStyle = {
   height: "150px",
