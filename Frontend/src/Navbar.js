@@ -18,7 +18,6 @@ import NewReleases from "./NewReleasesGalleryPage";
 //import Login from "./LoginPage";
 import Signup from "./SignupPage";
 import Contact from "./ContactPage";
-import Booking from "./BookingPage";
 import Home from "./HomePage";
 import FindUs from "./FindUsPage";
 import How from "./HowItWorksPage";
@@ -77,10 +76,6 @@ function HowItWorksPage() {
 
 function LocalAttractionsPage() {
   return <Attractions />;
-}
-
-function BookingPage() {
-  return <Booking />;
 }
 
 function AdminPage() {
@@ -157,14 +152,14 @@ export default class NavBar extends React.Component {
           </a></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
+
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/gallery">Now Showing</Nav.Link>
               <Nav.Link href="/tickets">Tickets</Nav.Link>
               <Nav.Link href="/how">How It Works</Nav.Link>
+
               {/* <Nav.Link href="/login">Login</Nav.Link>*/}
               {/* <Nav.Link href="/signup">Signup</Nav.Link> */}
-              {/* <Nav.Link href="/booking">Booking</Nav.Link> */}
               {/* Dropdown */}
               <NavDropdown title="About" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/about">About Us</NavDropdown.Item>
@@ -203,7 +198,6 @@ export default class NavBar extends React.Component {
           <Route exact path="/how/" component={HowItWorksPage} />
           <Route exact path="/localattractions/" component={LocalAttractionsPage} />
           <Route exact path="/tickets/" component={TicketPage} />
-          <Route exact path="/booking/" component={BookingPage} />
           <Route exact path="/filmratings/" component={RatingsPage} />
           <Route path="/individual/:movieName" children={<Child />} />
           <Route path="/admin" component={AdminPage} />

@@ -1,5 +1,4 @@
 const MovieService = require('../services/movie.service');
-const { json } = require('body-parser');
 
 exports.getMovieById = async (request, response, next) => {
 
