@@ -1,6 +1,6 @@
 import React from "react";
 import "./css/App.css";
-import { Button, Col, Row, Form, Table } from "react-bootstrap";
+import { Button, Col, Row, Form, Table, Container } from "react-bootstrap";
 
 import axios from "axios";
 
@@ -46,45 +46,68 @@ export default class ContactUs extends React.Component {
   render() {
     return (
       <div>
+         <Container className="cntr_main_qacinema">
         <h5>Find Us:</h5>
-        <p>8, St James's Bldg, 61-95 Oxford St, Manchester M1 6FQ</p>
+        <p class="lead">
+                Anchorage 1
+                Anchorage Quay Salford, 
+                The Quays,
+                Manchester
+                M50 3YJ 
+              </p>
 
         <h5>Opening Times:</h5>
         <Table striped bordered hover size="sm">
           <thead>
             <tr>
               <th>Day</th>
-              <th>Times</th>
+              <th>Matinee</th>
+              <th>Blast from the Past</th>
+              <th>Late Night Horror</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>Monday</td>
-              <td>10.00am - 10.00pm</td>
+              <td>4.00pm - 6.30pm</td>
+              <td>7.30pm - 9.30pm</td>
+              <td>10.30pm - 12.30am</td>
             </tr>
             <tr>
               <td>Tuesday</td>
-              <td>10.00am - 10.00pm</td>
+              <td>4.00pm - 6.30pm</td>
+              <td>7.30pm - 9.30pm</td>
+              <td>10.30pm - 12.30am</td>
             </tr>
             <tr>
               <td>Wednesday</td>
-              <td>10.00am - 10.00pm</td>
+              <td>4.00pm - 6.30pm</td>
+              <td>7.30pm - 9.30pm</td>
+              <td>10.30pm - 12.30am</td>
             </tr>
             <tr>
               <td>Thursday</td>
-              <td>10.00am - 10.00pm</td>
+              <td>4.00pm - 6.30pm</td>
+              <td>7.30pm - 9.30pm</td>
+              <td>10.30pm - 12.30am</td>
             </tr>
             <tr>
               <td>Friday</td>
-              <td>10.00am - 12.00am</td>
+              <td>4.00pm - 6.30pm</td>
+              <td>7.30pm - 9.30pm</td>
+              <td>10.30pm - 12.30am</td>
             </tr>
             <tr>
               <td>Saturday</td>
-              <td>10.00am - 12.00am</td>
+              <td>4.00pm - 6.30pm</td>
+              <td>7.30pm - 9.30pm</td>
+              <td>10.30pm - 12.30am</td>
             </tr>
             <tr>
               <td>Sunday</td>
-              <td>10.00am - 10.00pm</td>
+              <td>4.00pm - 6.30pm</td>
+              <td>7.30pm - 9.30pm</td>
+              <td>10.30pm - 12.30am</td>
             </tr>
           </tbody>
         </Table>
@@ -123,6 +146,7 @@ export default class ContactUs extends React.Component {
           </button>
        
         </form> */}
+        </Container>
       </div>
     );
   }
