@@ -19,14 +19,14 @@ export default class ContactUs extends React.Component {
    handleSubmit(e){
      e.preventDefault();
     // doesn't work
-    // ++++++
+    // 
     //  handleSubmit(event) {
     //  const messageHtml =  renderEmail(
-    //    <MyEmail name={this.state.name}> {this.state.feedback}</MyEmail>
+    //    <MyEmail name={this.state.name}> {this.state.feedback} </MyEmail>
     //  );    
      axios({
        method: "POST",
-       url: "http://localhost:3002/send",
+       url: "http://localhost:8000/contact",
        data: {
        	name: this.state.name,
        	email: this.state.email,
@@ -141,7 +141,5 @@ export default class ContactUs extends React.Component {
   onMessageChange(event) {
     this.setState({ message: event.target.value });
   }
-
-  handleSubmit(event) {}
 
 }

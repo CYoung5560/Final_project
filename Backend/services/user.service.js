@@ -16,6 +16,6 @@ exports.signup = async (username, password) => {
         console.log(savedUser);
         return savedUser;
     } catch (error) {
-        throw Error('user.service.js -> ');
+        throw Error(`user.service.js -> ${error}`);
     }
 };
