@@ -1,11 +1,13 @@
 import React from "react";
 import "./css/App.css";
-import { Button, Col, Row, Form, Table } from "react-bootstrap";
+import { Button, Col, Row, Form, Table, Container } from "react-bootstrap";
 
 export default class About extends React.Component {
   render() {
     return (
       <div>
+        <Container className="cntr_main_qacinema">
+          <Container className="cntr_insidemain_qacinema">
         <h1>About Us</h1>
 
         <h3>The Team:</h3>
@@ -189,6 +191,10 @@ export default class About extends React.Component {
         </ul>
 
         <a href="https://www.scrum.org">Scrum.org </a>
+        </Container>
+        <br></br>
+        <br></br>
+        </Container>
       </div>
     );
   }
