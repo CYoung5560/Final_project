@@ -14,6 +14,10 @@ export default class Signup extends React.Component {
     };
   }
 
+  handleEmailChange = (event) => {
+    this.setState({email : event.target.value});
+  }
+
   handleUsernameChange = (event) => {
     this.setState({ username: event.target.value });
   };
@@ -24,6 +28,7 @@ export default class Signup extends React.Component {
 
   handleSubmit = (event) => {
     const user = {
+      "email" : this.state.email, 
       "username": this.state.username,
       "password": this.state.password
     };
@@ -57,25 +62,6 @@ export default class Signup extends React.Component {
         <form class="form-signup" onSubmit={this.handleSubmit}>
           <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Welcome! Please enter your details</h4>
-
-            <form class="needs-validation" id="formCreateCustomer" novalidate>
-              {/* <div class="row">
-                  <div class="col-md-6 mb-3">
-                    <label for="name">Name</label>
-                    <input 
-                      class="form-control" 
-                      type="text" 
-                      id="name" 
-                      name="customerName"
-                      autocomplete="off"
-                      required></input>
-                    <div class="invalid-feedback">
-                      Valid name is required.
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                  </div>
-                </div> */}
               {/* <div class="mb-3">
                   <label for="address">Address</label>
                   <input 
@@ -104,10 +90,29 @@ export default class Signup extends React.Component {
                     Please enter phone number.
                   </div>
                 </div> */}
+              <form class="needs-validation" id="formCreateCustomer" novalidate>
+               <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="name">Name</label>
+                    <input 
+                      onChange={this.handleUsernameChange}
+                      class="form-control" 
+                      type="text" 
+                      id="name" 
+                      name="customerName"
+                      autocomplete="off"
+                      required></input>
+                    <div class="invalid-feedback">
+                      Valid name is required.
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                  </div>
+                </div> 
               <div class="mb-3">
-                <label for="email">Email/Username</label>
+                <label for="email">Email</label>
                 <input
-                  onChange={this.handleUsernameChange}
+                  onChange={this.handleEmailChange}
                   class="form-control"
                   type="text"
                   id="email"
@@ -137,7 +142,7 @@ export default class Signup extends React.Component {
 
               <div class="row">
                 <div class="col-md-6 mb-3">
-                  <button class="btn btn-secondary btn-md btn-block" id="createCustomer" type="submit">Submit</button>
+                  <button class="btn btn-secondary btn-md btn-qacinema" id="createCustomer" type="submit">Submit</button>
                 </div>
               </div>
               <br></br>

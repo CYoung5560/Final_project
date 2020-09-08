@@ -16,6 +16,7 @@ ticketSchema.methods.info = () => {
 	console.log(`SCREENING -> ${this.screening}`);
 	console.log(`BOOKER -> ${this.booker}`);
 	console.log(`CONCESSION -> ${this.concession}`);
+	console.log(`TRANSACTION ID -> ${this.transId}`);
 };
 
 ticketSchema.plugin(uniqueValidator);
