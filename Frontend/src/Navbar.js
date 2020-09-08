@@ -1,14 +1,16 @@
 import React, { useState } from "react";
+
 import "./css/App.css";
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Container } from 'react-bootstrap'
 
-// npm install react-router-dom
 import {
   BrowserRouter,
   Switch,
   Route,
   Link,
   useParams,
+  useHistory,
+  Redirect
 } from "react-router-dom";
 
 import Gallery from "./NowShowingGalleryPage";
@@ -27,62 +29,9 @@ import Ratings from './FilmRatingsPage';
 import LoginModal from './LoginPageModal';
 import MovieComponent from './MovieComponent'
 import DiscussionBoard from './DiscussionBoard';
+import { getToken } from './utils/token';
+import MovieView from "./MovieView";
 
-// import getToken from './utils/token';
-
-function HomePage() {
-  return <Home />;
-}
-
-function AboutusPage() {
-  return < About />;
-}
-
-function GalleryPage() {
-  return <Gallery />;
-}
-
-function NewReleasesPage() {
-  return <NewReleases />;
-}
-// This is the component the router will return
-// The return name matches with the import name
-// The function name matches the route component name
-// function LoginPage() {
-//   return <Login />;
-// }
-
-function SignupPage() {
-  return <Signup />;
-}
-
-function ContactPage() {
-  return <Contact />;
-}
-
-function FindUsPage() {
-  return <FindUs />;
-}
-
-function TicketPage() {
-  return <Ticket />;
-}
-
-function HowItWorksPage() {
-  return <How />;
-}
-
-function LocalAttractionsPage() {
-  return <Attractions />;
-}
-
-function AdminPage() {
-  return <Admin />;
-}
-
-function RatingsPage() {
-  return <Ratings />;
-}
 
 const logoStyle = {
   height: "150px",
@@ -94,19 +43,24 @@ export default class NavBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchValue: ""
+      value: "",
+      //gMovieTitle: ""
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  search = "";
-
   handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    }, () => {
-      this.search = `/individual/${this.state.searchValue}`;
-      console.log(this.search);
-    });
+
+    this.setState({ value: event.target.value });
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("Clicked!" , this.state.value); 
+     
+    window.location = `http://localhost:3001/individual/${this.state.value}`;
+  
   }
 
   render() {
@@ -124,32 +78,34 @@ export default class NavBar extends React.Component {
           </a></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-              <Nav.Link href="./">Home</Nav.Link>
-              <Nav.Link href="./gallery">Now Showing</Nav.Link>
-              <Nav.Link href="./tickets">Tickets</Nav.Link>
+              <Nav>
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/gallery">Now Showing</Nav.Link>
+              <Nav.Link href="/tickets">Tickets</Nav.Link>
+              <Nav.Link href="/how">How It Works</Nav.Link>
+
               {/* <Nav.Link href="/login">Login</Nav.Link>*/}
               {/* <Nav.Link href="/signup">Signup</Nav.Link> */}
-              {/* <Nav.Link href="/booking">Booking</Nav.Link> */}
               {/* Dropdown */}
               <NavDropdown title="About" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/about">About Us</NavDropdown.Item>
-                <NavDropdown.Item href="/contact">Contact Us</NavDropdown.Item>
                 <NavDropdown.Item href="/newreleases">New Releases</NavDropdown.Item>
                 <NavDropdown.Item href="/findus">Find Us</NavDropdown.Item>
-                <NavDropdown.Item href="/how">How It Works</NavDropdown.Item>
+                <NavDropdown.Item href="/contact">Contact Us</NavDropdown.Item>
                 <NavDropdown.Item href="/localattractions">Local Attractions</NavDropdown.Item>
                 <NavDropdown.Item href="/filmratings">Film Ratings</NavDropdown.Item>
               </NavDropdown>
               {/* Dropdown */}
             </Nav>
             {/* Search bar */}
-            <Form inline>
+            <Form inline onSubmit={this.handleSubmit}>
               <LoginModal />
               {/* <Button variant="outline-success" size="sm" className="btn-qacinema"><strong>Login</strong></Button> */}
               <Button variant="outline-success" size="sm" className="btn-qacinema"><strong>Logout</strong></Button>
-              <FormControl type="text" size="sm" placeholder="Search" className="mr-sm-2" name="searchValue" onChange={this.handleChange} />
-              <Button variant="outline-success" size="sm" className="btn-qacinema" href={this.search}><strong>Search</strong></Button>
+              <input type="text" value={this.state.value} onChange={this.handleChange} />
+              {/* <FormControl type="text" size="sm" placeholder="Search" className="mr-sm-2" name="gMovieTitle" value={this.state.value} onChange={this.handleChange} /> */}
+              {/* <Button variant="outline-success" type="submit" size="sm" className="btn-qacinema" onSubmit={this.handleClick}><strong>Search</strong></Button> */}
+              <input type="submit" value="Submit" />
             </Form>
             {/* Search bar */}
           </Navbar.Collapse>
@@ -157,76 +113,22 @@ export default class NavBar extends React.Component {
 
 
         <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/about/" component={AboutusPage} />
-          <Route exact path="/gallery/" component={GalleryPage} />
-          <Route exact path="/newreleases/" component={NewReleasesPage} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/about/" component={About} />
+          <Route exact path="/gallery/" component={Gallery} />
+          <Route exact path="/newreleases/" component={NewReleases} />
           {/* <Route exact path="/login/" component={LoginPage} /> */}
-          <Route exact path="/signup/" component={SignupPage} />
-          <Route exact path="/contact/" component={ContactPage} />
-          <Route exact path="/findus/" component={FindUsPage} />
-          <Route exact path="/how/" component={HowItWorksPage} />
-          <Route exact path="/localattractions/" component={LocalAttractionsPage} />
-          <Route exact path="/tickets/" component={TicketPage} />
-          <Route exact path="/filmratings/" component={RatingsPage} />
-          <Route path="/individual/:movieName" children={<Child />} />
-          <Route path="/admin" component={AdminPage} />
+          <Route exact path="/signup/" component={Signup} />
+          <Route exact path="/contact/" component={Contact} />
+          <Route exact path="/findus/" component={FindUs} />
+          <Route exact path="/how/" component={How} />
+          <Route exact path="/localattractions/" component={Attractions} />
+          <Route exact path="/tickets/" component={Ticket} />
+          <Route exact path="/filmratings/" component={Ratings} />
+          <Route path="/individual/:movieName" children={<MovieView />} />
+          <Route path="/admin" component={Admin} />
         </Switch>
-      </BrowserRouter>
+      </BrowserRouter >
     );
   }
-}
-
-function Child(props) {
-   // Movie database items
-   const myObject = [
-    {
-      movieTitle: 'Victor Rippin',
-      movieRating: '15'
-    }
-  ];
-  const [data, setData] = useState(myObject);
-
-  let { movieName } = useParams();
-
-  return (
-    <div>
-       <Container className="cntr_main_qacinema">
-        <hr class="featurette-divider"></hr>
-        <div class="row featurette">
-        <div class="col-md-2"></div>
-          <div class="col-md-4">
-            <h4 class="featurette-heading">
-                {movieName}...
-            </h4>
-             <p class="lead">
-              <MovieComponent data={data}/>
-            </p>
-          </div>
-
-          <div class="col-md-4">
-            <img
-              alt="Gremlins"
-              src={require("./images/gremlins_500px.jpg")}
-              width="100%"
-              height="100%"
-              class="img-responsive"
-            ></img>
-          </div>
-          <div class="col-md-2"></div>
-        </div>
-        <hr class="featurette-divider"></hr>
-        </Container>
-  
-      <br />
-      <br />
-      <section class="jumbotron text-center">
-        <div class="container">
-          <h2> Discussion Board</h2>
-          <DiscussionBoard />
-        </div>
-      </section>
-    
-    </div>
-  );
 }

@@ -1,4 +1,4 @@
-const post = require('../models/post.model');
+const Post = require('../models/post.model');
 
 exports.getPostById = async (id) => {
     try {
@@ -12,7 +12,7 @@ exports.getPostById = async (id) => {
 exports.createPost = async (post) => {
     console.log(post); //test
     try {
-        const newPost = await Post.create({ "user": post.user, "content" : post.content});
+        const newPost = await Post.create(post);
         console.log(newPost);
         return newPost;
     } catch(error) {
