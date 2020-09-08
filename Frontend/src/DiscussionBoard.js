@@ -55,9 +55,29 @@ export default class DiscussionBoard extends React.Component {
         .then((result) => {
           console.log(result);
         })
+        .catch((error) => console.log(error));
       })
       .catch((error) => console.log(error));
   };
+
+  getComments = (event) => {
+    event.preventDefault();
+    const token = getToken();
+
+    console.log("Fetching comments")
+
+    fetch(`http://localhost:8000/discussion/all/${this.props.movieId}`, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      }
+    })
+    .then((response) => response.json())
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((error) => console.log(error));
+  }
 
   render() {
     return (
@@ -82,7 +102,7 @@ export default class DiscussionBoard extends React.Component {
             </div>
           </div>
         </Form>
-
+        <button onClick={this.getComments}>Get comments</button>
         <div className="container">
           <div className="row">
             <div className="card w-100">
