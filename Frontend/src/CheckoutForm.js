@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { ElementsConsumer, CardElement } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import ModalComponent from './ModalComponent';
 
 import './css/CheckoutCardStyles.css';
 
@@ -40,6 +41,12 @@ class CheckoutCardForm extends React.Component {
     constructor(props) {
         super(props);
         console.log(props.movieTitle);
+        this.state = {
+            show: false,
+            title: "",
+            body: "",
+            data: []
+          };
     }
 
     getToken = () => {
@@ -93,11 +100,23 @@ class CheckoutCardForm extends React.Component {
                     console.log(`Request success to confirmCardPayment`);
                     if (result.error) {
                         console.log(result.error.message);
+                        this.setState({
+                            show: true,
+                            title: 'Oh snap!',
+                            body: 'Payment unuccessful'
+                          });
                     } else {
                         // Payment processed
                         if (result.paymentIntent.status === 'succeeded') {
                             // Show success message to user
-                            console.log("success");
+                            console.log("success");  
+                            this.setState({
+                                show: true,
+                                title: 'Brilliant!',
+                                body: 'Payment successful!',
+                                
+                              });
+
                             // Create a ticket !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                             fetch('http://localhost:8000/ticket', {
                                 method: "POST",
@@ -124,13 +143,26 @@ class CheckoutCardForm extends React.Component {
             }).catch(error => console.log(error));
     };
 
+    handleClose = () => {
+    
+        this.setState({
+          show: false
+        });
+      };
+
     render() {
         return (
             <form onSubmit={this.handleSubmit} className='container'>
+                <div className="form-group row">
+                <div class="col-sm-7">
                 <label className='w-100'>
                     Card details
                     <CardElement options={CARD_ELEMENT_OPTIONS} />
                 </label>
+                </div>
+                </div>
+                <div className="form-group row">
+                <div class="col-sm-4">
                 <label className='w-100'>
                     Concession
                     <select className='custom-select d-block w-100' id='concession'>
@@ -140,7 +172,16 @@ class CheckoutCardForm extends React.Component {
                         <option value='Student'>Student</option>
                     </select>
                 </label>
-                <button className='btn btn-primary btn-lg btn-block' disabled={!this.props.stripe} >Confirm order</button>
+                </div>
+                </div>
+                <button className='btn btn-qacinema' disabled={!this.props.stripe} >Confirm order</button>
+                <ModalComponent
+                    show={this.state.show}
+                    title={this.state.title}
+                    body={this.state.body}
+                    data={this.state.data}
+                    onClick={this.handleClose}
+                    onHide={this.handleClose} />
             </form>
         )
     }

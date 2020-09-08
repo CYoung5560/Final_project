@@ -117,20 +117,16 @@ export default class Login extends React.Component {
                 {this.renderSwitch()}
               </Form.Group>
             </Form.Row>
-
-            <Form.Group id="formGridCheckbox">
-              <Form.Check
-                type="checkbox"
-                label="I have confirmed my movie choice"
-              />
-            </Form.Group>
-
+            <br/>
+            <br/>
             <Elements stripe={stripePromise} elements={CheckoutForm}>
               {/* Pass movieTitle as a prop */}
               <CheckoutForm movieTitle={this.props.movieTitle} />
             </Elements>
           </Form>
         </Container>
+        <br/>
+        <br/>
       </Container>
     );
   }
