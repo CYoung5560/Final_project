@@ -16,12 +16,8 @@ export default class ModalGButton extends React.Component {
     };
   }
 
-
-  
-
   handleShow = () => {
-    
-    
+  
     const token = getToken();
     const movieName = this.props.movieName;
     console.log(movieName);
