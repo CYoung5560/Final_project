@@ -6,9 +6,9 @@ const discussionSchema = new mongoose.Schema({
     movieID: { //movieID to match discussion board with page entry 
         type: String,
         required: true,
-        unique: true
+        // unique: true
     },
-    posts: [{ type: mongoose.Types.ObjectId, ref: 'post'}]
+    post: { type: mongoose.Types.ObjectId, ref: 'post'}
 });
 
 discussionSchema.methods.info = () => {

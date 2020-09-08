@@ -37,6 +37,24 @@ export default class DiscussionBoard extends React.Component {
       .then((response) => response.json())
       .then((result) => {
         console.log(result)
+        console.log("props")
+        console.log(this.props)
+        // POST to discussion route movie ID and post ID
+        fetch(`http://localhost:8000/discussion`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            movieID: this.props.movieId,
+            post: result.data._id
+          })
+        })
+        .then((response) => response.json())
+        .then((result) => {
+          console.log(result);
+        })
       })
       .catch((error) => console.log(error));
   };
@@ -64,6 +82,17 @@ export default class DiscussionBoard extends React.Component {
             </div>
           </div>
         </Form>
+
+        <div className="container">
+          <div className="row">
+            <div className="card w-100">
+              <h5 className="card-title text-left px-3 pt-3 mb-0">Username</h5>
+              <div className="card-body text-left">
+                <p>lorem ipsum dolet</p>
+              </div>
+            </div>
+          </div>
+        </div>
         {/* <Table striped bordered hover size="sm">
           <thead>
             <tr>
