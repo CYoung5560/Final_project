@@ -1,8 +1,46 @@
-# Final_project
-Cinema website that connects to backend database that allows the user to purchase tickets, in addition to other features. 
+# Group Cinema project
+
+This project was working in an agile team to create a Cinema website that connects to backend database that allows the user to purchase tickets, in addition to other features. It is built using the MERN Stack. 
+
+#
+### Creating a development environment
+
+You will need to install
+Node. React, Express, Mongo Git.
+
+1) Clone this GitHub repository to your client.
+2) Set up a GitHub repository of your own
+3) Set the Origin to for the project to your GitHub repository
+4) Run npm i on the console to install the dependancies from the JSON package.
+5) Run npm start on the console to run the project
+6) You may now run the program as the browser page will open for you automatically.
+
+## Built With
+
+* NMERN Stack
+* Jest
+* Mocha Chai
+* Git
+* GitHub
+* Jira
+* GCP
+
+## Authors
+
+* **Shiva King** - [shivaking](https://github.com/shivalasvegas)
+* **Morgan Walsh** - [morganwalsh](https://github.com/MrWalshyType2)
+* **Connor Young** - [connoryoung](https://github.com/CYoung5560)
+* **Nilay Sanghrajka** - [nilaysanghrajka](https://github.com/nilaysanghrajka)
+
+## License
+
+This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md) file for details 
+
+# GroupProject
 
 Jira; 
 https://connor-young.atlassian.net/secure/RapidBoard.jspa?rapidView=7&projectKey=FIN&view=planning&selectedIssue=FIN-7&issueLimit=100
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
