@@ -4,44 +4,42 @@ import { Button, Col, Row, Form, Table } from "react-bootstrap";
 
 
 import axios from "axios";
+import { getToken } from "./utils/token";
 
 export default class DiscussionBoard extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      tablerows: [{ username: "", comment: "" }]
-    };
-    this.addRow = this.addRow.bind(this);
-    this.addRecord = this.addRecord.bind(this);
-    //this.handleSubmit = this.handleSubmit.bind(this);
+      comment: ""
+    }
   }
 
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  addRecord() {
-    this.setState({
-      records: this.state.records.concat({
-        username: this.state.username,
-        // comment:this.state.comment
+  submitPost = (event) => {
+    event.preventDefault();
+
+    const token = getToken();
+
+    fetch(`http://localhost:8000/post`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        comment: this.state.comment
       })
     })
-  }
-
-  addRow() {
-    var newdata = { username: "revdrking", comment: "Great film" }
-    this.setState({ tablerows: this.state.tablerows.concat(newdata) });
-  }
-  rows() {
-    return this.state.tablerows.map(function (row, i) {
-      return (<tr key={i}>
-        <td>{row.username}</td>
-        <td>{row.comment}</td>
-      </tr>);
-    });
-  }
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result)
+      })
+      .catch((error) => console.log(error));
+  };
 
   render() {
     return (
@@ -51,7 +49,22 @@ export default class DiscussionBoard extends React.Component {
       //  - TABLE TO SHOW COMMENTS (Does not necessarily have to be a table)
       //    - Requires method to get from API
       <div>
-        <Table striped bordered hover size="sm">
+        <Form>
+          <div className="form-group row">
+            <div class="col-sm-8">
+              <textarea
+                rows="5"
+                class="form-control"
+                id="comment"
+                name="comment"
+                onChange={this.handleChange}
+                placeholder="Your comment here"
+              />
+              <button type="submit" className="btn btn-sm btn-qacinema w-100" onClick={this.submitPost}>Submit</button>
+            </div>
+          </div>
+        </Form>
+        {/* <Table striped bordered hover size="sm">
           <thead>
             <tr>
               <th>Username</th>
@@ -98,7 +111,7 @@ export default class DiscussionBoard extends React.Component {
                 </button>
             </div>
           </div>
-        </form>
+        </form> */}
       </div>
     );
   }

@@ -67,7 +67,7 @@ export default function MovieView(props) {
             <section class="jumbotron text-center">
                 <div class="container">
                     <h2> Discussion Board</h2>
-                    <DiscussionBoard />
+                    <DiscussionBoard movieId={data._id} />
                 </div>
             </section>
 

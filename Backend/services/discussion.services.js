@@ -2,7 +2,8 @@ const discussion = require('../models/discussion.model');
 
 exports.getDiscussionById = async (id) => {
     try {
-        const discussion = await discussion.findById(id);
+        // const discussion = await discussion.findById(id);
+        const discussion = await discussion.findOne({ movieID: id });
         return discussion;
     } catch(error) {
         throw Error('Discussion.service.js -> Error finding discussion by id');
