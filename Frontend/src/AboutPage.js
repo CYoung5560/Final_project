@@ -23,7 +23,7 @@ export default class About extends React.Component {
               <td>Shiva King</td>
               <td>Developer</td>
               <td>
-                <a href="mailto:shiva.king@academytrainee.com"> Email Shiva</a>
+                <a href="mailto:shiva.king@academytrainee.com">Email Shiva</a>
               </td>
               <td>
                 <a href="https://github.com/shivalasvegas">Shiva's Github</a>
@@ -34,7 +34,6 @@ export default class About extends React.Component {
               <td>Scrum Master/Developer</td>
               <td>
                 <a href="mailto:nilay.sanghrajka@academytrainee.com">
-                  {" "}
                   Email Nilay
                 </a>
               </td>
@@ -47,7 +46,6 @@ export default class About extends React.Component {
               <td>Developer</td>
               <td>
                 <a href="mailto:morgan.walsh@academytrainee.com">
-                  {" "}
                   Email Morgan
                 </a>
               </td>
@@ -60,7 +58,6 @@ export default class About extends React.Component {
               <td>Product Owner/Developer</td>
               <td>
                 <a href="mailto:Connor.Young@academytrainee.com">
-                  {" "}
                   Email Connor
                 </a>
               </td>

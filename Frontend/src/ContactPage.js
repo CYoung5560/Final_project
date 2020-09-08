@@ -5,43 +5,44 @@ import { Button, Col, Row, Form, Table } from "react-bootstrap";
 import axios from "axios";
 
 export default class ContactUs extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     name: "",
-  //     email: "",
-  //     message: "",
-  //   };
-  //   this.handleChange = this.handleChange.bind(this);
-  //   this.handleSubmit = this.handleSubmit.bind(this);
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+      email: "",
+      message: "",
+    };
+    // this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-  // handleSubmit(event) {
+  handleSubmit(event) {
+    e.preventDefault();
   //   const messageHtml =  renderEmail(
   //     <MyEmail name={this.state.name}> {this.state.feedback}</MyEmail>
   //   );
     
-  //   axios({
-  //     method: "POST",
-  //     url: "http://localhost:3002/send",
-  //     data: {
-  //     	name: this.state.name,
-  //     	email: this.state.email,
-  //     	messageHtml: messageHtml
-  //           }
-  //   }).then((response) => {
-  //     if (response.data.status === "success") {
-  //       alert("Message Sent.");
-  //       this.resetForm();
-  //     } else if (response.data.status === "fail") {
-  //       alert("Message failed to send.");
-  //     }
-  //   });
-  // }
+    axios({
+      method: "POST",
+      url: "http://localhost:8000/contact",
+      data: {
+      	name: this.state.name,
+      	email: this.state.email,
+      	messageHtml: this.state.message
+            }
+    }).then((response) => {
+      if (response.data.status === "success") {
+        alert("Message Sent.");
+        this.resetForm();
+      } else if (response.data.status === "fail") {
+        alert("Message failed to send.");
+      }
+    });
+  }
 
-  // resetForm() {
-  //   this.setState({ feedback:'' });
-  // }
+  resetForm() {
+    this.setState({ feedback:'' });
+  }
 
   render() {
     return (
@@ -89,7 +90,7 @@ export default class ContactUs extends React.Component {
           </tbody>
         </Table>
 
-        {/* <form
+        <form
           id="contact-form"
           onSubmit={this.handleSubmit.bind(this)}
           method="POST"
@@ -122,23 +123,21 @@ export default class ContactUs extends React.Component {
             Submit
           </button>
        
-        </form> */}
+        </form>
       </div>
     );
   }
 
-//   onNameChange(event) {
-//     this.setState({ name: event.target.value });
-//   }
+  onNameChange(event) {
+    this.setState({ name: event.target.value });
+  }
 
-//   onEmailChange(event) {
-//     this.setState({ email: event.target.value });
-//   }
+  onEmailChange(event) {
+    this.setState({ email: event.target.value });
+  }
 
-//   onMessageChange(event) {
-//     this.setState({ message: event.target.value });
-//   }
-
-//   handleSubmit() {}
+  onMessageChange(event) {
+    this.setState({ message: event.target.value });
+  }
 
 }
