@@ -13,17 +13,17 @@ export default class Footer extends React.Component {
             <small class="d-block mb-3 text-muted">&copy; Callisto 2020</small>
           </div>
         <div class="col-6 col-md">
-          <h5>Social media</h5>
+          <h5>Site Specifics</h5>
           <ul class="list-unstyled text-small">
-            <li><a class="text-muted" id="facebookFooterLink" target="_blank" href="">Facebook</a></li>
-            <li><a class="text-muted" id="anotherLink" target="_blank" href="">Something else</a></li>
-            <li><a class="text-muted" id="andAnotherLink" target="_blank" href="">Something else again</a></li>
+            <li><a class="text-muted" id="howToFindUs"  href="/findus">How to find us</a></li>
+            <li><a class="text-muted" id="localAttractions"  href="/localattractions">Places nearby</a></li>
+            <li><a class="text-muted" id="contactUs"  href="/contact">Contact us</a></li>
           </ul>
         </div>
         <div class="col-6 col-md">
           <h5>Site Management</h5>
           <ul class="list-unstyled text-small">
-            <li><a class="text-muted" id="adminPortalLink" href="">Admin Portal</a></li>
+            <li><a class="text-muted" id="aboutUs" href="/about">About us</a></li>
           </ul>
         </div>
       </div>

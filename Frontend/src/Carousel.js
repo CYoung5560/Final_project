@@ -18,32 +18,41 @@ export default class Carousel extends React.Component {
           </ol>
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <svg className="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777" /></svg>
+            <div className="img-container">
+            <img className="img-fluid" src={require('./images/moviereel_1200px.png')} alt="First slide"/>
+              </div>
               <div className="container">
                 <div className="carousel-caption text-left">
-                  <h1>Example headline.</h1>
-                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                  <p><a className="btn btn-lg btn-qacinema" href="/signup" role="button">Sign up today</a></p>
+                  <h1>Book now for an amazing movie experience!</h1>
+                  <p>Sign up to our online booking system to book tickets online.</p>
+                  <p><a className="btn btn-sm btn-qacinema" href="/signup" role="button"><strong>Sign up today</strong></a></p>
                 </div>
               </div>
             </div>
             <div className="carousel-item">
-              <svg className="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777" /></svg>
+            <div className="img-container">
+            <img className="img-fluid" src={require('./images/admission_1200px.png')} alt="First slide"/>
+            </div>
               <div className="container">
                 <div className="carousel-caption">
-                  <h1>Another example headline.</h1>
-                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                  <p><a className="btn btn-lg btn-qacinema" href="/how" role="button">Learn more</a></p>
+                  <h1>The Drive in low down</h1>
+                  <p>Find out how it all works and what to expect when you arrive.</p>
+                  <p><a className="btn btn-sm btn-qacinema" href="/how" role="button"><strong>Learn more</strong></a></p>
                 </div>
               </div>
             </div>
             <div className="carousel-item">
-              <svg className="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777" /></svg>
+            <div className="img-container">
+            <img className="img-fluid" src={require('./images/filmstrip_1200px.jpg')} alt="First slide"/>
+            </div>
               <div className="container">
                 <div className="carousel-caption text-right">
-                  <h1>One more for good measure.</h1>
-                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                  <p><a className="btn btn-lg btn-qacinema" href="/gallery" role="button">Browse gallery</a></p>
+                
+                
+                  <h1>Great movies at great prices!</h1>
+                  <p>Have a look at our current films - theres a great choice from retro favorites to late night horror flicks.</p>
+                  <p><a className="btn btn-sm btn-qacinema" href="/gallery" role="button"><strong>Now Showing</strong></a></p>
+                
                 </div>
               </div>
             </div>

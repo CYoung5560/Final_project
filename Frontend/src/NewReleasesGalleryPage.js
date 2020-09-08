@@ -13,10 +13,10 @@ export default class NewReleasesGallery extends React.Component {
         <br></br>
         
         {/* Jumbotron Header screen 1*/}
-        <section class="jumbotron text-center">
+        <section class="jumbotron text-center border border-5 jmbtrn_qacinema">
           <div class="container">
             <h1>New Releases!</h1>
-            <p class="lead text-muted">Check out the new films we have arriving!</p> 
+            
           </div>
         </section>
 
@@ -26,24 +26,24 @@ export default class NewReleasesGallery extends React.Component {
             <div class="row">
               <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
-                  <Link to={"./individual/Gremlins"}>
+                  <Link to={"./individual/ghostbusters"}>
                     <img
-                      alt="Gremlins"
-                      src={require("./images/gremlins_500px.jpg")}
+                      alt="Ghostbusters"
+                      src={require("./images/ghostbusters_500px.jpg")}
                       width="100%"
                       height="100%"
                       class="img-responsive"
                     ></img>
                   </Link>
                   <div class="card-body">
-                    <p class="card-text">Blast from the Past: Gremlins</p>
+                    <p class="card-text">Blast from the Past: Ghostbusters</p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
                         <a
-                          href="https://www.imdb.com/title/tt0087363/"
+                          href="https://www.imdb.com/title/tt0087332/"
                           target="_blank"
                           role="button"
-                          class="btn btn-sm btn-outline-secondary"
+                          class="btn btn-sm btn-qacinema"
                         >
                           IMDB
                         </a>
@@ -56,25 +56,25 @@ export default class NewReleasesGallery extends React.Component {
 
               <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
-                <Link to={"./individual/Gremlins"}>
+                <Link to={"./individual/theshining"}>
                     <img
-                      alt="Gremlins"
-                      src={require("./images/gremlins_500px.jpg")}
+                      alt="The Shining"
+                      src={require("./images/theshining_500px.jpg")}
                       width="100%"
                       height="100%"
                       class="img-responsive"
                     ></img>
                   </Link>
                   <div class="card-body">
-                    <p class="card-text">Late night horror: Sea Fever</p>
+                    <p class="card-text">Late night horror: The Shining</p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
                        
                         <a
-                          href="https://www.imdb.com/title/tt0087363/"
+                          href="https://www.imdb.com/title/tt0081505/"
                           target="_blank"
                           role="button"
-                          class="btn btn-sm btn-outline-secondary"
+                          class="btn btn-sm btn-qacinema"
                         >
                           IMDB
                         </a>
@@ -87,25 +87,25 @@ export default class NewReleasesGallery extends React.Component {
 
               <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
-                <Link to={"./individual/Gremlins"}>
+                <Link to={"./individual/fantasticmrfox"}>
                     <img
-                      alt="Gremlins"
-                      src={require("./images/gremlins_500px.jpg")}
+                      alt="Fantastic"
+                      src={require("./images/fantastic_500px.jpg")}
                       width="100%"
                       height="100%"
                       class="img-responsive"
                     ></img>
                   </Link>
                   <div class="card-body">
-                    <p class="card-text">Matinee: Howl's Moving Castle</p>
+                    <p class="card-text">Matinee: Fantastic Mr Fox</p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
                         
                         <a
-                          href="https://www.imdb.com/title/tt0087363/"
+                          href="https://www.imdb.com/title/tt0432283/"
                           target="_blank"
                           role="button"
-                          class="btn btn-sm btn-outline-secondary"
+                          class="btn btn-sm btn-qacinema"
                         >
                           IMDB
                         </a>
