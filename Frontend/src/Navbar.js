@@ -150,7 +150,7 @@ export default class NavBar extends React.Component {
           </a></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-
+              <Nav>
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/gallery">Now Showing</Nav.Link>
               <Nav.Link href="/tickets">Tickets</Nav.Link>
