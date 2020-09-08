@@ -47,20 +47,20 @@ export default class NowShowingGallery extends React.Component {
 
               <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
-                <Link to={"./individual/Gremlins"}>
+                <Link to={"./individual/IT"}>
                  <img
-                    alt="Gremlins" 
-                    src={require('./images/gremlins_500px.jpg')}
+                    alt="IT" 
+                    src={require('./images/it_500px.jpg')}
                     width="100%"
                     height="100%"
                     class="img-responsive"
                   ></img></Link>
                   <div class="card-body">
-                    <p class="card-text">Late night horror: Sea Fever</p>
+                    <p class="card-text">Late night horror: IT</p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
                       <a href="/tickets" role="button" class="btn btn-sm btn-outline-secondary">Buy Tickets</a>
-                      <a href="https://www.imdb.com/title/tt0087363/" target="_blank" role="button" class="btn btn-sm btn-outline-secondary">IMDB</a>
+                      <a href="https://www.imdb.com/title/tt0099864/" target="_blank" role="button" class="btn btn-sm btn-outline-secondary">IMDB</a>
                       <ModalGButton/>
                       </div>
                     </div>
@@ -70,10 +70,10 @@ export default class NowShowingGallery extends React.Component {
 
               <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
-                <Link to={"./individual/Gremlins"}>
+                <Link to={"./individual/howlsmovingcastle"}>
                  <img
-                    alt="Gremlins" 
-                    src={require('./images/gremlins_500px.jpg')}
+                    alt="HowlsMovingCastle" 
+                    src={require('./images/howls_500px.jpg')}
                     width="100%"
                     height="100%"
                     class="img-responsive"
@@ -83,7 +83,7 @@ export default class NowShowingGallery extends React.Component {
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
                       <a href="/tickets" role="button" class="btn btn-sm btn-outline-secondary">Buy Tickets</a>
-                      <a href="https://www.imdb.com/title/tt0087363/" target="_blank" role="button" class="btn btn-sm btn-outline-secondary">IMDB</a>
+                      <a href="https://www.imdb.com/title/tt0347149/" target="_blank" role="button" class="btn btn-sm btn-outline-secondary">IMDB</a>
                       <ModalGButton/>
                       </div>
                     </div>
@@ -111,10 +111,10 @@ export default class NowShowingGallery extends React.Component {
                 <div class="row">
                 <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
-                <Link to={"./individual/Gremlins"}>
+                <Link to={"./individual/Goonies"}>
                  <img
-                    alt="Gremlins" 
-                    src={require('./images/gremlins_500px.jpg')}
+                    alt="Goonies" 
+                    src={require('./images/goonies_500px.jpg')}
                     width="100%"
                     height="100%"
                     class="img-responsive"
@@ -124,7 +124,7 @@ export default class NowShowingGallery extends React.Component {
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
                       <a href="/tickets" role="button" class="btn btn-sm btn-outline-secondary">Buy Tickets</a>
-                      <a href="https://www.imdb.com/title/tt0087363/" target="_blank" role="button" class="btn btn-sm btn-outline-secondary">IMDB</a>
+                      <a href="https://www.imdb.com/title/tt0089218/" target="_blank" role="button" class="btn btn-sm btn-outline-secondary">IMDB</a>
                       <ModalGButton/>
                       </div>
                     </div>
@@ -134,10 +134,10 @@ export default class NowShowingGallery extends React.Component {
 
               <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
-                <Link to={"./individual/Gremlins"}>
+                <Link to={"./individual/Hellraiser"}>
                  <img
                     alt="Gremlins" 
-                    src={require('./images/gremlins_500px.jpg')}
+                    src={require('./images/hellraiser_500px.jpg')}
                     width="100%"
                     height="100%"
                     class="img-responsive"
@@ -147,7 +147,7 @@ export default class NowShowingGallery extends React.Component {
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
                       <a href="/tickets" role="button" class="btn btn-sm btn-outline-secondary">Buy Tickets</a>
-                      <a href="https://www.imdb.com/title/tt0087363/" target="_blank" role="button" class="btn btn-sm btn-outline-secondary">IMDB</a>
+                      <a href="https://www.imdb.com/title/tt0093177/" target="_blank" role="button" class="btn btn-sm btn-outline-secondary">IMDB</a>
                       <ModalGButton/>
                       </div>
                     </div>
@@ -157,10 +157,10 @@ export default class NowShowingGallery extends React.Component {
 
               <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
-                <Link to={"./individual/Gremlins"}>
+                <Link to={"./individual/spiritedaway"}>
                  <img
-                    alt="Gremlins" 
-                    src={require('./images/gremlins_500px.jpg')}
+                    alt="Spirited Away" 
+                    src={require('./images/spirited_500px.jpg')}
                     width="100%"
                     height="100%"
                     class="img-responsive"
@@ -170,7 +170,7 @@ export default class NowShowingGallery extends React.Component {
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
                       <a href="/tickets" role="button" class="btn btn-sm btn-outline-secondary">Buy Tickets</a>
-                      <a href="https://www.imdb.com/title/tt0087363/" target="_blank" role="button" class="btn btn-sm btn-outline-secondary">IMDB</a>
+                      <a href="https://www.imdb.com/title/tt0245429/" target="_blank" role="button" class="btn btn-sm btn-outline-secondary">IMDB</a>
                       <ModalGButton/>
                       </div>
                     </div>
