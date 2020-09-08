@@ -27,3 +27,12 @@ exports.createImage = async (request) => {
         throw new Error(`image.service.js -> Error creating image, ERROR: ${error}`);
     }
 }
+
+exports.deleteImage = async (id) => {
+    try {
+        const Image = await Image.findByIdAndDelete(id); 
+    } catch(error) {
+        console.log(error);
+        throw Error('image.service.js -> Error deleting image');
+    }
+};

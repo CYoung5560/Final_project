@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
   role: String
 });
 
-userSchema.methods.info =() => { //testing information that would be removed in live version due to GDPR 
+userSchema.methods.info =() => {  
   console.log(`User -> ${this.username}`);
   console.log(`Role -> ${this.role}`);
 }

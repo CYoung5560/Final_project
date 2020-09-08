@@ -30,7 +30,7 @@ export default class ContactUs extends React.Component {
        data: {
        	name: this.state.name,
        	email: this.state.email,
-       	messageHtml: this.state.feedback,
+       	messageHtml: this.state.message,
              }
      }).then((response) => {
        if (response.data.status === "success") {
@@ -43,7 +43,7 @@ export default class ContactUs extends React.Component {
   }
 
     resetForm() {
-    this.setState({ feedback:'' });
+    this.setState({ message:'' });
   }
 
   render() {
@@ -123,8 +123,7 @@ export default class ContactUs extends React.Component {
           </div>
           <button type="submit" className="btn btn-primary">
             Submit
-          </button>
-       
+          </button>       
         </form> 
       </div>
     );
@@ -141,5 +140,4 @@ export default class ContactUs extends React.Component {
   onMessageChange(event) {
     this.setState({ message: event.target.value });
   }
-
 }
