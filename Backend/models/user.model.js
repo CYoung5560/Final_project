@@ -7,18 +7,12 @@ const userSchema = new mongoose.Schema({
     unique: true,
     required: true
   },
-  email: {
-    type: String,
-    unique: true, 
-    required: true
-  },
   role: String
 });
 
-userSchema.methods.info =() => { //testing information that would be removed in live version due to GDPR 
+userSchema.methods.info =() => {  
   console.log(`User -> ${this.username}`);
   console.log(`Role -> ${this.role}`);
-  console.log(`Email -> ${this.email}`);
 }
 
 userSchema.plugin(passportLocalMongoose);

@@ -30,4 +30,7 @@ router.get('/:id', passport.authenticate('jwt', { session: false }), checkIsInRo
 router.post('/', passport.authenticate('jwt', { session: false }), upload.single('image'), checkIsInRole(ROLES.Admin), 
     ImageController.createImage);
 
+router.delete('/:id', passport.authenticate('jwt', { session: false }), 
+    checkIsInRole(ROLES.Admin), ImageController.deleteImage);
+
 module.exports = router;
