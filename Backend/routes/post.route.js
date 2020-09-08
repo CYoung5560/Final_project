@@ -14,16 +14,16 @@ router.use((request, response, next) => {
 });
 
 //READ
-router.get('/:id', passport.authenticate('jwt', { session: false }), checkIsInRole(ROLES.Customer, ROLES.Admin), postController.getpostById);
+router.get('/:id', passport.authenticate('jwt', { session: false }), checkIsInRole(ROLES.Customer, ROLES.Admin), postController.getPostById);
 
 
 //CREATE
-router.post('', passport.authenticate('jwt', { session: false }), checkIsInRole(ROLES.Customer, ROLES.Admin), postController.createpost);
+router.post('', passport.authenticate('jwt', { session: false }), checkIsInRole(ROLES.Customer, ROLES.Admin), postController.createPost);
 
 //UPDATE
 router.put('/:id', passport.authenticate('jwt', { session: false }), checkIsInRole(ROLES.Admin), postController.updatePost);
 
 //DELETE
-router.delete('/:id', passport.authenticate('jwt', { session: false }), checkIsInRole(ROLES.Admin), postController.deletepost);
+router.delete('/:id', passport.authenticate('jwt', { session: false }), checkIsInRole(ROLES.Admin), postController.deletePost);
 
 module.exports = router;

@@ -14,10 +14,6 @@ export default class Signup extends React.Component {
     };
   }
 
-  handleEmailChange = (event) => {
-    this.setState({email : event.target.value});
-  }
-
   handleUsernameChange = (event) => {
     this.setState({ username: event.target.value });
   };
@@ -28,7 +24,6 @@ export default class Signup extends React.Component {
 
   handleSubmit = (event) => {
     const user = {
-      "email" : this.state.email, 
       "username": this.state.username,
       "password": this.state.password
     };
@@ -62,34 +57,6 @@ export default class Signup extends React.Component {
         <form class="form-signup" onSubmit={this.handleSubmit}>
           <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Welcome! Please enter your details</h4>
-              {/* <div class="mb-3">
-                  <label for="address">Address</label>
-                  <input 
-                    class="form-control" 
-                    type="text"
-                    id="address" 
-                    name="customerAddress" 
-                    placeholder="155 Country Lane" 
-                    autocomplete="off"
-                    required></input>
-                  <div class="invalid-feedback">
-                    Please enter address.
-                  </div>
-                </div> */}
-              {/* <div class="mb-3">
-                  <label for="phone">Phone Number</label>
-                  <input 
-                    class="form-control" 
-                    type="text" 
-                    id="phone" 
-                    name="customerPhone" 
-                    placeholder="01273422342" 
-                    autocomplete="off"
-                    required></input>
-                  <div class="invalid-feedback">
-                    Please enter phone number.
-                  </div>
-                </div> */}
               <form class="needs-validation" id="formCreateCustomer" novalidate>
                <div class="row">
                   <div class="col-md-6 mb-3">
@@ -109,22 +76,6 @@ export default class Signup extends React.Component {
                   <div class="col-md-6 mb-3">
                   </div>
                 </div> 
-              <div class="mb-3">
-                <label for="email">Email</label>
-                <input
-                  onChange={this.handleEmailChange}
-                  class="form-control"
-                  type="text"
-                  id="email"
-                  name="customerEmail"
-                  placeholder="you@example.com"
-                  autocomplete="off"
-                  required></input>
-                <div class="invalid-feedback">
-                  Please enter a valid email address.
-                  </div>
-              </div>
-
               <div class="mb-3">
                 <label for="password">Password</label>
                 <input

@@ -7,6 +7,13 @@ const checkIsInRole = require('../utils/auth').checkIsInRole;
 
 const router = express.Router();
 
+router.get('/:id', passport.authenticate('jwt', { session: false }), checkIsInRole(ROLES.Customer, ROLES.Admin), ConcessionController.get);
+
 router.post('', passport.authenticate('jwt', { session: false }), checkIsInRole(ROLES.Admin), ConcessionController.create);
+
+router.put('', passport.authenticate('jwt', { session: false }), checkIsInRole(ROLES.Admin), ConcessionController.update);
+
+router.delete('/:id', passport.authenticate('jwt', { session: false }), checkIsInRole(ROLES.Admin), ConcessionController.delete);
+
 
 module.exports = router;

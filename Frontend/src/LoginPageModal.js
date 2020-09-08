@@ -88,6 +88,7 @@ export default class Login extends React.Component {
              
               
               <form class="form-signin" onSubmit={this.handleSubmit}>
+              
                 <h1 class="h3 mb-3 font-weight-normal">
                   Welcome! Please sign in
                 </h1>
@@ -118,11 +119,7 @@ export default class Login extends React.Component {
                   placeholder="Password"
                   required
                 ></input>
-                {/* <div class="checkbox mb-3">
-          <label>
-            <input type="checkbox" value="remember-me">Remember me</input>
-          </label>
-        </div> */}
+       
                 <br></br>
                 {/* signin (submit) button */}
                 <button
@@ -140,6 +137,9 @@ export default class Login extends React.Component {
                     onClick={this.handleClose}
                     onHide={this.handleClose} />
                  {/* signin (submit) button */}
+                <br/>
+                <br/>
+                <a className="btn btn-sm btn-qacinema" href="/signup" role="button"><strong>Sign up today</strong></a>
                 <br/>
                 <br/>
                 <button

@@ -2,64 +2,57 @@ import React from "react";
 import "./css/App.css";
 import { Table, Container } from "react-bootstrap";
 
-//import axios from "axios";
+import axios from "axios";
 
 export default class ContactUs extends React.Component {
-   constructor(props) {
-      super(props);
-      this.state = {
+  constructor(props) {
+    super(props);
+    this.state = {
       name: "",
       email: "",
       message: "",
-     };
-     //this.handleChange = this.handleChange.bind(this);
-     this.handleSubmit = this.handleSubmit.bind(this);
-   }
-
-
-   handleSubmit(e){
-     e.preventDefault();
-    // doesn't work
-    // 
-    //  handleSubmit(event) {
-    //  const messageHtml =  renderEmail(
-    //    <MyEmail name={this.state.name}> {this.state.feedback} </MyEmail>
-    //  );    
-     axios({
-       method: "POST",
-       url: "http://localhost:8000/contact",
-       data: {
-       	name: this.state.name,
-       	email: this.state.email,
-       	messageHtml: this.state.message,
-             }
-     }).then((response) => {
-       if (response.data.status === "success") {
-         alert("Message Sent.");
-         this.resetForm();
-       } else if (response.data.status === "fail") {
-         alert("Message failed to send.");
-       }
-     });
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  handleSubmit(event) {
+    const messageHtml =  renderEmail(
+      <MyEmail name={this.state.name}> {this.state.feedback}</MyEmail>
+    );
 
-    resetForm() {
-    this.setState({ message:'' });
+    axios({
+      method: "POST",
+      url: "http://localhost:3002/send",
+      data: {
+      	name: this.state.name,
+      	email: this.state.email,
+      	messageHtml: messageHtml
+            }
+    }).then((response) => {
+      if (response.data.status === "success") {
+        alert("Message Sent.");
+        this.resetForm();
+      } else if (response.data.status === "fail") {
+        alert("Message failed to send.");
+      }
+    });
+  }
 
+  resetForm() {
+    this.setState({ feedback:'' });
   }
 
   render() {
     return (
       <div>
-
         <Container className="cntr_main_qacinema">
           <Container className="cntr_insidemain_qacinema">
           <h5>Find Us:</h5>
           <p class="lead">
             Anchorage 1 Anchorage Quay Salford, The Quays, Manchester M50 3YJ
           </p>
-      
+
           <h5>Opening Times:</h5>
           <Table striped bordered hover size="sm">
             <thead>
@@ -147,16 +140,12 @@ export default class ContactUs extends React.Component {
             <div className="form-group row">
               <div class="col-sm-7">
                 <div class="form-group">
-                  <label htmlFor="message">Message</label>
+                  <label for="message">Message</label>
                   <textarea
-                    rows="5"
                     class="form-control"
-                    id="test-mailing"
-                    name="test-mailing"
-                    onChange={this.handleChange}
-                    placeholder="Your message here"
-                    required value={this.state.message}
-            ></textarea>
+                    id="contactMessage"
+                    rows="5"
+                  ></textarea>
                 </div>
               </div>
             </div>
@@ -167,27 +156,24 @@ export default class ContactUs extends React.Component {
           <br></br>
           <br></br>
           </Container>
-          <br></br>
-          <br></br>
         </Container>
         <br/>
         <br/>
-
       </div>
     );
   }
 
-  onNameChange(event) {
-    this.setState({ name: event.target.value });
-  }
+    onNameChange(event) {
+      this.setState({ name: event.target.value });
+    }
 
+    onEmailChange(event) {
+      this.setState({ email: event.target.value });
+    }
 
-  onEmailChange(event) {
-    this.setState({ email: event.target.value });
+    onMessageChange(event) {
+      this.setState({ message: event.target.value });
+    }
 
-  }
-
-  onMessageChange(event) {
-    this.setState({ message: event.target.value });
-  }
+    handleSubmit() {}
 }

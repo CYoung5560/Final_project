@@ -29,9 +29,9 @@ import Ratings from './FilmRatingsPage';
 import LoginModal from './LoginPageModal';
 import MovieComponent from './MovieComponent'
 import DiscussionBoard from './DiscussionBoard';
-
 import { getToken } from './utils/token';
 import MovieView from "./MovieView";
+
 
 const logoStyle = {
   height: "150px",
@@ -44,7 +44,6 @@ export default class NavBar extends React.Component {
     super(props);
     this.state = {
       value: "",
-      //gMovieTitle: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -57,14 +56,10 @@ export default class NavBar extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    // alert("Clicked!" + this.state.value);
-    console.log("Clicked!", this.state.value);
-
-    //const movie = this.state.value;
-    //this.props.history.push('/individual');
-    // event.preventDefault();
-    window.location = `http://localhost:3000/individual/${this.state.value}`;
-    // return <Redirect to="/individual" />
+    console.log("Clicked!" , this.state.value); 
+     
+    window.location = `http://localhost:3001/individual/${this.state.value}`;
+  
   }
 
   render() {
@@ -82,16 +77,15 @@ export default class NavBar extends React.Component {
           </a></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav>
+              <Nav>
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/gallery">Now Showing</Nav.Link>
-              <Nav.Link href="/tickets">Tickets</Nav.Link>
               <Nav.Link href="/how">How It Works</Nav.Link>
+              <Nav.Link href="/tickets">Tickets</Nav.Link>
 
-              {/* <Nav.Link href="/login">Login</Nav.Link>*/}
-              {/* <Nav.Link href="/signup">Signup</Nav.Link> */}
               {/* Dropdown */}
               <NavDropdown title="About" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/signup">Sign Up</NavDropdown.Item> 
                 <NavDropdown.Item href="/about">About Us</NavDropdown.Item>
                 <NavDropdown.Item href="/newreleases">New Releases</NavDropdown.Item>
                 <NavDropdown.Item href="/findus">Find Us</NavDropdown.Item>
@@ -102,14 +96,11 @@ export default class NavBar extends React.Component {
               {/* Dropdown */}
             </Nav>
             {/* Search bar */}
-            <Form inline onSubmit={this.handleSubmit} >
+            <Form inline onSubmit={this.handleSubmit}>
               <LoginModal />
-              {/* <Button variant="outline-success" size="sm" className="btn-qacinema"><strong>Login</strong></Button> */}
               <Button variant="outline-success" size="sm" className="btn-qacinema"><strong>Logout</strong></Button>
               <input type="text" value={this.state.value} onChange={this.handleChange} />
-              {/* <FormControl type="text" size="sm" placeholder="Search" className="mr-sm-2" name="gMovieTitle" value={this.state.value} onChange={this.handleChange} /> */}
-              {/* <Button variant="outline-success" type="submit" size="sm" className="btn-qacinema" onSubmit={this.handleClick}><strong>Search</strong></Button> */}
-              <input type="submit" value="Submit" />
+              <input className="btn-qacinema" type="submit" value="Search" />
             </Form>
             {/* Search bar */}
           </Navbar.Collapse>

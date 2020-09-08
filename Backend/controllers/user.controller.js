@@ -22,7 +22,6 @@ exports.login = async (request, response, next) => {
                     return next(error);
                 }
                 const token = jwt.sign({ userId: user._id, username: user.username }, 'key3892', { expiresIn: '24h' });
-                console.log(token);
                 // return { user, token };
                 return response.status(200).json({ status: 200, success: true, data: { user: user }, message: "user.controller -> login success", token: token });
             });
