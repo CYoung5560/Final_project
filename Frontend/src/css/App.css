@@ -34,9 +34,16 @@ body {
   background-color: #ebe9dc;
 }
 
+.cntr_insidemain_qacinema{
+  width:70%;
+  height: 100%;
+  padding:30px;
+  background-color: #ccd4d1;
+}
+
 .jmbtrn_qacinema{
   width: 100%;
-  height: 150px;
+  height: 175px;
   background-color: #79b39e;
 }
 .border-5 {
