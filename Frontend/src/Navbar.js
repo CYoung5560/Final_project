@@ -115,13 +115,11 @@ export default class NavBar extends React.Component {
 
 
   handleSubmit = (event) => {
-   
-    alert("Clicked!" + this.state.value);  
-    console.log("Clicked!" , this.state.value);  
-    //const movie = this.state.value;
-    //this.props.history.push('/individual');
-    // event.preventDefault();
-    return  <Redirect to="/individual" />
+    event.preventDefault();
+    console.log("Clicked!" , this.state.value); 
+     
+    window.location = `http://localhost:3001/individual/${this.state.value}`;
+  
   }
 
   getMovieByTitle = async (event) => {
@@ -177,7 +175,7 @@ export default class NavBar extends React.Component {
               {/* Dropdown */}
             </Nav>
             {/* Search bar */}
-            <Form inline onSubmit={this.handleSubmit} >
+            <Form inline onSubmit={this.handleSubmit}>
               <LoginModal />
               {/* <Button variant="outline-success" size="sm" className="btn-qacinema"><strong>Login</strong></Button> */}
               <Button variant="outline-success" size="sm" className="btn-qacinema"><strong>Logout</strong></Button>
