@@ -11,7 +11,8 @@ export default class DiscussionBoard extends React.Component {
     super(props);
 
     this.state = {
-      comment: ""
+      comment: "",
+      comments: []
     }
   }
 
@@ -51,11 +52,11 @@ export default class DiscussionBoard extends React.Component {
             post: result.data._id
           })
         })
-        .then((response) => response.json())
-        .then((result) => {
-          console.log(result);
-        })
-        .catch((error) => console.log(error));
+          .then((response) => response.json())
+          .then((result) => {
+            console.log(result);
+          })
+          .catch((error) => console.log(error));
       })
       .catch((error) => console.log(error));
   };
@@ -72,14 +73,26 @@ export default class DiscussionBoard extends React.Component {
         "Authorization": `Bearer ${token}`
       }
     })
-    .then((response) => response.json())
-    .then((result) => {
-      console.log(result);
-    })
-    .catch((error) => console.log(error));
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result.data);
+        this.setState({
+          comments: result.data
+        });
+      })
+      .catch((error) => console.log(error));
   }
 
   render() {
+    const comments = this.state.comments.map((comment) => 
+      <div className="card w-100">
+        <h5 className="card-title text-left px-3 pt-3 mb-0">{comment.user}</h5>
+        <div className="card-body text-left">
+          <p>{comment.content}</p>
+        </div>
+      </div>
+    );
+
     return (
       // REQUIRES:
       //  - FORM TO CREATE COMMENT
@@ -105,12 +118,7 @@ export default class DiscussionBoard extends React.Component {
         <button onClick={this.getComments}>Get comments</button>
         <div className="container">
           <div className="row">
-            <div className="card w-100">
-              <h5 className="card-title text-left px-3 pt-3 mb-0">Username</h5>
-              <div className="card-body text-left">
-                <p>lorem ipsum dolet</p>
-              </div>
-            </div>
+            {comments}
           </div>
         </div>
         {/* <Table striped bordered hover size="sm">
