@@ -31,60 +31,7 @@ import MovieComponent from './MovieComponent'
 import DiscussionBoard from './DiscussionBoard';
 
 import { getToken } from './utils/token';
-
-function HomePage() {
-  return <Home />;
-}
-
-function AboutusPage() {
-  return < About />;
-}
-
-function GalleryPage() {
-  return <Gallery />;
-}
-
-function NewReleasesPage() {
-  return <NewReleases />;
-}
-// This is the component the router will return
-// The return name matches with the import name
-// The function name matches the route component name
-// function LoginPage() {
-//   return <Login />;
-// }
-
-function SignupPage() {
-  return <Signup />;
-}
-
-function ContactPage() {
-  return <Contact />;
-}
-
-function FindUsPage() {
-  return <FindUs />;
-}
-
-function TicketPage() {
-  return <Ticket />;
-}
-
-function HowItWorksPage() {
-  return <How />;
-}
-
-function LocalAttractionsPage() {
-  return <Attractions />;
-}
-
-function AdminPage() {
-  return <Admin />;
-}
-
-function RatingsPage() {
-  return <Ratings />;
-}
+import MovieView from "./MovieView";
 
 const logoStyle = {
   height: "150px",
@@ -104,38 +51,21 @@ export default class NavBar extends React.Component {
   }
 
   handleChange = (event) => {
-  
-    this.setState({value: event.target.value});
-};
 
+    this.setState({ value: event.target.value });
+  };
 
   handleSubmit = (event) => {
-   
-    alert("Clicked!" + this.state.value);  
-    console.log("Clicked!" , this.state.value);  
+    event.preventDefault();
+    // alert("Clicked!" + this.state.value);
+    console.log("Clicked!", this.state.value);
+
     //const movie = this.state.value;
     //this.props.history.push('/individual');
     // event.preventDefault();
-    return  <Redirect to="/individual" />
+    window.location = `http://localhost:3000/individual/${this.state.value}`;
+    // return <Redirect to="/individual" />
   }
-
-  getMovieByTitle = async (event) => {
-    event.preventDefault();
-
-    const token = getToken();
-    const movieTitle = this.state.gMovieTitle;
-
-    fetch(`http://localhost:8000/movie/title/${movieTitle}`, {
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-        }
-    })
-        .then((response) => response.json())
-        .then((result) => console.log(result))
-        .catch((error) => console.log(error));
-}
-  
 
   render() {
     return (
@@ -152,7 +82,7 @@ export default class NavBar extends React.Component {
           </a></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-
+            <Nav>
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/gallery">Now Showing</Nav.Link>
               <Nav.Link href="/tickets">Tickets</Nav.Link>
@@ -176,7 +106,7 @@ export default class NavBar extends React.Component {
               <LoginModal />
               {/* <Button variant="outline-success" size="sm" className="btn-qacinema"><strong>Login</strong></Button> */}
               <Button variant="outline-success" size="sm" className="btn-qacinema"><strong>Logout</strong></Button>
-              <input type="text"   value={this.state.value} onChange={this.handleChange} />
+              <input type="text" value={this.state.value} onChange={this.handleChange} />
               {/* <FormControl type="text" size="sm" placeholder="Search" className="mr-sm-2" name="gMovieTitle" value={this.state.value} onChange={this.handleChange} /> */}
               {/* <Button variant="outline-success" type="submit" size="sm" className="btn-qacinema" onSubmit={this.handleClick}><strong>Search</strong></Button> */}
               <input type="submit" value="Submit" />
@@ -187,76 +117,22 @@ export default class NavBar extends React.Component {
 
 
         <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/about/" component={AboutusPage} />
-          <Route exact path="/gallery/" component={GalleryPage} />
-          <Route exact path="/newreleases/" component={NewReleasesPage} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/about/" component={About} />
+          <Route exact path="/gallery/" component={Gallery} />
+          <Route exact path="/newreleases/" component={NewReleases} />
           {/* <Route exact path="/login/" component={LoginPage} /> */}
-          <Route exact path="/signup/" component={SignupPage} />
-          <Route exact path="/contact/" component={ContactPage} />
-          <Route exact path="/findus/" component={FindUsPage} />
-          <Route exact path="/how/" component={HowItWorksPage} />
-          <Route exact path="/localattractions/" component={LocalAttractionsPage} />
-          <Route exact path="/tickets/" component={TicketPage} />
-          <Route exact path="/filmratings/" component={RatingsPage} />
-          <Route path="/individual/:movieName" children={<Child />} />
-          <Route path="/admin" component={AdminPage} />
+          <Route exact path="/signup/" component={Signup} />
+          <Route exact path="/contact/" component={Contact} />
+          <Route exact path="/findus/" component={FindUs} />
+          <Route exact path="/how/" component={How} />
+          <Route exact path="/localattractions/" component={Attractions} />
+          <Route exact path="/tickets/" component={Ticket} />
+          <Route exact path="/filmratings/" component={Ratings} />
+          <Route path="/individual/:movieName" children={<MovieView />} />
+          <Route path="/admin" component={Admin} />
         </Switch>
-      </BrowserRouter>
+      </BrowserRouter >
     );
   }
-}
-
-function Child(props) {
-   // Movie database items
-   const myObject = [
-    {
-      movieTitle: 'Victor Rippin',
-      movieRating: '15'
-    }
-  ];
-  const [data, setData] = useState(myObject);
-
-  let { movieName } = useParams();
-
-  return (
-    <div>
-       <Container className="cntr_main_qacinema">
-        <hr class="featurette-divider"></hr>
-        <div class="row featurette">
-        <div class="col-md-2"></div>
-          <div class="col-md-4">
-            <h4 class="featurette-heading">
-                {movieName}...
-            </h4>
-             <p class="lead">
-              <MovieComponent data={data}/>
-            </p>
-          </div>
-
-          <div class="col-md-4">
-            <img
-              alt="Gremlins"
-              src={require("./images/gremlins_500px.jpg")}
-              width="100%"
-              height="100%"
-              class="img-responsive"
-            ></img>
-          </div>
-          <div class="col-md-2"></div>
-        </div>
-        <hr class="featurette-divider"></hr>
-        </Container>
-  
-      <br />
-      <br />
-      <section class="jumbotron text-center">
-        <div class="container">
-          <h2> Discussion Board</h2>
-          <DiscussionBoard />
-        </div>
-      </section>
-    
-    </div>
-  );
 }
