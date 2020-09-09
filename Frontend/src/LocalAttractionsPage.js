@@ -10,6 +10,7 @@ export default class LocalAttractions extends React.Component {
     return (
       <div>
         <Container className="cntr_main_qacinema">
+        <h1>Local Attractions</h1>
         <div class="container  backgroundColour marketing">
           <hr class="featurette-divider" />
 

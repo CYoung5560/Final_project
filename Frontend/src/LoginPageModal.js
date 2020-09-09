@@ -32,8 +32,8 @@ export default class Login extends React.Component {
     if (!this.state.success) {
       this.setState({
         show: true,
-        title: 'Oh snap!',
-        body: 'Please enter a valid username and password'
+        title: 'Brilliant!',
+        body: 'Thank you for signing in!',
       });
     }
 
