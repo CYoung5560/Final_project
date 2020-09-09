@@ -96,8 +96,8 @@ export default class NavBar extends React.Component {
               {/* Dropdown */}
             </Nav>
             {/* Search bar */}
+            <LoginModal />
             <Form inline onSubmit={this.handleSubmit}>
-              <LoginModal />
               <Button variant="outline-success" size="sm" className="btn-qacinema"><strong>Logout</strong></Button>
               <input type="text" value={this.state.value} onChange={this.handleChange} />
               <input className="btn-qacinema" type="submit" value="Search" />
