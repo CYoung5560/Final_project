@@ -1,4 +1,4 @@
-const Time = require('../models/time.model');
+const Time = require('../models/times.model');
 
 exports.getTimeById = async (id) => {
     try {
