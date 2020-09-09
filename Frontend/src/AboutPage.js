@@ -1,6 +1,6 @@
 import React from "react";
 import "./css/App.css";
-import { Button, Col, Row, Form, Table, Container } from "react-bootstrap";
+import { Table, Container } from "react-bootstrap";
 
 export default class About extends React.Component {
   render() {

@@ -1,6 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { create } from 'react-test-renderer';
+import { shallow } from 'enzyme';
+import NavBar from '../Navbar';
+
 import App from '../App';
 import FilmRatingsPage from '../FilmRatingsPage';
 import AboutPage from '../AboutPage';
@@ -9,10 +12,8 @@ import Footer from '../Footer';
 import HowItWorksPage from '../HowItWorksPage';
 
 
-test.skip('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+it('renders without crashing', () => {
+  shallow(<App />);
 });
 
 describe(`Snapshot test of App`, () => {
@@ -51,7 +52,7 @@ describe(`Snapshot test of Footer`, () => {
   it(`should match the snapshot every time it is rendered`, () =>{
     const testInstanceFooterSnapshot = create(<Footer/>).toJSON();
 
-    expect(testInstanceFooterwSnapshot).toMatchSnapshot();
+    expect(testInstanceFooterSnapshot).toMatchSnapshot();
   });
 });
 
@@ -64,4 +65,19 @@ describe(`Snapshot test of HowItWorksPage`, () => {
 });
 
 
+// let wrapper;
+// beforeEach(() => {
+//     wrapper = shallow(<App />);
+// });
 
+// describe('<App /> rendering', () => {
+
+//   it('should render one <Navbar>', () => {
+//       expect(wrapper.find('Navbar')).toHaveLength(1);
+//   });
+
+// it('should render one <Footer>', () => {
+//   expect(wrapper.find('Footer')).toHaveLength(1);
+// });
+
+// });
