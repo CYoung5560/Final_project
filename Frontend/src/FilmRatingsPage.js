@@ -59,7 +59,6 @@ export default class LocalAttractions extends React.Component {
                 <Col></Col>
               </Row>
               <br/>
-              
         </Container>
       </div>
     );

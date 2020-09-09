@@ -1,6 +1,6 @@
 import React from "react";
 import "./css/App.css";
-import { Button, Col, Row, Form, Table } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 
 import axios from "axios";
@@ -122,54 +122,6 @@ export default class DiscussionBoard extends React.Component {
             {comments}
           </div>
         </div>
-        {/* <Table striped bordered hover size="sm">
-          <thead>
-            <tr>
-              <th>Username</th> 
-              <th>Comment</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </Table>
-
-        <form
-          id="post-form"
-    
-           // onSubmit=""
-          //method="POST"
-        >
-          <div className="form-group row">
-            <div class="col-sm-4">
-              <input type="text" className="form-control" placeholder="Username" />
-            </div>
-          </div>
-
-          <div className="form-group row">
-            <div class="col-sm-8">
-              <textarea
-                rows="5"
-                class="form-control"
-                id="comment"
-                name="comment"
-                //   onChange={this.handleChange}
-                placeholder="Your comment here"
-              // required value={this.state.comment}
-              />
-            </div>
-          </div>
-          <div className="form-group row">
-            <div class="col-sm-1">
-              <button type="submit" className="btn btn-sm btn-qacinema" onClick={this.addRecord}>
-                Submit
-                </button>
-            </div>
-          </div>
-        </form> */}
       </div>
     );
   }

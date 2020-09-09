@@ -11,14 +11,15 @@ export default class LocalAttractions extends React.Component {
       <div>
         <Container className="cntr_main_qacinema">
         <div class="container  backgroundColour marketing">
+          <h1>Local Attractions</h1>
           <hr class="featurette-divider" />
 
           <div class="row featurette">
             <div class="col-md-7">
-              <h5 class="featurette-heading">
+              <h4 class="featurette-heading">
                 The Quays...
                 <span class="text-muted">Restaurants</span>
-              </h5>
+              </h4>
              <p class="lead">There are loads of restaurants to choose from
               around The Quays and we've marked a few of our favourites on Google Maps.</p>
             </div>

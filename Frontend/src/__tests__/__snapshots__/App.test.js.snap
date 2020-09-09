@@ -1,0 +1,1382 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot test of AboutPage should match the snapshot every time it is rendered 1`] = `
+<div>
+  <div
+    className="cntr_main_qacinema container"
+  >
+    <div
+      className="cntr_insidemain_qacinema container"
+    >
+      <h1>
+        About Us
+      </h1>
+      <h3>
+        The Team:
+      </h3>
+      <table
+        className="table table-sm table-striped table-bordered table-hover"
+      >
+        <thead>
+          <tr>
+            <th>
+              Name
+            </th>
+            <th>
+              Position
+            </th>
+            <th>
+              Email Address
+            </th>
+            <th>
+              Github
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              Shiva King
+            </td>
+            <td>
+              Developer
+            </td>
+            <td>
+              <a
+                href="mailto:shiva.king@academytrainee.com"
+              >
+                 Email Shiva
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://github.com/shivalasvegas"
+              >
+                Shiva's Github
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Nilay Sanghrajka
+            </td>
+            <td>
+              Scrum Master/Developer
+            </td>
+            <td>
+              <a
+                href="mailto:nilay.sanghrajka@academytrainee.com"
+              >
+                 
+                Email Nilay
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://github.com/nilaysanghrajka"
+              >
+                Nilay's Github
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Morgan Walsh
+            </td>
+            <td>
+              Developer
+            </td>
+            <td>
+              <a
+                href="mailto:morgan.walsh@academytrainee.com"
+              >
+                 
+                Email Morgan
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://github.com/MrWalshyType2"
+              >
+                Morgan's Github
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Connor Young
+            </td>
+            <td>
+              Product Owner/Developer
+            </td>
+            <td>
+              <a
+                href="mailto:Connor.Young@academytrainee.com"
+              >
+                 
+                Email Connor
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://github.com/CYoung5560"
+              >
+                Connor's Github
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>
+        The Process
+      </h3>
+      <p>
+        We had implemented a Scrum process to create this site.Scrum is an agile way to manage a project, usually software development. Agile software development with Scrum is often perceived as a methodology; but rather than viewing Scrum as methodology, think of it as a framework for managing a process.
+      </p>
+      <h4>
+        Definitions:
+      </h4>
+      <h5>
+        Product backlog
+      </h5>
+      <ul>
+        <li>
+          Used to determine the work for the next sprint 
+        </li>
+        <li>
+          A prioritized list of everything needed or wanted for the entire product
+        </li>
+        <li>
+          Often written in the form of user stories
+        </li>
+        <li>
+          Have estimates associated with them 
+        </li>
+      </ul>
+      <h5>
+        Sprint Backlog
+      </h5>
+      <ul>
+        <li>
+          List of tasks that to be completed in a sprint
+        </li>
+        <li>
+          The tasks are created by breaking down the stories during the planning meeting
+        </li>
+        <li>
+          Have estimates (often in hours) associated with them 
+        </li>
+      </ul>
+      <h4>
+        Roles
+      </h4>
+      <h5>
+        Product Owner
+      </h5>
+      <ul>
+        <li>
+          Creates and prioritizes the product backlog
+        </li>
+        <li>
+          Understands the customer’s needs and the business value
+        </li>
+      </ul>
+      <h5>
+        Scrum Master
+      </h5>
+      <ul>
+        <li>
+          Organizes the process keeps track of the teams progress removes obstacles from the path of the team
+        </li>
+      </ul>
+      <h5>
+        Team
+      </h5>
+      <p>
+        (not just developers – everyone required to create the product) 
+      </p>
+      <ul>
+        <li>
+          Organizes itself to perform the work and deliver business value
+        </li>
+      </ul>
+      <h4>
+        Events
+      </h4>
+      <h5>
+        Sprint
+      </h5>
+      <ul>
+        <li>
+          Iteration typically of 1-4 weeks length
+        </li>
+        <li>
+          This is where the development work (code, test, review, …) occurs
+        </li>
+      </ul>
+      <h5>
+        Spring Planning Meeting
+      </h5>
+      <ul>
+        <li>
+          Select the stories the team believes it can commit to in a sprint
+        </li>
+        <li>
+          Break the stories down into tasks and provide estimates for those tasks
+        </li>
+      </ul>
+      <h5>
+        Daily Scrum/Standup
+      </h5>
+      <ul>
+        <li>
+          Team members share progress with other team members (not the manager)
+        </li>
+        <li>
+          Answer the three questions – “what did you do yesterday”, “what will you do today”, “do you have any roadblocks”
+        </li>
+        <li>
+          Anyone may attend, only team members (people with skin in the game) may speak
+        </li>
+        <li>
+          Scrum master uses the information from the standup to update burndown chart illustrating progress
+        </li>
+      </ul>
+      <h5>
+        Sprint Review
+      </h5>
+      <ul>
+        <li>
+          Product Owner plays the sprint’s work (without guidance) and provides feedback
+        </li>
+        <li>
+          Developers may also demo work
+        </li>
+        <li>
+          Team owns up to deficiencies with the product helping to build trust with the Product Owner
+        </li>
+      </ul>
+      <h5>
+        Sprint Retrospective
+      </h5>
+      <ul>
+        <li>
+          Team reviews what went well and what went poorly
+        </li>
+        <li>
+          Use retrospection techniques to find potential for improvement.
+        </li>
+        <li>
+          Pick one or two areas to focus for improvement
+        </li>
+      </ul>
+      <a
+        href="https://www.scrum.org"
+      >
+        Scrum.org 
+      </a>
+    </div>
+    <br />
+    <br />
+  </div>
+</div>
+`;
+
+exports[`Snapshot test of App should match the snapshot every time it is rendered 1`] = `
+<div
+  class="container"
+>
+  <div
+    className="App"
+  >
+    <header
+      className="App-header"
+    >
+      <nav
+        className="nv_qacinema navbar navbar-expand-lg navbar-light"
+      >
+        <a
+          className="navbar-brand"
+          href="#home"
+        >
+          <a
+            class="navbar-brand"
+            href="/"
+          >
+            <img
+              alt="QA logo 500px"
+              src="finalLogo_500px.png"
+              style={
+                Object {
+                  "height": "150px",
+                  "width": "150px",
+                }
+              }
+            />
+          </a>
+        </a>
+        <button
+          aria-controls="basic-navbar-nav"
+          aria-label="Toggle navigation"
+          className="navbar-toggler collapsed"
+          onClick={[Function]}
+          type="button"
+        >
+          <span
+            className="navbar-toggler-icon"
+          />
+        </button>
+        <div
+          aria-expanded={null}
+          className="navbar-collapse collapse"
+          id="basic-navbar-nav"
+        >
+          <div
+            className="navbar-nav"
+            onKeyDown={[Function]}
+          >
+            <a
+              className="nav-link"
+              data-rb-event-key="/"
+              href="/"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+            >
+              Home
+            </a>
+            <a
+              className="nav-link"
+              data-rb-event-key="/gallery"
+              href="/gallery"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+            >
+              Now Showing
+            </a>
+            <a
+              className="nav-link"
+              data-rb-event-key="/how"
+              href="/how"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+            >
+              How It Works
+            </a>
+            <a
+              className="nav-link"
+              data-rb-event-key="/tickets"
+              href="/tickets"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+            >
+              Tickets
+            </a>
+            <div
+              className="dropdown nav-item"
+              onKeyDown={[Function]}
+            >
+              <a
+                aria-expanded={false}
+                aria-haspopup={true}
+                className="dropdown-toggle nav-link"
+                data-rb-event-key={null}
+                href="#"
+                id="basic-nav-dropdown"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+              >
+                About
+              </a>
+            </div>
+          </div>
+          <form
+            className="form-inline"
+            onSubmit={[Function]}
+          >
+            <div>
+              <div
+                aria-hidden="true"
+                aria-labelledby="exampleModalLongTitle"
+                class="modal fade"
+                id="exampleModalLong"
+                role="dialog"
+                tabindex="-1"
+              >
+                <div
+                  class="modal-dialog"
+                  role="document"
+                >
+                  <div
+                    class="modal-content"
+                  >
+                    <form
+                      class="form-signin"
+                      onSubmit={[Function]}
+                    >
+                      <h1
+                        class="h3 mb-3 font-weight-normal"
+                      >
+                        Welcome! Please sign in
+                      </h1>
+                      <label
+                        class="sr-only"
+                        for="username"
+                      >
+                        Username
+                      </label>
+                      <input
+                        autofocus={true}
+                        class="form-control"
+                        id="customerEmail"
+                        name="username"
+                        onChange={[Function]}
+                        placeholder="Username"
+                        required={true}
+                        type="username"
+                      />
+                      <br />
+                      <label
+                        class="sr-only"
+                        for="password"
+                      >
+                        Password
+                      </label>
+                      <input
+                        class="form-control"
+                        id="customerPassword"
+                        name="userpwd"
+                        onChange={[Function]}
+                        placeholder="Password"
+                        required={true}
+                        type="password"
+                      />
+                      <br />
+                      <button
+                        class="btn btn-sm btn-qacinema"
+                        onClick={[Function]}
+                        type="submit"
+                      >
+                        <strong>
+                          Sign in
+                        </strong>
+                      </button>
+                      <div />
+                      <br />
+                      <br />
+                      <a
+                        className="btn btn-sm btn-qacinema"
+                        href="/signup"
+                        role="button"
+                      >
+                        <strong>
+                          Sign up today
+                        </strong>
+                      </a>
+                      <br />
+                      <br />
+                      <button
+                        class="btn btn-sm btn-qacinema"
+                        data-dismiss="modal"
+                        type="button"
+                      >
+                        Close
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <button
+                class="btn btn-sm btn-qacinema"
+                data-target="#exampleModalLong"
+                data-toggle="modal"
+                type="button"
+              >
+                <strong>
+                  Login
+                </strong>
+              </button>
+            </div>
+            <button
+              className="btn-qacinema btn btn-outline-success btn-sm"
+              disabled={false}
+              type="button"
+            >
+              <strong>
+                Logout
+              </strong>
+            </button>
+            <input
+              onChange={[Function]}
+              type="text"
+              value=""
+            />
+            <input
+              className="btn-qacinema"
+              type="submit"
+              value="Search"
+            />
+          </form>
+        </div>
+      </nav>
+      <div>
+        <div
+          className="cntr_main_qacinema container"
+        >
+          <br />
+          <div>
+            <div
+              className="carousel slide"
+              data-ride="carousel"
+              id="myCarousel"
+            >
+              <ol
+                className="carousel-indicators"
+              >
+                <li
+                  class="active"
+                  data-slide-to="0"
+                  data-target="#myCarousel"
+                />
+                <li
+                  data-slide-to="1"
+                  data-target="#myCarousel"
+                />
+                <li
+                  data-slide-to="2"
+                  data-target="#myCarousel"
+                />
+              </ol>
+              <div
+                className="carousel-inner"
+              >
+                <div
+                  className="carousel-item active"
+                >
+                  <div
+                    className="img-container"
+                  >
+                    <img
+                      alt="First slide"
+                      className="img-fluid"
+                      src="moviereel_1200px.png"
+                    />
+                  </div>
+                  <div
+                    className="container"
+                  >
+                    <div
+                      className="carousel-caption text-left"
+                    >
+                      <h1>
+                        Book now for an amazing movie experience!
+                      </h1>
+                      <p>
+                        Sign up to our online booking system to book tickets online.
+                      </p>
+                      <p>
+                        <a
+                          className="btn btn-sm btn-qacinema"
+                          href="/signup"
+                          role="button"
+                        >
+                          <strong>
+                            Sign up today
+                          </strong>
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="carousel-item"
+                >
+                  <div
+                    className="img-container"
+                  >
+                    <img
+                      alt="First slide"
+                      className="img-fluid"
+                      src="admission_1200px.png"
+                    />
+                  </div>
+                  <div
+                    className="container"
+                  >
+                    <div
+                      className="carousel-caption"
+                    >
+                      <h1>
+                        The Drive in low down
+                      </h1>
+                      <p>
+                        Find out how it all works and what to expect when you arrive.
+                      </p>
+                      <p>
+                        <a
+                          className="btn btn-sm btn-qacinema"
+                          href="/how"
+                          role="button"
+                        >
+                          <strong>
+                            Learn more
+                          </strong>
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="carousel-item"
+                >
+                  <div
+                    className="img-container"
+                  >
+                    <img
+                      alt="First slide"
+                      className="img-fluid"
+                      src="filmstrip_1200px.jpg"
+                    />
+                  </div>
+                  <div
+                    className="container"
+                  >
+                    <div
+                      className="carousel-caption text-right"
+                    >
+                      <h1>
+                        Great movies at great prices!
+                      </h1>
+                      <p>
+                        Have a look at our current films - theres a great choice from retro favorites to late night horror flicks.
+                      </p>
+                      <p>
+                        <a
+                          className="btn btn-sm btn-qacinema"
+                          href="/gallery"
+                          role="button"
+                        >
+                          <strong>
+                            Now Showing
+                          </strong>
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a
+                className="carousel-control-prev"
+                data-slide="prev"
+                href="#myCarousel"
+                role="button"
+              >
+                <span
+                  aria-hidden="true"
+                  className="carousel-control-prev-icon"
+                />
+                <span
+                  className="sr-only"
+                >
+                  Previous
+                </span>
+              </a>
+              <a
+                className="carousel-control-next"
+                data-slide="next"
+                href="#myCarousel"
+                role="button"
+              >
+                <span
+                  aria-hidden="true"
+                  className="carousel-control-next-icon"
+                />
+                <span
+                  className="sr-only"
+                >
+                  Next
+                </span>
+              </a>
+            </div>
+          </div>
+          <br />
+        </div>
+      </div>
+    </header>
+  </div>
+  <div
+    className="App"
+  >
+    <footer
+      class="container inner2Colour py-5"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="col-12 col-md"
+        >
+          <svg
+            class="d-block mb-2"
+            fill="none"
+            focusable="false"
+            height="24"
+            role="img"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>
+              Product
+            </title>
+            <circle
+              cx="12"
+              cy="12"
+              r="10"
+            />
+            <path
+              d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"
+            />
+          </svg>
+          <small
+            class="d-block mb-3 text-muted"
+          >
+            © Callisto 2020
+          </small>
+        </div>
+        <div
+          class="col-6 col-md"
+        >
+          <h5>
+            Site Specifics
+          </h5>
+          <ul
+            class="list-unstyled text-small"
+          >
+            <li>
+              <a
+                class="text-muted"
+                href="/findus"
+                id="howToFindUs"
+              >
+                How to find us
+              </a>
+            </li>
+            <li>
+              <a
+                class="text-muted"
+                href="/localattractions"
+                id="localAttractions"
+              >
+                Places nearby
+              </a>
+            </li>
+            <li>
+              <a
+                class="text-muted"
+                href="/contact"
+                id="contactUs"
+              >
+                Contact us
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div
+          class="col-6 col-md"
+        >
+          <h5>
+            Site Management
+          </h5>
+          <ul
+            class="list-unstyled text-small"
+          >
+            <li>
+              <a
+                class="text-muted"
+                href="/about"
+                id="aboutUs"
+              >
+                About us
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`Snapshot test of Carousel should match the snapshot every time it is rendered 1`] = `
+<div>
+  <div
+    className="carousel slide"
+    data-ride="carousel"
+    id="myCarousel"
+  >
+    <ol
+      className="carousel-indicators"
+    >
+      <li
+        class="active"
+        data-slide-to="0"
+        data-target="#myCarousel"
+      />
+      <li
+        data-slide-to="1"
+        data-target="#myCarousel"
+      />
+      <li
+        data-slide-to="2"
+        data-target="#myCarousel"
+      />
+    </ol>
+    <div
+      className="carousel-inner"
+    >
+      <div
+        className="carousel-item active"
+      >
+        <div
+          className="img-container"
+        >
+          <img
+            alt="First slide"
+            className="img-fluid"
+            src="moviereel_1200px.png"
+          />
+        </div>
+        <div
+          className="container"
+        >
+          <div
+            className="carousel-caption text-left"
+          >
+            <h1>
+              Book now for an amazing movie experience!
+            </h1>
+            <p>
+              Sign up to our online booking system to book tickets online.
+            </p>
+            <p>
+              <a
+                className="btn btn-sm btn-qacinema"
+                href="/signup"
+                role="button"
+              >
+                <strong>
+                  Sign up today
+                </strong>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        className="carousel-item"
+      >
+        <div
+          className="img-container"
+        >
+          <img
+            alt="First slide"
+            className="img-fluid"
+            src="admission_1200px.png"
+          />
+        </div>
+        <div
+          className="container"
+        >
+          <div
+            className="carousel-caption"
+          >
+            <h1>
+              The Drive in low down
+            </h1>
+            <p>
+              Find out how it all works and what to expect when you arrive.
+            </p>
+            <p>
+              <a
+                className="btn btn-sm btn-qacinema"
+                href="/how"
+                role="button"
+              >
+                <strong>
+                  Learn more
+                </strong>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        className="carousel-item"
+      >
+        <div
+          className="img-container"
+        >
+          <img
+            alt="First slide"
+            className="img-fluid"
+            src="filmstrip_1200px.jpg"
+          />
+        </div>
+        <div
+          className="container"
+        >
+          <div
+            className="carousel-caption text-right"
+          >
+            <h1>
+              Great movies at great prices!
+            </h1>
+            <p>
+              Have a look at our current films - theres a great choice from retro favorites to late night horror flicks.
+            </p>
+            <p>
+              <a
+                className="btn btn-sm btn-qacinema"
+                href="/gallery"
+                role="button"
+              >
+                <strong>
+                  Now Showing
+                </strong>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a
+      className="carousel-control-prev"
+      data-slide="prev"
+      href="#myCarousel"
+      role="button"
+    >
+      <span
+        aria-hidden="true"
+        className="carousel-control-prev-icon"
+      />
+      <span
+        className="sr-only"
+      >
+        Previous
+      </span>
+    </a>
+    <a
+      className="carousel-control-next"
+      data-slide="next"
+      href="#myCarousel"
+      role="button"
+    >
+      <span
+        aria-hidden="true"
+        className="carousel-control-next-icon"
+      />
+      <span
+        className="sr-only"
+      >
+        Next
+      </span>
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Snapshot test of FilmRatingsPage should match the snapshot every time it is rendered 1`] = `
+<div>
+  <div
+    className="cntr_main_qacinema container"
+  >
+    <br />
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      />
+      <div
+        className="col-9"
+      >
+        <a
+          href="https://www.bbfc.co.uk/"
+          target="_blank"
+        >
+          <img
+            alt="BBFC header"
+            class="img-responsive"
+            height="100%"
+            src="ratingsHeader.png"
+            width="100%"
+          />
+        </a>
+      </div>
+      <div
+        className="col"
+      />
+    </div>
+    <br />
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      />
+      <div
+        className="col-9"
+      >
+        <img
+          alt="BBFC main information"
+          class="img-responsive"
+          height="100%"
+          src="ratingsPortrait_1000px.png"
+          width="100%"
+        />
+      </div>
+      <div
+        className="col"
+      />
+    </div>
+    <br />
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      />
+      <div
+        className="col-9"
+      >
+        <img
+          alt="BBFC main information"
+          class="img-responsive"
+          height="100%"
+          src="ratingsFooter.jpg"
+          width="100%"
+        />
+      </div>
+      <div
+        className="col"
+      />
+    </div>
+    <br />
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      />
+      <div
+        className="col-9"
+      >
+        <h6>
+          For more information please have a look at the 
+          <a
+            href="https://www.bbfc.co.uk/"
+            target="_blank"
+          >
+             BBFC 
+          </a>
+          website.
+        </h6>
+      </div>
+      <div
+        className="col"
+      />
+    </div>
+    <br />
+  </div>
+</div>
+`;
+
+exports[`Snapshot test of Footer should match the snapshot every time it is rendered 1`] = `
+<footer
+  class="container inner2Colour py-5"
+>
+  <div
+    class="row"
+  >
+    <div
+      class="col-12 col-md"
+    >
+      <svg
+        class="d-block mb-2"
+        fill="none"
+        focusable="false"
+        height="24"
+        role="img"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <title>
+          Product
+        </title>
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <path
+          d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"
+        />
+      </svg>
+      <small
+        class="d-block mb-3 text-muted"
+      >
+        © Callisto 2020
+      </small>
+    </div>
+    <div
+      class="col-6 col-md"
+    >
+      <h5>
+        Site Specifics
+      </h5>
+      <ul
+        class="list-unstyled text-small"
+      >
+        <li>
+          <a
+            class="text-muted"
+            href="/findus"
+            id="howToFindUs"
+          >
+            How to find us
+          </a>
+        </li>
+        <li>
+          <a
+            class="text-muted"
+            href="/localattractions"
+            id="localAttractions"
+          >
+            Places nearby
+          </a>
+        </li>
+        <li>
+          <a
+            class="text-muted"
+            href="/contact"
+            id="contactUs"
+          >
+            Contact us
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div
+      class="col-6 col-md"
+    >
+      <h5>
+        Site Management
+      </h5>
+      <ul
+        class="list-unstyled text-small"
+      >
+        <li>
+          <a
+            class="text-muted"
+            href="/about"
+            id="aboutUs"
+          >
+            About us
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+`;
+
+exports[`Snapshot test of HowItWorksPage should match the snapshot every time it is rendered 1`] = `
+<div>
+  <div
+    className="cntr_main_qacinema container"
+  >
+    <section
+      class="jumbotron text-center border border-5 jmbtrn_qacinema"
+    >
+      <div
+        class="container"
+      >
+        <h1>
+          Booking your drive in experience
+        </h1>
+      </div>
+    </section>
+    <div
+      class="container  backgroundColour marketing"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="col-lg-4"
+        >
+          <img
+            alt="Car 1"
+            class="img-responsive"
+            height="200px"
+            src="car1_500px.jpg"
+            width="200px"
+          />
+          <br />
+          <br />
+          <h2>
+            Choose a movie
+          </h2>
+          <p>
+            Choose a movie for one of our two screens. We love movies and we know you do to! We change our movies every two weeks, so there's plenty of time to book a ticket!
+          </p>
+          <p>
+            <a
+              class="btn btn-qacinema"
+              href="./gallery"
+              role="button"
+            >
+              View movies »
+            </a>
+          </p>
+        </div>
+        <div
+          class="col-lg-4"
+        >
+          <img
+            alt="Car 2"
+            class="img-responsive"
+            height="200px"
+            src="car2_500px.jpg"
+            width="200px"
+          />
+          <br />
+          <br />
+          <h2>
+            Buy a ticket
+          </h2>
+          <p>
+            Our ticket ordering system is simple to use. Just choose the date, and relevant time slot and with our patented MW authenticated system, it's as easy as 1, 2, 3!
+          </p>
+          <p>
+            <a
+              class="btn btn-qacinema"
+              href="./tickets"
+              role="button"
+            >
+              Book tickets »
+            </a>
+          </p>
+        </div>
+        <div
+          class="col-lg-4"
+        >
+          <img
+            alt="Drive in car 3"
+            class="img-responsive"
+            height="200px"
+            src="car3_500px.jpg"
+            width="200px"
+          />
+          <br />
+          <br />
+          <h2>
+            VIP your email
+          </h2>
+          <p>
+            Once you've ordered your ticket and your purchase has been authorised, you will be sent an email - keep it safe, it makes things easier when you get here!
+          </p>
+        </div>
+      </div>
+      <hr
+        class="featurette-divider"
+      />
+      <section
+        class="jumbotron text-center border border-5 jmbtrn_qacinema"
+      >
+        <div
+          class="container"
+        >
+          <h1>
+            When you get here ... 
+          </h1>
+        </div>
+      </section>
+      <hr
+        class="featurette-divider"
+      />
+      <div
+        class="row"
+      >
+        <div
+          class="col-lg-4"
+        >
+          <img
+            alt="Poster 1"
+            class="img-responsive"
+            height="200px"
+            src="poster1_500px.png"
+            width="200px"
+          />
+          <br />
+          <br />
+          <h2>
+            At the cinema
+          </h2>
+          <p>
+            You will be greeted by one of our friendly movie hosts who will guide you to your parking spot, where they will give you a menu and if you need it, a Qa Drive In radio.
+          </p>
+        </div>
+        <div
+          class="col-lg-4"
+        >
+          <img
+            alt="Poster 2"
+            class="img-responsive"
+            height="200px"
+            src="poster2_455px.jpg"
+            width="200px"
+          />
+          <br />
+          <br />
+          <h2>
+            Order some food
+          </h2>
+          <p>
+            Once you're ready to order, turn on your sidelights and one of our friendly team will take your order and then it's just a short wait for your food and drinks to arrive.
+          </p>
+        </div>
+        <div
+          class="col-lg-4"
+        >
+          <img
+            alt="Poster 3"
+            class="img-responsive"
+            height="200px"
+            src="poster3_500px.jpg"
+            width="200px"
+          />
+          <br />
+          <br />
+          <h2>
+            Sit back and enjoy
+          </h2>
+          <p>
+            Now you're all set to enjoy our amazing movie experience, so sit back, relax and enjoy!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
