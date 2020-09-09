@@ -4,6 +4,9 @@ const passport = require('passport');
 
 const UserController = require('../controllers/user.controller');
 
+const ROLES = require('../utils/roles').ROLES;
+const checkIsInRole = require('../utils/auth').checkIsInRole;
+
 const router = express.Router();
 
 // Router middleware, activates on every request.
