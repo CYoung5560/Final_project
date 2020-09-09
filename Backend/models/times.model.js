@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 const timesSchema = new mongoose.Schema({
 
-    year: {type: int, required: true},
-    month: {type: int, required: true},
-    day: {type: int, required: true},
-    time: {type: int, required: true},
+    year: {type: Number, required: true},
+    month: {type: Number, required: true},
+    day: {type: Number, required: true},
+    time: {type: Number, required: true},
 
 })
 
