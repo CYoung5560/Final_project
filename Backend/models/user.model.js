@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
   role: String
 });
 
-userSchema.methods.info =() => {  
+userSchema.methods.info = () => {  
   console.log(`User -> ${this.username}`);
   console.log(`Role -> ${this.role}`);
 }

@@ -19,3 +19,21 @@ exports.signup = async (username, password) => {
         throw Error(`user.service.js -> this error; ${error}`);
     }
 };
+
+exports.getUserById = async (id) => {
+    try {
+        const user = await User.findById(id);
+        return user;
+    } catch(error) {
+        throw Error('User.service.js -> Error finding user by id');
+    }
+};
+
+exports.delete = async (id) => {
+    try {
+        const user = await User.findByIdAndDelete(id); 
+    } catch(error) {
+        console.log(error);
+        throw Error('User.service.js -> Error deleting user');
+    }
+};

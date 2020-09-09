@@ -2,624 +2,1255 @@ import React from "react";
 import "./css/App.css";
 //import axios from 'axios';
 
-import { getToken } from './utils/token';
+import { getToken } from "./utils/token";
 
 export default class AdminPage extends React.Component {
+  constructor(props) {
+    super(props);
+    //g denotes get variables
+    //c denotes create variables
+    //d denotes delete variables
+    //u denotes update variables
+    this.state = {
+      gdTicketId: "",
+      cuTicketId: "",
+      cuTicketMovie: "",
+      cuTicketConcession: "Adult",
+      cuTransId: "",
+      gdMovieId: "",
+      gMovieTitle: "",
+      cuMovieImgID: "",
+      cuMovieId: "",
+      cuMovieTitle: "",
+      cuMovieDescription: "",
+      cuMovieTimeID: "",
+      cuMovieYear: "",
+      cuMovieActors: "",
+      cuMovieDirectors: "",
+      cuMovieImdb: "",
+      cuConcessionID: "",
+      cuConcessionName: "",
+      cuConcessionPrice: "",
+      gdConcessionID: "",
+      cuDiscussionID: "",
+      gdDiscussionID: "",
+      cuDiscussionMovieID: "",
+      //discussion posts left out to create an empty 'thread'
+      cuImageID: "",
+      cuImage: "",
+      cuImageName: "",
+      gdImageID: "",
+      gdTimeID: "",
+      cuTimeID: "",
+      cuTimeYear: "",
+      cuTimeMonth: "",
+      cuTimeDay: "",
+      cuTimeTime: "", //24hour format
+      gdUserID: "",
+    };
+  }
 
-    constructor(props) {
-        super(props);
-        //g denotes get variables
-        //c denotes create variables
-        //d denotes delete variables
-        //u denotes update variables
-        this.state = {
-            gdTicketId: "",
-            cuTicketId: "",
-            cuTicketMovie: "",
-            cuTicketConcession: "Adult",
-            cuTransId: "",
-            gdMovieId: "",
-            gMovieTitle: "",
-            cuMovieId: "",
-            cuMovieTitle: "",
-            cuMovieDescription: "",
-            cuMovieYear: "",
-            cuMovieActors: "",
-            cuMovieDirectors: "",
-            cuMovieImdb: "",
-            cuConcessionID: "",
-            cuConcessionName: "",
-            cuConcessionPrice: "",
-            gdConcessionID: "",
-            cuDiscussionID: "",
-            gdDiscussionID: "",
-            cuDiscussionMovieID: "", 
-            //discussion posts left out to create an empty 'thread' 
-            gdImageID: "", 
-        };
-    }
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
 
-    handleChange = (event) => {
-        this.setState({
-            [event.target.name]: event.target.value
-        });
+  // These fetch statements can be reduced to one with a nullable body parameter and return a promise
+  // which can be chained with .then() and .catch(), i.e. fetchMyData(url, method, body)
+
+  //movie CRUD functions
+  getMovieById = async (event) => {
+    event.preventDefault();
+
+    const token = getToken();
+    const movieId = this.state.gdMovieId;
+
+    fetch(`http://localhost:8000/movie/${movieId}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
+
+  getMovieByTitle = async (event) => {
+    event.preventDefault();
+
+    const token = getToken();
+    const movieTitle = this.state.gMovieTitle;
+
+    fetch(`http://localhost:8000/movie/title/${movieTitle}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
+
+  postMovie = async (event) => {
+    event.preventDefault();
+
+    const token = getToken();
+    const movie = {
+      img: this.state.cuMovieImgID,
+      title: this.state.cuMovieTitle,
+      year: this.state.cuMovieYear,
+      description: this.state.cuMovieDescription,
+      time: this.state.cuMovieTimeID,
+      actors: this.state.cuMovieActors,
+      director: this.state.cuMovieDirectors,
+      imdb: this.state.cuMovieImdb,
     };
 
-    // These fetch statements can be reduced to one with a nullable body parameter and return a promise
-    // which can be chained with .then() and .catch(), i.e. fetchMyData(url, method, body)
+    fetch(`http://localhost:8000/movie`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(movie),
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
 
-    //movie CRUD functions
-    getMovieById = async (event) => {
-        event.preventDefault();
+  updateMovie = async (event) => {
+    event.preventDefault();
 
-        const token = getToken();
-        const movieId = this.state.gdMovieId;
+    const token = getToken();
+    const movieId = this.state.cuMovieId;
+    const movie = {
+      img: this.state.cuMovieImgID,
+      title: this.state.cuMovieTitle,
+      year: this.state.cuMovieYear,
+      description: this.state.cuMovieDescription,
+      time: this.state.cuMovieTimeID,
+      actors: this.state.cuMovieActors,
+      director: this.state.cuMovieDirectors,
+      imdb: this.state.cuMovieImdb,
+    };
 
-        fetch(`http://localhost:8000/movie/${movieId}`, {
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            }
-        })
-            .then((response) => response.json())
-            .then((result) => console.log(result))
-            .catch((error) => console.log(error));
-    }
+    fetch(`http://localhost:8000/movie/${movieId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(movie),
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
 
-    getMovieByTitle = async (event) => {
-        event.preventDefault();
+  deleteMovieById = async (event) => {
+    event.preventDefault();
 
-        const token = getToken();
-        const movieTitle = this.state.gMovieTitle;
+    const token = getToken();
+    const movieId = this.state.gdMovieId;
 
-        fetch(`http://localhost:8000/movie/title/${movieTitle}`, {
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            }
-        })
-            .then((response) => response.json())
-            .then((result) => console.log(result))
-            .catch((error) => console.log(error));
-    }
+    fetch(`http://localhost:8000/movie/${movieId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
 
-    postMovie = async (event) => {
-        event.preventDefault();
+  // post, put, get, delete discussion CRUD functions
 
-        const token = getToken();
-        const movie = {
-            title: this.state.cuMovieTitle,
-            year: this.state.cuMovieYear,
-            description: this.state.cuMovieDescription,
-            actors: this.state.cuMovieActors,
-            director: this.state.cuMovieDirectors,
-            imdb: this.state.cuMovieImdb
-        };
+  getDiscussionById = async (event) => {
+    event.preventDefault();
 
-        fetch(`http://localhost:8000/movie`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify(movie)
-        })
-            .then((response) => response.json())
-            .then((result) => console.log(result))
-            .catch((error) => console.log(error));
-    }
+    const token = getToken();
+    const discussionID = this.state.gdDiscussionID;
 
-    updateMovie = async (event) => {
-        event.preventDefault();
+    fetch(`http://localhost:8000/discussion/${discussionID}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
 
-        const token = getToken();
-        const movieId = this.state.cuMovieId;
-        const movie = {
-            title: this.state.cuMovieTitle,
-            year: this.state.cuMovieYear,
-            description: this.state.cuMovieDescription,
-            actors: this.state.cuMovieActors,
-            director: this.state.cuMovieDirectors,
-            imdb: this.state.cuMovieImdb
-        };
+  postDiscussion = async (event) => {
+    event.preventDefault();
 
-        fetch(`http://localhost:8000/movie/${movieId}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify(movie)
-        })
-            .then((response) => response.json())
-            .then((result) => console.log(result))
-            .catch((error) => console.log(error));
-    }
+    const token = getToken();
+    const discussion = {
+      movieID: this.state.cuDiscussionMovieID,
+    };
 
-    deleteMovieById = async (event) => {
-        event.preventDefault();
+    fetch(`http://localhost:8000/Discussion`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(discussion),
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
 
-        const token = getToken();
-        const movieId = this.state.gdMovieId;
+  putDiscussion = async (event) => {
+    event.preventDefault();
 
-        fetch(`http://localhost:8000/movie/${movieId}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            }
-        })
-            .then((response) => response.json())
-            .then((result) => console.log(result))
-            .catch((error) => console.log(error));
-    }
+    const token = getToken();
+    const discussionID = this.state.cuDiscussionID;
+    const discussion = {
+      movieID: this.state.cuDiscussionMovieID,
+      //post id
+    };
 
-    // post, put, get, delete discussion CRUD functions
+    fetch(`http://localhost:8000/discussion/${discussionID}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(discussion),
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
 
-    getDiscussionById = async (event) => {
-        event.preventDefault();
+  deleteDiscussionById = async (event) => {
+    event.preventDefault();
 
-        const token = getToken();
-        const discussionID = this.state.gdDiscussionID;
+    const token = getToken();
+    const discussionID = this.state.gddiscussionID;
 
-        fetch(`http://localhost:8000/discussion/${discussionID}`, {
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            }
-        })
-            .then((response) => response.json())
-            .then((result) => console.log(result))
-            .catch((error) => console.log(error));
-    }
+    fetch(`http://localhost:8000/discussion/${discussionID}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
 
-    postDiscussion = async (event) => {
-        event.preventDefault();
+  // image crud functions
+  // <img src="data:image/png;base64, <base64 string here>">
+  getImageById = async (event) => {
+    event.preventDefault();
 
-        const token = getToken();
-        const discussion = {
-            movieID: this.state.cuDiscussionMovieID,
-        }
+    const token = getToken();
+    const imageID = this.state.gdImageID;
 
-        fetch(`http://localhost:8000/Discussion`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify(discussion)
-        })
-            .then((response) => response.json())
-            .then((result) => console.log(result))
-            .catch((error) => console.log(error));
-    }
+    fetch(`http://localhost:8000/image/${imageID}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
 
-    putDiscussion = async (event) => {
-        event.preventDefault();
-    
-        const token = getToken();
-        const discussionID = this.state.cuDiscussionID
-        const discussion = {
-            movieID: this.state.cuDiscussionMovieID,
-            //post id
-        }
+  postImage = async (event) => {
+    event.preventDefault();
 
-        fetch(`http://localhost:8000/discussion/${discussionID}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify(discussion)
-        })
-            .then((response) => response.json())
-            .then((result) => console.log(result))
-            .catch((error) => console.log(error));
-    }
+    const token = getToken();
+    const image = {
+      image: this.state.cuImage, //needs to be 64 string
+      imageName: this.state.cuImageName,
+    };
 
-    deleteDiscussionById = async (event) => {
-        event.preventDefault();
+    fetch(`http://localhost:8000/image`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(image),
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
 
-        const token = getToken();
-        const discussionID = this.state.gddiscussionID;
+  putImage = async (event) => {
+    event.preventDefault();
 
-        fetch(`http://localhost:8000/discussion/${discussionID}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            }
-        })
-            .then((response) => response.json())
-            .then((result) => console.log(result))
-            .catch((error) => console.log(error));
-    }
+    const token = getToken();
+    const imageID = this.state.cuImageID;
+    const image = {
+      image: this.state.cuImage, //needs to be 64string
+      imageName: this.state.cuImageName,
+    };
 
-    // image crud functions 
-    // <img src="data:image/png;base64, <base64 string here>">
-    getImageById = async (event) => {
-        event.preventDefault();
+    fetch(`http://localhost:8000/image/${imageID}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(image),
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
 
-        const token = getToken();
-        const imageID = this.state.gdImageID;
+  deleteImageById = async (event) => {
+    event.preventDefault();
 
-        fetch(`http://localhost:8000/image/${imageID}`, {
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            }
-        })
-            .then((response) => response.json())
-            .then((result) => console.log(result))
-            .catch((error) => console.log(error));
-    }   
-    
-    deleteImageById = async (event) => {
-        event.preventDefault();
+    const token = getToken();
+    const imageID = this.state.gdImageID;
 
-        const token = getToken();
-        const imageID = this.state.gdImageID;
+    fetch(`http://localhost:8000/image/${imageID}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
 
-        fetch(`http://localhost:8000/image/${imageID}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            }
-        })
-            .then((response) => response.json())
-            .then((result) => console.log(result))
-            .catch((error) => console.log(error));
-    }
+  // concession crud functions
 
-    // concession crud functions
+  getConcessionById = async (event) => {
+    event.preventDefault();
 
-    getConcessionById = async (event) => {
-        event.preventDefault();
+    const token = getToken();
+    const concessionID = this.state.gdConcessionID;
 
-        const token = getToken();
-        const concessionID = this.state.gdConcessionID;
+    fetch(`http://localhost:8000/concession/${concessionID}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
 
-        fetch(`http://localhost:8000/concession/${concessionID}`, {
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            }
-        })
-            .then((response) => response.json())
-            .then((result) => console.log(result))
-            .catch((error) => console.log(error));
-    }
+  postConcession = async (event) => {
+    event.preventDefault();
 
-    postConcession = async (event) => {
-        event.preventDefault();
+    const token = getToken();
+    const concession = {
+      concession: this.state.cuConcessionName,
+      price: this.state.cuConcessionPrice,
+    };
 
-        const token = getToken();
-        const concession = {
-            concession: this.state.cuConcessionName,
-            price: this.state.cuConcessionPrice
-        }
+    fetch(`http://localhost:8000/concession`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(concession),
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
 
-        fetch(`http://localhost:8000/concession`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify(concession)
-        })
-            .then((response) => response.json())
-            .then((result) => console.log(result))
-            .catch((error) => console.log(error));
-    }
+  putConcession = async (event) => {
+    event.preventDefault();
 
-    putConcession = async (event) => {
-        event.preventDefault();
-    
-        const token = getToken();
-        const concessionID = this.state.cuConcessionID
-        const concession = {
-            concession: this.state.cuConcessionName,
-            price: this.state.cuConcessionPrice
-        }
+    const token = getToken();
+    const concessionID = this.state.cuConcessionID;
+    const concession = {
+      concession: this.state.cuConcessionName,
+      price: this.state.cuConcessionPrice,
+    };
 
-        fetch(`http://localhost:8000/concession/${concessionID}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify(concession)
-        })
-            .then((response) => response.json())
-            .then((result) => console.log(result))
-            .catch((error) => console.log(error));
-    }
+    fetch(`http://localhost:8000/concession/${concessionID}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(concession),
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
 
-    deleteConcessionById = async (event) => {
-        event.preventDefault();
+  deleteConcessionById = async (event) => {
+    event.preventDefault();
 
-        const token = getToken();
-        const concessionID = this.state.gdConcessionID;
+    const token = getToken();
+    const concessionID = this.state.gdConcessionID;
 
-        fetch(`http://localhost:8000/concession/${concessionID}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            }
-        })
-            .then((response) => response.json())
-            .then((result) => console.log(result))
-            .catch((error) => console.log(error));
-    }
+    fetch(`http://localhost:8000/concession/${concessionID}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
 
-    // ticket CRUD functions
+  // ticket CRUD functions
 
-    getTicketById = async (event) => {
-        event.preventDefault();
+  getTicketById = async (event) => {
+    event.preventDefault();
 
-        const token = getToken();
-        const ticketId = this.state.gdTicketId;
+    const token = getToken();
+    const ticketId = this.state.gdTicketId;
 
-        fetch(`http://localhost:8000/ticket`, {
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify({
-                id: ticketId
-            })
-        })
-            .then((response) => response.json())
-            .then((result) => console.log(result))
-            .catch((error) => console.log(error));
-    }
+    fetch(`http://localhost:8000/ticket`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        id: ticketId,
+      }),
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
 
-    postTicket = async (event) => {
-        event.preventDefault();
+  postTicket = async (event) => {
+    event.preventDefault();
 
-        const token = getToken();
-        const ticket = {
-            movieTitle: this.state.cuTicketMovie,
-            concession: this.state.cuTicketConcession,
-            transId: this.state.cuTransId
-        };
+    const token = getToken();
+    const ticket = {
+      movieTitle: this.state.cuTicketMovie,
+      concession: this.state.cuTicketConcession,
+      transId: this.state.cuTransId,
+    };
 
-        fetch(`http://localhost:8000/ticket`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify(ticket)
-        })
-            .then((response) => response.json())
-            .then((result) => console.log(result))
-            .catch((error) => console.log(error));
-    }
+    fetch(`http://localhost:8000/ticket`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(ticket),
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
 
-    updateTicket = async (event) => {
-        event.preventDefault();
+  updateTicket = async (event) => {
+    event.preventDefault();
 
-        const token = getToken();
-        const ticket = {
-            id: this.state.cuTicketId,
-            movieTitle: this.state.cuTicketMovie,
-            concession: this.state.cuTicketConcession,
-            transId: this.state.cuTransId
-        };
+    const token = getToken();
+    const ticket = {
+      id: this.state.cuTicketId,
+      movieTitle: this.state.cuTicketMovie,
+      concession: this.state.cuTicketConcession,
+      transId: this.state.cuTransId,
+    };
 
-        fetch(`http://localhost:8000/ticket`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify(ticket)
-        })
-            .then((response) => response.json())
-            .then((result) => console.log(result))
-            .catch((error) => console.log(error));
-    }
+    fetch(`http://localhost:8000/ticket`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(ticket),
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
 
-    deleteTicketById = async (event) => {
-        event.preventDefault();
+  deleteTicketById = async (event) => {
+    event.preventDefault();
 
-        const token = getToken();
-        const ticketId = this.state.gdTicketId;
+    const token = getToken();
+    const ticketId = this.state.gdTicketId;
 
-        fetch(`http://localhost:8000/ticket`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify({
-                id: ticketId
-            })
-        })
-            .then((response) => response.json())
-            .then((result) => console.log(result))
-            .catch((error) => console.log(error));
-    }
+    fetch(`http://localhost:8000/ticket`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        id: ticketId,
+      }),
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
 
-    render() {
-        return (
-            <div className="container">
-                <h1 className="mb-5 mt-3">Admin Console</h1>
-                <div className="row my-5 p-3 bg-light">
-                    {/* Ticket routes */}
-                    <h2 className="col-12">GET/DELETE Ticket</h2>
-                    <form className="col-12">
-                        <div className="form-group">
-                            <label for="ticketId">ID</label>
-                            <input type="text" className="form-control" id="ticketId" name="gdTicketId" onChange={this.handleChange} />
-                        </div>
-                        <button type="submit" className="btn btn-primary w-100" onClick={this.getTicketById}>GET</button>
-                        <button type="submit" className="btn btn-danger w-100" onClick={this.deleteTicketById}>DELETE</button>
-                    </form>
+// time crud functions
+getTimeById = async (event) => {
+    event.preventDefault();
 
-                    <h2 className="col-12 mt-5">CREATE/UPDATE Ticket</h2>
-                    <form className="col-12">
-                        <div className="form-group">
-                            <label for="cuTicketId">ID</label>
-                            <input type="text" className="form-control" id="cuTicketId" name="cuTicketId" onChange={this.handleChange} />
-                        </div>
-                        <div className="form-group">
-                            <label for="movieTitleTicket">Movie Title</label>
-                            <input type="text" className="form-control" id="movieTitleTicket" name="cuTicketMovie" onChange={this.handleChange} />
-                        </div>
-                        <div className="form-group">
-                            <label className='w-100'>
-                                Concession
-                                <select className='custom-select d-block w-100 form-control' id='ticketConcession' name="cuTicketConcession" onChange={this.handleChange}>
-                                    <option value='Child'>Child</option>
-                                    <option value='Adult'>Adult</option>
-                                    <option value='Senior'>Senior</option>
-                                    <option value='Student'>Student</option>
-                                </select>
-                            </label>
-                        </div>
-                        <div className="form-group">
-                            <label for="transId">Transaction ID</label>
-                            <input type="text" className="form-control" id="transId" name="cuTransId" onChange={this.handleChange} />
-                        </div>
-                        <button type="submit" className="btn btn-primary w-100" onClick={this.postTicket}>CREATE</button>
-                        <button type="submit" className="btn btn-warning w-100" onClick={this.updateTicket}>UPDATE</button>
-                    </form>
-                </div>
+    const token = getToken();
+    const timeID = this.state.gdTimeID;
 
-                {/* Movie routes
+    fetch(`http://localhost:8000/time/${timeID}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
+
+  postTime = async (event) => {
+    event.preventDefault();
+
+    const token = getToken();
+    const time = {
+        year: this.state.cuTimeYear,
+        month: this.state.cuTimeMonth,
+        day: this.state.cuTimeDay,
+        time: this.state.cuTimeTime,
+      };
+
+    fetch(`http://localhost:8000/time`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(time),
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
+
+  putTime = async (event) => {
+    event.preventDefault();
+
+    const token = getToken();
+    const timeID = this.state.cuTimeID;
+    const time = {
+      year: this.state.cuTimeYear,
+      month: this.state.cuTimeMonth,
+      day: this.state.cuTimeDay,
+      time: this.state.cuTimeTime,
+    };
+
+    fetch(`http://localhost:8000/time/${timeID}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(time),
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
+
+  deleteTimeById = async (event) => {
+    event.preventDefault();
+
+    const token = getToken();
+    const timeID = this.state.gdTimeID;
+
+    fetch(`http://localhost:8000/time/${timeID}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
+
+  //user rd functions
+  getUserById = async (event) => {
+    event.preventDefault();
+
+    const token = getToken();
+    const userID = this.state.gdUserID;
+
+    fetch(`http://localhost:8000/user/get/${userID}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
+
+  deleteUserById = async (event) => {
+    event.preventDefault();
+
+    const token = getToken();
+    const userID = this.state.gdUserID;
+
+    fetch(`http://localhost:8000/user/delete/${userID}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
+
+  render() {
+    return (
+      <div className="container">
+        <h1 className="mb-5 mt-3">Admin Console</h1>
+        <div className="row my-5 p-3 bg-light">
+          {/* Ticket routes */}
+          <h2 className="col-12">GET/DELETE Ticket</h2>
+          <form className="col-12">
+            <div className="form-group">
+              <label for="ticketId">ID</label>
+              <input
+                type="text"
+                className="form-control"
+                id="ticketId"
+                name="gdTicketId"
+                onChange={this.handleChange}
+              />
+            </div>
+            <button
+              type="submit"
+              className="btn btn-primary w-100"
+              onClick={this.getTicketById}
+            >
+              GET
+            </button>
+            <button
+              type="submit"
+              className="btn btn-danger w-100"
+              onClick={this.deleteTicketById}
+            >
+              DELETE
+            </button>
+          </form>
+
+          <h2 className="col-12 mt-5">CREATE/UPDATE Ticket</h2>
+          <form className="col-12">
+            <div className="form-group">
+              <label for="cuTicketId">ID</label>
+              <input
+                type="text"
+                className="form-control"
+                id="cuTicketId"
+                name="cuTicketId"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label for="movieTitleTicket">Movie Title</label>
+              <input
+                type="text"
+                className="form-control"
+                id="movieTitleTicket"
+                name="cuTicketMovie"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label className="w-100">
+                Concession
+                <select
+                  className="custom-select d-block w-100 form-control"
+                  id="ticketConcession"
+                  name="cuTicketConcession"
+                  onChange={this.handleChange}
+                >
+                  <option value="Child">Child</option>
+                  <option value="Adult">Adult</option>
+                  <option value="Senior">Senior</option>
+                  <option value="Student">Student</option>
+                </select>
+              </label>
+            </div>
+            <div className="form-group">
+              <label for="transId">Transaction ID</label>
+              <input
+                type="text"
+                className="form-control"
+                id="transId"
+                name="cuTransId"
+                onChange={this.handleChange}
+              />
+            </div>
+            <button
+              type="submit"
+              className="btn btn-primary w-100"
+              onClick={this.postTicket}
+            >
+              CREATE
+            </button>
+            <button
+              type="submit"
+              className="btn btn-warning w-100"
+              onClick={this.updateTicket}
+            >
+              UPDATE
+            </button>
+          </form>
+        </div>
+
+        {/* Movie routes
                 - When doing CREATE, save image first and use id from return image obj
                 */}
-                <div className="row my-5 p-3 bg-light">
-                    <h2 className="col-12">GET/DELETE Movie (ID)</h2>
-                    <form className="col-12">
-                        <div className="form-group">
-                            <label for="gdMovieId">ID</label>
-                            <input type="text" className="form-control" id="gdMovieId" name="gdMovieId" onChange={this.handleChange} />
-                        </div>
-                        <button type="submit" className="btn btn-primary w-100" onClick={this.getMovieById}>GET</button>
-                        <button type="submit" className="btn btn-danger w-100" onClick={this.deleteMovieById}>DELETE</button>
-                    </form>
-
-                    <h2 className="col-12 mt-5">GET Movie (Title)</h2>
-                    <form className="col-12">
-                        <div className="form-group">
-                            <label for="gMovieTitle">Movie Title</label>
-                            <input type="text" className="form-control" id="gMovieTitle" name="gMovieTitle" onChange={this.handleChange} />
-                        </div>
-                        <button type="submit" className="btn btn-primary w-100" onClick={this.getMovieByTitle}>GET</button>
-                    </form>
-
-                    <h2 className="col-12 mt-5">CREATE/UPDATE Movie</h2>
-                    <form className="col-12">
-                        <div className="form-group">
-                            <label for="cuMovieId">Movie ID (Update only)</label>
-                            <input type="text" className="form-control" id="cuMovieId" name="cuMovieId" onChange={this.handleChange} />
-                        </div>
-                        <div className="form-group">
-                            <label for="cuMovieTitle">Movie Title</label>
-                            <input type="text" className="form-control" id="cuMovieTitle" name="cuMovieTitle" onChange={this.handleChange} />
-                        </div>
-                        <div className="form-group">
-                            <label for="cuMovieDescription">Movie Description</label>
-                            <textarea type="text" className="form-control" id="cuMovieDescription" rows="5" name="cuMovieDescription" onChange={this.handleChange} />
-                        </div>
-                        <div className="form-group">
-                            <label for="cuMovieYear">Movie Year</label>
-                            <input type="number" className="form-control" id="cuMovieYear" name="cuMovieYear" onChange={this.handleChange} />
-                        </div>
-                        <div className="form-group">
-                            <label for="cuMovieActors">Movie Actors</label>
-                            <input type="text" className="form-control" id="cuMovieActors" name="cuMovieActors" onChange={this.handleChange} />
-                        </div>
-                        <div className="form-group">
-                            <label for="cuMovieDirectors">Movie Directors</label>
-                            <input type="text" className="form-control" id="cuMovieDirectors" name="cuMovieDirectors" onChange={this.handleChange} />
-                        </div>
-                        <div className="form-group">
-                            <label for="cuMovieImdb">Movie IMDB (URL)</label>
-                            <input type="text" className="form-control" id="cuMovieImdb" name="cuMovieImdb" onChange={this.handleChange} />
-                        </div>
-                        <button type="submit" className="btn btn-primary w-100" onClick={this.postMovie}>CREATE</button>
-                        <button type="submit" className="btn btn-warning w-100" onClick={this.updateMovie}>UPDATE</button>
-                    </form>
-                </div>
-
-                {/* Concession route */}
-                <div className="row my-5 p-3 bg-light">
-                    <h2 className="col-12 mt-5">CREATE/UPDATE Concession</h2>
-                    <form className="col-12">
-                        <div className="form-group">
-                            <label for="cuConcessionID">Concession ID (Update only)</label>
-                            <input type="text" className="form-control" id="cuConcessionID" name="cuConcessionID" onChange={this.handleChange} />
-                        </div>
-                        <div className="form-group">
-                            <label for="cuConcessionName">Concession Name</label>
-                            <input type="text" className="form-control" id="cuConcessionName" placeholder="Adult"
-                                name="cuConcessionName" onChange={this.handleChange} />
-                        </div>
-                        <div className="form-group">
-                            <label for="cConcessionPrice">Concession Price</label>
-                            <input type="number" className="form-control" id="cuConcessionPrice" placeholder="£"
-                                name="cuConcessionPrice" onChange={this.handleChange} />
-                        </div>
-                        <button type="submit" className="btn btn-primary w-100" onClick={this.postConcession}>CREATE</button>
-                        <button type="submit" className="btn btn-primary w-100" onClick={this.putConcession}>UPDATE</button>
-                    </form>
-                    <h2 className="col-12">GET/DELETE Concession (ID)</h2>
-                    <form className="col-12">
-                        <div className="form-group">
-                            <label for="gdConcessionId">ID</label>
-                            <input type="text" className="form-control" id="gdConcessionId" name="gdConcessionId" onChange={this.handleChange} />
-                        </div>
-                        <button type="submit" className="btn btn-primary w-100" onClick={this.getConcessionById}>GET</button>
-                        <button type="submit" className="btn btn-danger w-100" onClick={this.deleteConcessionById}>DELETE</button>
-                    </form>
-                </div>
-
-                {/* Image routes */}
-
-                <h2 className="col-12">GET/DELETE Image (ID)</h2>
-                    <form className="col-12">
-                        <div className="form-group">
-                            <label for="gdImageId">ID</label>
-                            <input type="text" className="form-control" id="gdImageId" name="gdImageId" onChange={this.handleChange} />
-                        </div>
-                        <button type="submit" className="btn btn-primary w-100" onClick={this.getImageById}>GET</button>
-                        <button type="submit" className="btn btn-danger w-100" onClick={this.deleteImageById}>DELETE</button>
-                    </form>
-                
-
-                {/* Discussion routes */}
-                <div className="row my-5 p-3 bg-light">
-                    <h2 className="col-12 mt-5">CREATE/UPDATE Discussion</h2>
-                    <form className="col-12">
-                        <div className="form-group">
-                            <label for="cuDiscussionID">Discussion ID (Update only)</label>
-                            <input type="text" className="form-control" id="cuDiscussionID" name="cuDiscussionID" onChange={this.handleChange} />
-                        </div>
-                        <div className="form-group">
-                            <label for="cuDiscussionMovieID">Discussion movieID</label>
-                            <input type="text" className="form-control" id="cuDiscussionMovieID" placeholder="Adult"
-                                name="cuDiscussionMovieID" onChange={this.handleChange} />
-                        </div>
-                        <button type="submit" className="btn btn-primary w-100" onClick={this.postDiscussion}>CREATE</button>
-                        <button type="submit" className="btn btn-primary w-100" onClick={this.putDiscussion}>UPDATE</button>
-                    </form>
-                    <h2 className="col-12">GET/DELETE Discussion (ID)</h2>
-                    <form className="col-12">
-                        <div className="form-group">
-                            <label for="gdDiscussionId">ID</label>
-                            <input type="text" className="form-control" id="gdDiscussionId" name="gdDiscussionId" onChange={this.handleChange} />
-                        </div>
-                        <button type="submit" className="btn btn-primary w-100" onClick={this.getDiscussionById}>GET</button>
-                        <button type="submit" className="btn btn-danger w-100" onClick={this.deleteDiscussionById}>DELETE</button>
-                    </form>
-                </div>
+        <div className="row my-5 p-3 bg-light">
+          <h2 className="col-12">GET/DELETE Movie (ID)</h2>
+          <form className="col-12">
+            <div className="form-group">
+              <label for="gdMovieId">ID</label>
+              <input
+                type="text"
+                className="form-control"
+                id="gdMovieId"
+                name="gdMovieId"
+                onChange={this.handleChange}
+              />
             </div>
-        )
-    }
+            <button
+              type="submit"
+              className="btn btn-primary w-100"
+              onClick={this.getMovieById}
+            >
+              GET
+            </button>
+            <button
+              type="submit"
+              className="btn btn-danger w-100"
+              onClick={this.deleteMovieById}
+            >
+              DELETE
+            </button>
+          </form>
+
+          <h2 className="col-12 mt-5">GET Movie (Title)</h2>
+          <form className="col-12">
+            <div className="form-group">
+              <label for="gMovieTitle">Movie Title</label>
+              <input
+                type="text"
+                className="form-control"
+                id="gMovieTitle"
+                name="gMovieTitle"
+                onChange={this.handleChange}
+              />
+            </div>
+            <button
+              type="submit"
+              className="btn btn-primary w-100"
+              onClick={this.getMovieByTitle}
+            >
+              GET
+            </button>
+          </form>
+
+          <h2 className="col-12 mt-5">CREATE/UPDATE Movie</h2>
+          <form className="col-12">
+            <div className="form-group">
+              <label for="cuMovieId">Movie ID (Update only)</label>
+              <input
+                type="text"
+                className="form-control"
+                id="cuMovieId"
+                name="cuMovieId"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label for="cuMovieImgID">Movie Image ID</label>
+              <input
+                type="text"
+                className="form-control"
+                id="cuMovieImgID"
+                name="cuMovieImgID"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label for="cuMovieTitle">Movie Title</label>
+              <input
+                type="text"
+                className="form-control"
+                id="cuMovieTitle"
+                name="cuMovieTitle"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label for="cuMovieDescription">Movie Description</label>
+              <textarea
+                type="text"
+                className="form-control"
+                id="cuMovieDescription"
+                rows="5"
+                name="cuMovieDescription"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label for="cuMovieTimeID">Movie Time ID</label>
+              <textarea
+                type="text"
+                className="form-control"
+                id="cuMovieTimeID"
+                rows="5"
+                name="cuMovieTimeID"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label for="cuMovieYear">Movie Year</label>
+              <input
+                type="number"
+                className="form-control"
+                id="cuMovieYear"
+                name="cuMovieYear"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label for="cuMovieActors">Movie Actors</label>
+              <input
+                type="text"
+                className="form-control"
+                id="cuMovieActors"
+                name="cuMovieActors"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label for="cuMovieDirectors">Movie Directors</label>
+              <input
+                type="text"
+                className="form-control"
+                id="cuMovieDirectors"
+                name="cuMovieDirectors"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label for="cuMovieImdb">Movie IMDB (URL)</label>
+              <input
+                type="text"
+                className="form-control"
+                id="cuMovieImdb"
+                name="cuMovieImdb"
+                onChange={this.handleChange}
+              />
+            </div>
+            <button
+              type="submit"
+              className="btn btn-primary w-100"
+              onClick={this.postMovie}
+            >
+              CREATE
+            </button>
+            <button
+              type="submit"
+              className="btn btn-warning w-100"
+              onClick={this.updateMovie}
+            >
+              UPDATE
+            </button>
+          </form>
+        </div>
+
+        {/* Concession route */}
+        <div className="row my-5 p-3 bg-light">
+          <h2 className="col-12 mt-5">CREATE/UPDATE Concession</h2>
+          <form className="col-12">
+            <div className="form-group">
+              <label for="cuConcessionID">Concession ID (Update only)</label>
+              <input
+                type="text"
+                className="form-control"
+                id="cuConcessionID"
+                name="cuConcessionID"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label for="cuConcessionName">Concession Name</label>
+              <input
+                type="text"
+                className="form-control"
+                id="cuConcessionName"
+                placeholder="Adult"
+                name="cuConcessionName"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label for="cConcessionPrice">Concession Price</label>
+              <input
+                type="number"
+                className="form-control"
+                id="cuConcessionPrice"
+                placeholder="£"
+                name="cuConcessionPrice"
+                onChange={this.handleChange}
+              />
+            </div>
+            <button
+              type="submit"
+              className="btn btn-primary w-100"
+              onClick={this.postConcession}
+            >
+              CREATE
+            </button>
+            <button
+              type="submit"
+              className="btn btn-primary w-100"
+              onClick={this.putConcession}
+            >
+              UPDATE
+            </button>
+          </form>
+          <h2 className="col-12">GET/DELETE Concession (ID)</h2>
+          <form className="col-12">
+            <div className="form-group">
+              <label for="gdConcessionId">ID</label>
+              <input
+                type="text"
+                className="form-control"
+                id="gdConcessionId"
+                name="gdConcessionId"
+                onChange={this.handleChange}
+              />
+            </div>
+            <button
+              type="submit"
+              className="btn btn-primary w-100"
+              onClick={this.getConcessionById}
+            >
+              GET
+            </button>
+            <button
+              type="submit"
+              className="btn btn-danger w-100"
+              onClick={this.deleteConcessionById}
+            >
+              DELETE
+            </button>
+          </form>
+        </div>
+
+        {/* Image routes */}
+        <div className="row my-5 p-3 bg-light">
+          <h2 className="col-12">GET/DELETE Image (ID)</h2>
+          <form className="col-12">
+            <div className="form-group">
+              <label for="gdImageId">ID</label>
+              <input
+                type="text"
+                className="form-control"
+                id="gdImageId"
+                name="gdImageId"
+                onChange={this.handleChange}
+              />
+            </div>
+            <button
+              type="submit"
+              className="btn btn-primary w-100"
+              onClick={this.getImageById}
+            >
+              GET
+            </button>
+            <button
+              type="submit"
+              className="btn btn-danger w-100"
+              onClick={this.deleteImageById}
+            >
+              DELETE
+            </button>
+          </form>
+          <h2 className="col-12 mt-5">CREATE/UPDATE Image</h2>
+          <p>
+            Images need to be less than 16mb in size to be stored. This is due
+            to a limit on size in the database.
+          </p>
+          <form className="col-12">
+            <div className="form-group">
+              <label for="cuImageID">Image ID (Update only)</label>
+              <input
+                type="text"
+                className="form-control"
+                id="cuImageID"
+                name="cuImageID"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label for="cuImageName">Image Name</label>
+              <input
+                type="text"
+                className="form-control"
+                id="cuImageName"
+                name="cuImageName"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label for="exampleFormControlFile1">Example file input</label>
+              <input
+                type="file"
+                class="form-control-file"
+                id="exampleFormControlFile1"
+              ></input>
+              <br></br>
+              <button
+                type="submit"
+                className="btn btn-primary w-100"
+                onClick={this.postImage}
+              >
+                CREATE
+              </button>
+              <button
+                type="submit"
+                className="btn btn-primary w-100"
+                onClick={this.putImage}
+              >
+                UPDATE
+              </button>
+            </div>
+          </form>
+        </div>
+
+        {/* Discussion routes */}
+        <div className="row my-5 p-3 bg-light">
+          <h2 className="col-12 mt-5">CREATE/UPDATE Discussion</h2>
+          <form className="col-12">
+            <div className="form-group">
+              <label for="cuDiscussionID">Discussion ID (Update only)</label>
+              <input
+                type="text"
+                className="form-control"
+                id="cuDiscussionID"
+                name="cuDiscussionID"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label for="cuDiscussionMovieID">Discussion movieID</label>
+              <input
+                type="text"
+                className="form-control"
+                id="cuDiscussionMovieID"
+                placeholder="Adult"
+                name="cuDiscussionMovieID"
+                onChange={this.handleChange}
+              />
+            </div>
+            <button
+              type="submit"
+              className="btn btn-primary w-100"
+              onClick={this.postDiscussion}
+            >
+              CREATE
+            </button>
+            <button
+              type="submit"
+              className="btn btn-primary w-100"
+              onClick={this.putDiscussion}
+            >
+              UPDATE
+            </button>
+          </form>
+          <h2 className="col-12">GET/DELETE Discussion (ID)</h2>
+          <form className="col-12">
+            <div className="form-group">
+              <label for="gdDiscussionId">ID</label>
+              <input
+                type="text"
+                className="form-control"
+                id="gdDiscussionId"
+                name="gdDiscussionId"
+                onChange={this.handleChange}
+              />
+            </div>
+            <button
+              type="submit"
+              className="btn btn-primary w-100"
+              onClick={this.getDiscussionById}
+            >
+              GET
+            </button>
+            <button
+              type="submit"
+              className="btn btn-danger w-100"
+              onClick={this.deleteDiscussionById}
+            >
+              DELETE
+            </button>
+          </form>
+
+          {/* time routes */}
+          <div className="row my-5 p-3 bg-light">
+            <h2 className="col-12 mt-5">CREATE/UPDATE Time</h2>
+            <p>Use 2400 hour formating for time. </p>
+            <form className="col-12">
+              <div className="form-group">
+                <label for="cuTimeID">Time ID (Update only)</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="cuTimeID"
+                  name="cuTimeID"
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label for="cuTimeYear">Year</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="cuTimeYear"
+                  placeholder="Adult"
+                  name="cuTimeYear"
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label for="cuTimeMonth">Month</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="cuTimeMonth"
+                  placeholder="Adult"
+                  name="cuTimeMonth"
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label for="cuTimeDay">Day</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="cuTimeDay"
+                  placeholder="Adult"
+                  name="cuTimeDay"
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label for="cuTimeTime">Time 24hr format</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="cuTimeTime"
+                  placeholder="Adult"
+                  name="cuTimetime"
+                  onChange={this.handleChange}
+                />
+              </div>              
+              <button
+                type="submit"
+                className="btn btn-primary w-100"
+                onClick={this.postTime}
+              >
+                CREATE
+              </button>
+              <button
+                type="submit"
+                className="btn btn-primary w-100"
+                onClick={this.putTime}
+              >
+                UPDATE
+              </button>
+            </form>
+            <h2 className="col-12">GET/DELETE Time (ID)</h2>
+            <form className="col-12">
+              <div className="form-group">
+                <label for="gdTimeId">ID</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="gdTimeId"
+                  name="gdTimeId"
+                  onChange={this.handleChange}
+                />
+              </div>
+              <button
+                type="submit"
+                className="btn btn-primary w-100"
+                onClick={this.getTimeById}
+              >
+                GET
+              </button>
+              <button
+                type="submit"
+                className="btn btn-danger w-100"
+                onClick={this.deleteTimeById}
+              >
+                DELETE
+              </button>
+            </form>
+          </div>
+          {/* user routes, full crud functions not required on admin panel */}
+          <div className="row my-5 p-3 bg-light">
+          <h2 className="col-12">GET/DELETE User (ID)</h2>
+          <form className="col-12">
+            <div className="form-group">
+              <label for="gdUserID">ID</label>
+              <input
+                type="text"
+                className="form-control"
+                id="gdUserID"
+                name="gdUserID"
+                onChange={this.handleChange}
+              />
+            </div>
+            <button
+              type="submit"
+              className="btn btn-primary w-100"
+              onClick={this.getUserById}
+            >
+              GET
+            </button>
+            <button
+              type="submit"
+              className="btn btn-danger w-100"
+              onClick={this.deleteUserById}
+            >
+              DELETE
+            </button>
+          </form>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }

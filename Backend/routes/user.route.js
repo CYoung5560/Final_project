@@ -19,4 +19,8 @@ router.post('/login', UserController.login);
 
 router.post('/logout', UserController.logout)
 
+router.get('/user/get/:id', passport.authenticate('jwt', { session: false }), checkIsInRole(ROLES.Admin), UserController.get);
+
+router.delete('/user/delete/:id', passport.authenticate('jwt', { session: false }), checkIsInRole(ROLES.Admin), UserController.delete);
+
 module.exports = router;

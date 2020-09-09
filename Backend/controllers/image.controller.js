@@ -24,6 +24,16 @@ exports.createImage = async (request, response, next) => {
     }
 };
 
+exports.updateImage = async (request, response, next) => {
+
+    try {
+        const image = await ImageService.updateImage(request);
+        return response.status(200).json({ status: 200, data: image, message: "image.controller -> Successfully updated image in db" });
+    } catch(error) {
+        return response.status(400).json({ status: 400, message: error.message });
+    }
+};
+
 exports.deleteImage = async (request, response, next)  => {
     try{
         const image = await ImageService.deleteImage(request.params.id);

@@ -24,6 +24,7 @@ const imageRoutes = require("./routes/image.route");
 const contactRoutes = require("./routes/contact.route");
 const discussionRoutes = require("./routes/discussion.route");
 const postRoutes = require("./routes/post.route");
+const timeRoutes = require(".routes/time.route");
 
 // Use in-built Express json parser
 app.use(express.json());
@@ -77,6 +78,7 @@ app.use("/img", imageRoutes);
 app.use("/contact", contactRoutes);
 app.use("/discussion", discussionRoutes); 
 app.use("/post", postRoutes);
+app.use("/time", timeRoutes);
 
 // Configure db
 const db = "mongodb://localhost:27017/movie-site";

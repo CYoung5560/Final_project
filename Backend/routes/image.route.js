@@ -30,6 +30,10 @@ router.get('/:id', passport.authenticate('jwt', { session: false }), checkIsInRo
 router.post('/', passport.authenticate('jwt', { session: false }), upload.single('image'), checkIsInRole(ROLES.Admin), 
     ImageController.createImage);
 
+router.put('/:id', passport.authenticate('jwt', { session: false }), 
+checkIsInRole(ROLES.Admin), ImageController.updateImage);
+
+
 router.delete('/:id', passport.authenticate('jwt', { session: false }), 
     checkIsInRole(ROLES.Admin), ImageController.deleteImage);
 

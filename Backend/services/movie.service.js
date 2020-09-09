@@ -21,7 +21,7 @@ exports.getMovieByTitle = async (title) => {
 exports.createMovie = async (movie) => {
     console.log(movie);
     try {
-        const newMovie = await Movie.create({ "title": movie.title, "year": movie.year, "description": movie.description, 
+        const newMovie = await Movie.create({ "image": movie.img, "title": movie.title, "year": movie.year, "description": movie.description, 
         "actors": movie.actors, "director": movie.director, "imdb": movie.imdb});
         console.log(newMovie);
         return newMovie;
@@ -44,7 +44,7 @@ exports.updateMovie = async (id, movie) => {
     try {
         movie._id = id;
 
-        let updatedMovie = await Movie.findByIdAndUpdate(id, { $set: { "title": movie.title, "year": movie.year, "description": movie.description, 
+        let updatedMovie = await Movie.findByIdAndUpdate(id, { $set: { "image": movie.img, "title": movie.title, "year": movie.year, "description": movie.description, 
         "actors": movie.actors, "director": movie.director, "imdb": movie.imdb } }, { new: true });
 
         console.log(updatedMovie);

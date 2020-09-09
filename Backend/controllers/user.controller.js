@@ -1,6 +1,7 @@
 const UserService = require('../services/user.service');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
+const { request, response } = require('express');
 
 exports.login = async (request, response, next) => {
 
@@ -58,3 +59,22 @@ exports.logout = async (request, response, next) => {
         return response.status(400).json({ status: 400, message: error.message });
     }
 };
+
+exports.get = async (request, response, next) => {
+
+    try {
+        const user = await UserService.getUserById(request.params.id);
+        return response.status(200).json({ status: 200, data: user, message: "User.controller -> Successfully retrieved user by id"});
+    } catch(error) {
+        return response.status(400).json({ status: 400, message: error.message });
+    }
+};
+
+exports.delete = async (request, response, next) => {
+    try{
+        const user = await UserService.delete(request.params.id, request.body);
+        return response.status(200).json({status: 200, data: user, message: "user.controller -> Successfully deleted entry"})
+    } catch(error) {
+        return response.status(400).json({status: 400, message: error.message});
+    }
+}

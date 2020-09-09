@@ -36,3 +36,18 @@ exports.deleteImage = async (id) => {
         throw Error('image.service.js -> Error deleting image');
     }
 };
+
+exports.updateImage = async (id, image) => {
+    try {
+        image._id = id;
+
+        let updatedImage = await Image.findByIdAndUpdate(id, { $set: { "name": image.name,
+         "img": image.image } }, { new: true });
+
+        console.log(updatedConcession);
+        return updatedConcession;
+    } catch(error) {
+        console.log(error);
+        throw Error('Image.service.js -> Error updating image');
+    }
+}
