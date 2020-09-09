@@ -1,4 +1,4 @@
-const TimeService = require('../services/time.service');
+const TimeService = require('../services/time.services');
 
 exports.get = async (request, response, next) => {
 
