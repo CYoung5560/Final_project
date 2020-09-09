@@ -72,7 +72,7 @@ class CheckoutCardForm extends React.Component {
         const concession = document.getElementById("concession").value;
 
         const token = this.getToken();
-        fetch('http://localhost:8000/payment', {
+        fetch('http://35.230.151.148:8000/payment', {
             method: "POST",
             mode: "cors",
             // credentials: "include",
@@ -118,7 +118,7 @@ class CheckoutCardForm extends React.Component {
                               });
 
                             // Create a ticket !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                            fetch('http://localhost:8000/ticket', {
+                            fetch('http://35.230.151.148:8000/ticket', {
                                 method: "POST",
                                 mode: "cors",
                                 // credentials: "include",

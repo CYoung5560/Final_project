@@ -59,7 +59,7 @@ export default class NavBar extends React.Component {
     event.preventDefault();
     console.log("Clicked!" , this.state.value); 
      
-    window.location = `http://localhost:3001/individual/${this.state.value}`;
+    window.location = `http://localhost:3000/individual/${this.state.value}`;
   
   }
 
@@ -98,8 +98,8 @@ export default class NavBar extends React.Component {
               {/* Dropdown */}
             </Nav>
             {/* Search bar */}
+            <LoginModal />
             <Form inline onSubmit={this.handleSubmit}>
-              <LoginModal />
               {/* <Button variant="outline-success" size="sm" className="btn-qacinema"><strong>Login</strong></Button> */}
               <Button variant="outline-success" size="sm" className="btn-qacinema"><strong>Logout</strong></Button>
               <input type="text" value={this.state.value} onChange={this.handleChange} />

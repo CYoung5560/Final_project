@@ -3,20 +3,49 @@ import axios from "axios";
 
 import "./css/App.css";
 import { Container } from "react-bootstrap";
-
+import ModalComponent from './ModalComponent';
 
 export default class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      show: false,
+      title: "",
+      body: "",
+      data: [],
+      success: false
     };
   }
 
-  handleEmailChange = (event) => {
-    this.setState({email : event.target.value});
+  handleShow = () => {
+    if (this.state.success){
+    this.setState({
+      show: true,
+      title: 'Brilliant!',
+      body: 'Thank you for sigining up!',
+      
+    });
   }
+  if (!this.state.success){
+    this.setState({
+      show: true,
+      title: 'Oh snap!',
+      body: 'Please enter a valid username and password'
+    });
+  }
+
+};
+
+
+handleClose = () => {
+ 
+  this.setState({
+    show: false
+  });
+};
+
 
   handleUsernameChange = (event) => {
     this.setState({ username: event.target.value });
@@ -28,14 +57,13 @@ export default class Signup extends React.Component {
 
   handleSubmit = (event) => {
     const user = {
-      "email" : this.state.email, 
       "username": this.state.username,
       "password": this.state.password
     };
 
     event.preventDefault();
 
-    fetch('http://localhost:8000/signup', {
+    fetch('http://35.230.151.148:8000/signup', {
       method: "POST",
       mode: "cors",
       headers: {
@@ -45,11 +73,16 @@ export default class Signup extends React.Component {
     }).then((response) => response.json())
       .then((response) => {
         console.log(response);
-
+        this.setState({
+          success: true
+        });
         // Redirect to /login
       })
       .catch((error) => {
         console.log(error);
+        this.setState({
+          success: false
+        });
       });
   };
 
@@ -62,34 +95,6 @@ export default class Signup extends React.Component {
         <form class="form-signup" onSubmit={this.handleSubmit}>
           <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Welcome! Please enter your details</h4>
-              {/* <div class="mb-3">
-                  <label for="address">Address</label>
-                  <input 
-                    class="form-control" 
-                    type="text"
-                    id="address" 
-                    name="customerAddress" 
-                    placeholder="155 Country Lane" 
-                    autocomplete="off"
-                    required></input>
-                  <div class="invalid-feedback">
-                    Please enter address.
-                  </div>
-                </div> */}
-              {/* <div class="mb-3">
-                  <label for="phone">Phone Number</label>
-                  <input 
-                    class="form-control" 
-                    type="text" 
-                    id="phone" 
-                    name="customerPhone" 
-                    placeholder="01273422342" 
-                    autocomplete="off"
-                    required></input>
-                  <div class="invalid-feedback">
-                    Please enter phone number.
-                  </div>
-                </div> */}
               <form class="needs-validation" id="formCreateCustomer" novalidate>
                <div class="row">
                   <div class="col-md-6 mb-3">
@@ -110,22 +115,6 @@ export default class Signup extends React.Component {
                   </div>
                 </div> 
               <div class="mb-3">
-                <label for="email">Email</label>
-                <input
-                  onChange={this.handleEmailChange}
-                  class="form-control"
-                  type="text"
-                  id="email"
-                  name="customerEmail"
-                  placeholder="you@example.com"
-                  autocomplete="off"
-                  required></input>
-                <div class="invalid-feedback">
-                  Please enter a valid email address.
-                  </div>
-              </div>
-
-              <div class="mb-3">
                 <label for="password">Password</label>
                 <input
                   onChange={this.handlePasswordChange}
@@ -142,7 +131,14 @@ export default class Signup extends React.Component {
 
               <div class="row">
                 <div class="col-md-6 mb-3">
-                  <button class="btn btn-secondary btn-md btn-qacinema" id="createCustomer" type="submit">Submit</button>
+                  <button class="btn btn-secondary btn-md btn-qacinema" id="createCustomer" type="submit" onClick={this.handleShow}>Submit</button>
+                  <ModalComponent
+                    show={this.state.show}
+                    title={this.state.title}
+                    body={this.state.body}
+                    data={this.state.data}
+                    onClick={this.handleClose}
+                    onHide={this.handleClose} />
                 </div>
               </div>
               <br></br>

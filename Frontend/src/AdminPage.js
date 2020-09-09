@@ -42,7 +42,7 @@ export default class AdminPage extends React.Component {
         const token = getToken();
         const movieId = this.state.gdMovieId;
 
-        fetch(`http://localhost:8000/movie/${movieId}`, {
+        fetch(`http://35.230.151.148:8000/movie/${movieId}`, {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
@@ -59,7 +59,7 @@ export default class AdminPage extends React.Component {
         const token = getToken();
         const movieTitle = this.state.gMovieTitle;
 
-        fetch(`http://localhost:8000/movie/title/${movieTitle}`, {
+        fetch(`http://35.230.151.148:8000/movie/title/${movieTitle}`, {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
@@ -83,7 +83,7 @@ export default class AdminPage extends React.Component {
             imdb: this.state.cuMovieImdb
         };
 
-        fetch(`http://localhost:8000/movie`, {
+        fetch(`http://35.230.151.148:8000/movie`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -110,7 +110,7 @@ export default class AdminPage extends React.Component {
             imdb: this.state.cuMovieImdb
         };
 
-        fetch(`http://localhost:8000/movie/${movieId}`, {
+        fetch(`http://35.230.151.148:8000/movie/${movieId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -129,7 +129,7 @@ export default class AdminPage extends React.Component {
         const token = getToken();
         const movieId = this.state.gdMovieId;
 
-        fetch(`http://localhost:8000/movie/${movieId}`, {
+        fetch(`http://35.230.151.148:8000/movie/${movieId}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -150,7 +150,7 @@ export default class AdminPage extends React.Component {
             price: this.state.cConcessionPrice
         }
 
-        fetch(`http://localhost:8000/concession`, {
+        fetch(`http://35.230.151.148:8000/concession`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -169,7 +169,7 @@ export default class AdminPage extends React.Component {
         const token = getToken();
         const ticketId = this.state.gdTicketId;
 
-        fetch(`http://localhost:8000/ticket`, {
+        fetch(`http://35.230.151.148:8000/ticket`, {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
@@ -193,7 +193,7 @@ export default class AdminPage extends React.Component {
             transId: this.state.cuTransId
         };
 
-        fetch(`http://localhost:8000/ticket`, {
+        fetch(`http://35.230.151.148:8000/ticket`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -217,7 +217,7 @@ export default class AdminPage extends React.Component {
             transId: this.state.cuTransId
         };
 
-        fetch(`http://localhost:8000/ticket`, {
+        fetch(`http://35.230.151.148:8000/ticket`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -236,7 +236,7 @@ export default class AdminPage extends React.Component {
         const token = getToken();
         const ticketId = this.state.gdTicketId;
 
-        fetch(`http://localhost:8000/ticket`, {
+        fetch(`http://35.230.151.148:8000/ticket`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",

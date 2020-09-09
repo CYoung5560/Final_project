@@ -18,7 +18,7 @@ export default function MovieView(props) {
         const token = getToken();
         console.log(movieName);
 
-        fetch(`http://localhost:8000/movie/title/${movieName}`, {
+        fetch(`http://35.230.151.148:8000/movie/title/${movieName}`, {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`

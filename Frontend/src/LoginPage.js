@@ -28,7 +28,7 @@ export default class Login extends React.Component {
     };
 
     event.preventDefault();
-    axios.post('http://localhost:8000/login', user)
+    axios.post('http://35.230.151.148:8000/login', user)
       .then((response) => {
         console.log(response.data.token);
         document.cookie = `token=${response.data.token}`;

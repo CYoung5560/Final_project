@@ -23,7 +23,7 @@ export default class ContactUs extends React.Component {
 
     axios({
       method: "POST",
-      url: "http://localhost:3002/send",
+      url: "http://localhost:3000/send",
       data: {
       	name: this.state.name,
       	email: this.state.email,

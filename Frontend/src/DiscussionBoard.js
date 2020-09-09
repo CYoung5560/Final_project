@@ -25,7 +25,7 @@ export default class DiscussionBoard extends React.Component {
 
     const token = getToken();
 
-    fetch(`http://localhost:8000/post`, {
+    fetch(`http://35.230.151.148:8000/post`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -41,7 +41,7 @@ export default class DiscussionBoard extends React.Component {
         console.log("props")
         console.log(this.props)
         // POST to discussion route movie ID and post ID
-        fetch(`http://localhost:8000/discussion`, {
+        fetch(`http://35.230.151.148:8000/discussion`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -67,7 +67,7 @@ export default class DiscussionBoard extends React.Component {
 
     console.log("Fetching comments")
 
-    fetch(`http://localhost:8000/discussion/all/${this.props.movieId}`, {
+    fetch(`http://35.230.151.148:8000/discussion/all/${this.props.movieId}`, {
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`

@@ -15,18 +15,28 @@ export default class Login extends React.Component {
       show: false,
       title: "",
       body: "",
-      data: []
+      data: [],
+      success: false
     };
   }
 
   handleShow = () => {
-    
-   this.setState({
+    if (this.state.success){
+    this.setState({
       show: true,
       title: 'Brilliant!',
       body: 'Thank you for signing in!',
       
     });
+  }
+  if (!this.state.success){
+    this.setState({
+      show: true,
+      title: 'Oh snap!',
+      body: 'Please enter a valid username and password'
+    });
+  }
+  
   };
 
   handleClose = () => {
@@ -53,19 +63,16 @@ export default class Login extends React.Component {
 
     event.preventDefault();
     axios
-      .post("http://localhost:8000/login", user)
+      .post("http://35.230.151.148:8000/login", user)
       .then((response) => {
         console.log(response.data.token);
         document.cookie = `token=${response.data.token}`;
         
+        this.state.success = true;
       })
       .catch((error) => {
         console.log(error);
-            this.setState({
-               show: true,
-               title: 'Oh snap!',
-               body: 'Please enter a valid username and password'
-             });
+            this.state.success = false;
       });
       
   };
@@ -88,6 +95,7 @@ export default class Login extends React.Component {
              
               
               <form class="form-signin" onSubmit={this.handleSubmit}>
+              
                 <h1 class="h3 mb-3 font-weight-normal">
                   Welcome! Please sign in
                 </h1>
@@ -118,11 +126,7 @@ export default class Login extends React.Component {
                   placeholder="Password"
                   required
                 ></input>
-                {/* <div class="checkbox mb-3">
-          <label>
-            <input type="checkbox" value="remember-me">Remember me</input>
-          </label>
-        </div> */}
+       
                 <br></br>
                 {/* signin (submit) button */}
                 <button
@@ -140,6 +144,9 @@ export default class Login extends React.Component {
                     onClick={this.handleClose}
                     onHide={this.handleClose} />
                  {/* signin (submit) button */}
+                <br/>
+                <br/>
+                <a className="btn btn-sm btn-qacinema" href="/signup" role="button"><strong>Sign up today</strong></a>
                 <br/>
                 <br/>
                 <button
