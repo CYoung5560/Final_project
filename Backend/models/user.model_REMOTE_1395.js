@@ -7,11 +7,10 @@ const userSchema = new mongoose.Schema({
     unique: true,
     required: true
   },
-
   role: String
 });
 
-userSchema.methods.info = () => {  
+userSchema.methods.info =() => {  
   console.log(`User -> ${this.username}`);
   console.log(`Role -> ${this.role}`);
 }

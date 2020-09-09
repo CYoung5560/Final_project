@@ -46,11 +46,13 @@ export default class ContactUs extends React.Component {
 
     resetForm() {
     this.setState({ message:'' });
+
   }
 
   render() {
     return (
       <div>
+
         <Container className="cntr_main_qacinema">
           <Container className="cntr_insidemain_qacinema">
           <h5>Find Us:</h5>
@@ -170,6 +172,7 @@ export default class ContactUs extends React.Component {
         </Container>
         <br/>
         <br/>
+
       </div>
     );
   }
@@ -178,8 +181,10 @@ export default class ContactUs extends React.Component {
     this.setState({ name: event.target.value });
   }
 
+
   onEmailChange(event) {
     this.setState({ email: event.target.value });
+
   }
 
   onMessageChange(event) {

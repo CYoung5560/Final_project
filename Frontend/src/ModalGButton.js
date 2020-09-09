@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./css/App.css";
 import { Button } from "react-bootstrap";
 import ModalComponent from './ModalComponent';
+import { getToken } from './utils/token';
 
 
 export default class ModalGButton extends React.Component {
@@ -15,27 +16,33 @@ export default class ModalGButton extends React.Component {
     };
   }
 
-  
   handleShow = () => {
-    // Movie database items
-    const myObject = [
-      {
-        movieTitle: 'Victor Rippin',
-        movieRating: '15'
-      }
-    ];
-
+  
+    const token = getToken();
+    const movieName = this.props.movieName;
+    console.log(movieName);
+    fetch(`http://localhost:8000/movie/title/${movieName}`, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then((response) => response.json())
+            .then((result) => {
+                console.log(result);
+                this.setState(result.data);
+                console.log(this.state.data);
+            })
+            .catch((error) => console.log(error));
 
     this.setState({
        show: true,
-       title: 'Movie Info',
-       body: 'Snapshot information',
-       data: myObject
+       title: this.props.movieTitle,
+       body: 'Snapshot info:',
      });
    };
  
    handleClose = () => {
-     
      this.setState({
        show: false
      });

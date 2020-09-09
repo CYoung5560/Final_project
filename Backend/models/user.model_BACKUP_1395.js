@@ -7,11 +7,18 @@ const userSchema = new mongoose.Schema({
     unique: true,
     required: true
   },
-
+<<<<<<< HEAD
+  // email: {
+  //   type: String,
+  //   unique: true, 
+  //   required: true
+  // },
+=======
+>>>>>>> 65e7c606e9d8dc19d1b44799cc82cc02c5586a8d
   role: String
 });
 
-userSchema.methods.info = () => {  
+userSchema.methods.info =() => {  
   console.log(`User -> ${this.username}`);
   console.log(`Role -> ${this.role}`);
 }
