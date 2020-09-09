@@ -80,9 +80,9 @@ handleClose = () => {
       })
       .catch((error) => {
         console.log(error);
-        this.setState({
-          success: false
-        });
+        // this.setState({
+        //   success: false
+        // });
       });
   };
 
