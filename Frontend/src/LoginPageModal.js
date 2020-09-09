@@ -15,18 +15,28 @@ export default class Login extends React.Component {
       show: false,
       title: "",
       body: "",
-      data: []
+      data: [],
+      success: false
     };
   }
 
   handleShow = () => {
-    
-   this.setState({
+    if (this.state.success){
+    this.setState({
       show: true,
       title: 'Brilliant!',
       body: 'Thank you for signing in!',
       
     });
+  }
+  if (!this.state.success){
+    this.setState({
+      show: true,
+      title: 'Oh snap!',
+      body: 'Please enter a valid username and password'
+    });
+  }
+  
   };
 
   handleClose = () => {
@@ -58,14 +68,11 @@ export default class Login extends React.Component {
         console.log(response.data.token);
         document.cookie = `token=${response.data.token}`;
         
+        this.state.success = true;
       })
       .catch((error) => {
         console.log(error);
-            this.setState({
-               show: true,
-               title: 'Oh snap!',
-               body: 'Please enter a valid username and password'
-             });
+            this.state.success = false;
       });
       
   };
