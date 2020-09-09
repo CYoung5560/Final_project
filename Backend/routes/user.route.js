@@ -1,5 +1,6 @@
 const express = require('express');
 const connectEnsureLogin = require('connect-ensure-login');
+const passport = require('passport');
 
 const UserController = require('../controllers/user.controller');
 
