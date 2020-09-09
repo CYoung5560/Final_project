@@ -3,16 +3,49 @@ import axios from "axios";
 
 import "./css/App.css";
 import { Container } from "react-bootstrap";
-
+import ModalComponent from './ModalComponent';
 
 export default class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      show: false,
+      title: "",
+      body: "",
+      data: [],
+      success: false
     };
   }
+
+  handleShow = () => {
+    if (this.state.success){
+    this.setState({
+      show: true,
+      title: 'Brilliant!',
+      body: 'Thank you for sigining up!',
+      
+    });
+  }
+  if (!this.state.success){
+    this.setState({
+      show: true,
+      title: 'Oh snap!',
+      body: 'Please enter a valid username and password'
+    });
+  }
+
+};
+
+
+handleClose = () => {
+ 
+  this.setState({
+    show: false
+  });
+};
+
 
   handleUsernameChange = (event) => {
     this.setState({ username: event.target.value });
@@ -40,11 +73,12 @@ export default class Signup extends React.Component {
     }).then((response) => response.json())
       .then((response) => {
         console.log(response);
-
+        this.state.success = true;
         // Redirect to /login
       })
       .catch((error) => {
         console.log(error);
+        this.state.success = false;
       });
   };
 
@@ -93,7 +127,14 @@ export default class Signup extends React.Component {
 
               <div class="row">
                 <div class="col-md-6 mb-3">
-                  <button class="btn btn-secondary btn-md btn-qacinema" id="createCustomer" type="submit">Submit</button>
+                  <button class="btn btn-secondary btn-md btn-qacinema" id="createCustomer" type="submit" onClick={this.handleShow}>Submit</button>
+                  <ModalComponent
+                    show={this.state.show}
+                    title={this.state.title}
+                    body={this.state.body}
+                    data={this.state.data}
+                    onClick={this.handleClose}
+                    onHide={this.handleClose} />
                 </div>
               </div>
               <br></br>
