@@ -24,7 +24,7 @@ const imageRoutes = require("./routes/image.route");
 const contactRoutes = require("./routes/contact.route");
 const discussionRoutes = require("./routes/discussion.route");
 const postRoutes = require("./routes/post.route");
-const timeRoutes = require(".routes/time.route");
+const timeRoutes = require("./routes/time.route");
 
 // Use in-built Express json parser
 app.use(express.json());
