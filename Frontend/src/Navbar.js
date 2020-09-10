@@ -100,12 +100,11 @@ export default class NavBar extends React.Component {
             {/* Search bar */}
             <LoginModal />
             <Form inline onSubmit={this.handleSubmit}>
-              {/* <Button variant="outline-success" size="sm" className="btn-qacinema"><strong>Login</strong></Button> */}
+              
               <Button variant="outline-success" size="sm" className="btn-qacinema"><strong>Logout</strong></Button>
               <input type="text" value={this.state.value} onChange={this.handleChange} />
-              {/* <FormControl type="text" size="sm" placeholder="Search" className="mr-sm-2" name="gMovieTitle" value={this.state.value} onChange={this.handleChange} /> */}
-              {/* <Button variant="outline-success" type="submit" size="sm" className="btn-qacinema" onSubmit={this.handleClick}><strong>Search</strong></Button> */}
-              <input type="submit" value="Submit" />
+
+              <input className="btn-qacinema" type="submit" value="Submit" />
             </Form>
             {/* Search bar */}
           </Navbar.Collapse>

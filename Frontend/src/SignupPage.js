@@ -30,9 +30,8 @@ export default class Signup extends React.Component {
   }
   if (!this.state.success){
     this.setState({
-      show: true,
-      title: 'Oh snap!',
-      body: 'Please enter a valid username and password'
+      title: 'Brilliant!',
+      body: 'Thank you for sigining up!',
     });
   }
 
