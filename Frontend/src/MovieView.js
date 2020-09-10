@@ -50,8 +50,8 @@ export default function MovieView(props) {
 
                     <div class="col-md-4">
                         <img
-                            alt="Gremlins"
-                            src={require("./images/gremlins_500px.jpg")}
+                            alt="film"
+                            src={require("./images/camera_500px.jpg")}
                             width="100%"
                             height="100%"
                             class="img-responsive"
